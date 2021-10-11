@@ -1,0 +1,15 @@
+@startuml "Diagramme de contexte statique"
+
+actor "Utilisateur\n(*)" as User
+
+actor "Administrateur\n(*)" as Admin
+
+actor "Système bancaire\n(1)" as SB
+
+rectangle "ShareCount" as SC
+
+User -- SC
+Admin -- SC
+SB -- SC
+
+@enduml
