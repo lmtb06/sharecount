@@ -1,0 +1,11 @@
+@startuml "Diagramme de cas d'utilisation"
+
+left to right direction
+
+actor "Utilisateur" as User
+
+actor "Administrateur" as Admin
+
+usecase "Créer un compte" as cun
+
+@enduml
