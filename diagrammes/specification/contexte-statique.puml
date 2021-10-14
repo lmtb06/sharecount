@@ -12,7 +12,9 @@ actor "Utilisateur\n(*)" as User
 
 actor "Administrateur\n(*)" as Admin
 
-actor "Système bancaire\n(1)" << externe >> as SB
+actor "Service bancaire\n(1)" << externe >> as SB
+
+actor "Service d'authentification\n(1)" << externe >> as SA
 
 rectangle "ShareCount" as SC
 
