@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor "Utilisateur" as User
+
+actor "Administrateur" as Admin
+
+package "Gestion de compte"{
+	usecase "Créer compte commun de dépenses" as cccd
+	usecase "Créer compte personnel" as ccp
+	usecase "Clôturer un compte commun" as ccc
+	usecase "Consulter la liste des comptes communs" as clcc
+
+}
+
+User --> cccd
+User --> ccp
+User --> ccc
+User --> clcc
+
+@enduml

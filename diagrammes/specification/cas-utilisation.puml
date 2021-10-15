@@ -1,5 +1,4 @@
-@startuml "Diagramme de cas d'utilisation"
-
+@startuml
 left to right direction
 
 actor "Utilisateur" as User
@@ -11,20 +10,37 @@ package "Gestion de compte"{
 	usecase "Créer compte personnel" as ccp
 	usecase "Clôturer un compte commun" as ccc
 	usecase "Consulter la liste des comptes communs" as clcc
-	usecase "Se connecter à un compte" as scc
 
 }
 
 package "Gestion des participants"{
-	usecase "Inviter un participant" as
+	usecase "Inviter un participant" as iup
+        usecase "Consulter sa liste d’invitations" as csli
+        usecase "Accepter une demande d’ajout" as auda
 }
 
 package "Gestion des dépenses"{
-
+        usecase "Enregistrer une dépense" as eud
+        usecase "Consulter la liste des dépenses/montant de la cagnotte" as cllddmdlc
+        usecase "Transférer de l'argent sur son compte" as tdassc
+        usecase "Valider un transfert d’argent" as vuta
+        usecase "Valider une dépense" as vud
 }
 
 package "Administration"{
 
 }
 
+User --> cccd
+User --> ccp
+User --> ccc
+User --> clcc
+User --> iup
+User --> csli
+User --> auda
+User --> eud
+User --> cllddmdlc
+User --> tdassc
+User --> vuta
+User --> vud
 @enduml

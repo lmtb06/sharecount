@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+actor "Utilisateur" as User
+
+actor "Administrateur" as Admin
+
+package "Gestion des dépenses"{
+        usecase "Enregistrer une dépense" as eud
+        usecase "Consulter la liste des dépenses/montant de la cagnotte" as cllddmdlc
+        usecase "Transférer de l'argent sur son compte" as tdassc
+        usecase "Valider un transfert d’argent" as vuta
+        usecase "Valider une dépense" as vud
+}
+
+User --> eud
+User --> cllddmdlc
+User --> tdassc
+User --> vuta
+User --> vud
+
+@enduml
