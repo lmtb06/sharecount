@@ -1,5 +1,8 @@
 @startuml "Diagramme de contexte statique"
 
+scale 1024 width
+scale 1024 height
+
 left to right direction
 
 skinparam actor {
