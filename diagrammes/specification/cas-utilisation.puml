@@ -16,7 +16,7 @@ package "Gestion de compte"{
 }
 
 package "Gestion des participants"{
-	usecase "Inviter un participant" as
+	usecase "Inviter un participant" as iup
 }
 
 package "Gestion des dépenses"{
