@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation - Administration
 left to right direction
 
 actor "Utilisateur" as User
@@ -6,7 +6,15 @@ actor "Utilisateur" as User
 actor "Administrateur" as Admin
 
 package "Administration"{
-
+    usecase "Recherche un profil utilisateur" as rpu
+    usecase "Consulter un profil utilisateur" as cpu
+    usecase "Transférer de l’argent d’un compte à un autre" as tda
 }
+
+actor "Administrateur" as Admin
+
+Admin --> rpu
+Admin --> cpu
+Admin --> tda
 
 @enduml

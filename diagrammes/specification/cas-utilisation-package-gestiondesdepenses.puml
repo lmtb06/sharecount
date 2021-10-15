@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation - Gestion des dépenses
 left to right direction
 
 actor "Utilisateur" as User
@@ -11,6 +11,8 @@ package "Gestion des dépenses"{
         usecase "Transférer de l'argent sur son compte" as tdassc
         usecase "Valider un transfert d’argent" as vuta
         usecase "Valider une dépense" as vud
+        usecase "Consulter ses dettes" as csd
+        usecase "Régler une partie de sa dette envers quelqu’un" as rpd
 }
 
 User --> eud
@@ -18,5 +20,7 @@ User --> cllddmdlc
 User --> tdassc
 User --> vuta
 User --> vud
+User --> csd
+User --> rpd
 
 @enduml

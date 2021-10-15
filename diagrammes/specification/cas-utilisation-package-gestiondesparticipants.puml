@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation - Gestion des participants
 left to right direction
 
 actor "Utilisateur" as User

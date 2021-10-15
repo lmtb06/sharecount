@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation - Gestion de compte
 left to right direction
 
 actor "Utilisateur" as User
@@ -10,6 +10,7 @@ package "Gestion de compte"{
 	usecase "Créer compte personnel" as ccp
 	usecase "Clôturer un compte commun" as ccc
 	usecase "Consulter la liste des comptes communs" as clcc
+	usecase "Ajouter un compte bancaire" as acb
 
 }
 
@@ -17,5 +18,6 @@ User --> cccd
 User --> ccp
 User --> ccc
 User --> clcc
+User --> acb
 
 @enduml
