@@ -20,6 +20,7 @@ rectangle "ShareCount" as SC
 
 User -- SC
 Admin -- SC
-SB - SC
+SC -- SB
+SC -- SA
 
 @enduml
