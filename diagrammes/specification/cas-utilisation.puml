@@ -6,6 +6,27 @@ actor "Utilisateur" as User
 
 actor "Administrateur" as Admin
 
+package "Gestion de compte"{
+	usecase "Créer compte commun de dépenses" as cccd
+	usecase "Créer compte personnel" as ccp
+	usecase "Clôturer un compte commun" as ccc
+	usecase "Consulter la liste des comptes communs" as clcc
+	usecase "Se connecter à un compte" as scc
+
+}
+
+package "Gestion des participants"{
+	usecase "Inviter un participant" as
+}
+
+package "Gestion des dépenses"{
+
+}
+
+package "Administration"{
+
+}
+
 usecase "Créer un compte" as cuc
 
 usecase "Consulter ses dettes" as csd
