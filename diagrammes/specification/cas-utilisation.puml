@@ -10,7 +10,7 @@ package "Gestion de compte"{
 	usecase "Créer compte personnel" as ccp
 	usecase "Clôturer un compte commun" as ccc
 	usecase "Consulter la liste des comptes communs" as clcc
-
+    usecase "Ajouter un compte bancaire" as acb
 }
 
 package "Gestion des participants"{
@@ -25,10 +25,14 @@ package "Gestion des dépenses"{
         usecase "Transférer de l'argent sur son compte" as tdassc
         usecase "Valider un transfert d’argent" as vuta
         usecase "Valider une dépense" as vud
+        usecase "Consulter ses dettes" as csd
+        usecase "Régler une partie de sa dette envers quelqu’un" as rpd
 }
 
 package "Administration"{
-
+    usecase "Recherche un profil utilisateur" as rpu
+    usecase "Consulter un profil utilisateur" as cpu
+    usecase "Transférer de l’argent d’un compte à un autre" as tda
 }
 
 User --> cccd
