@@ -6,6 +6,26 @@ actor "Utilisateur" as User
 
 actor "Administrateur" as Admin
 
-usecase "Créer un compte" as cun
+usecase "Créer un compte" as cuc
+
+usecase "Consulter ses dettes" as csd
+
+usecase "Régler une partie de sa dette envers quelqu’un" as rpd
+
+usecase "Ajouter un compte bancaire" as acb
+
+usecase "Recherche un profil utilisateur" as rpu
+
+usecase "Consulter un profil utilisateur" as cpu
+
+usecase "Transférer de l’argent d’un compte à un autre" as tda
+
+User-->cuc
+User-->csd
+User-->rdp
+User-->acb
+Admin-->rpu
+Admin-->cpu
+Admin-->tda
 
 @enduml
