@@ -1,0 +1,26 @@
+@startuml "Diagramme de contexte statique"
+
+left to right direction
+
+skinparam actor {
+BackgroundColor<< externe >> Black
+BorderColor<< externe >> Black
+StereotypeFontSize<< externe >> 0
+}
+
+actor "Utilisateur\n(*)" as User
+
+actor "Administrateur\n(*)" as Admin
+
+actor "Service bancaire\n(1)" << externe >> as SB
+
+actor "Service d'authentification\n(1)" << externe >> as SA
+
+rectangle "ShareCount" as SC
+
+User -- SC
+Admin -- SC
+SC -- SB
+SC -- SA
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+left to right direction
+!include package-administration.puml
+!include package-gestiondecompte.puml
+!include package-gestiondesdepenses.puml
+!include package-gestiondesparticipants.puml
+@enduml
