@@ -1,0 +1,7 @@
+@startuml
+left to right direction
+!include cas-utilisation-package-administration.puml
+!include cas-utilisation-package-gestiondecompte.puml
+!include cas-utilisation-package-gestiondesdepenses.puml
+!include cas-utilisation-package-gestiondesparticipants.puml
+@enduml
