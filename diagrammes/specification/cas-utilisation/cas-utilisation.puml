@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation
 left to right direction
 !include package-administration.puml
 !include package-gestiondecompte.puml
