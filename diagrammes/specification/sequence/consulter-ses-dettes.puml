@@ -1,0 +1,10 @@
+@startuml "Consulter ses dettes"
+actor Utilisateur as u
+participant ShareCount as sc
+
+u 	-> 	sc : Compte à consulter
+sc	-> 	sc : Récuperation des informations du compte choisi
+u		<-	sc : Informations du compte choisi
+u 	->	sc : Consulter ses dettes
+
+@enduml

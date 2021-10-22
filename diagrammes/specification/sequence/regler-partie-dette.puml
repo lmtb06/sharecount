@@ -1,0 +1,11 @@
+@startuml "Régler une partie de sa dette envers quelqu’un"
+
+actor Utilisateur as u
+participant ShareCount as sc
+
+u 	-> 	sc : Régler partie dette
+u		<- 	sc : Montant à régler
+u		->	sc : Montant
+
+
+@enduml

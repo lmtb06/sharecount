@@ -12,7 +12,9 @@ package "Gestion des dépenses"{
         usecase "Valider un transfert d’argent" as vuta
         usecase "Valider une dépense" as vud
         usecase "Consulter ses dettes" as csd
+				clcc <|.. csd : <<Include>>
         usecase "Régler une partie de sa dette envers quelqu’un" as rpd
+				csd <|.. rpd : <<Include>>
 }
 
 User --> eud

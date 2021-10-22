@@ -7,8 +7,8 @@ actor "Administrateur" as Admin
 
 package "Gestion des participants"{
 	usecase "Inviter un participant" as iup
-        usecase "Consulter sa liste d’invitations" as csli
-        usecase "Accepter une demande d’ajout" as auda
+	usecase "Consulter sa liste d’invitations" as csli
+	usecase "Accepter une demande d’ajout" as auda
 }
 
 User --> iup
