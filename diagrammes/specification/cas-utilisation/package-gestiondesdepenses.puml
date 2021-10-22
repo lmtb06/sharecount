@@ -23,4 +23,6 @@ User --> vud
 User --> csd
 User --> rpd
 
+clcc <|.. eud : <<include>>
+
 @enduml

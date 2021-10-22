@@ -1,0 +1,30 @@
+@startuml  Accepter une demande d’ajout
+
+actor utilisateur as u
+participant ShareCount as sc
+
+u -> sc : Demander sa liste des notifications
+sc -> u : Afficher la liste
+
+alt Aucune invitation
+sc -> u : Aucune invitation
+else
+
+u -> sc : Demander l'informations sur le compte
+sc -> u : Afficher l'informations sur le compte
+
+alt Refus
+u -> sc : Refuser invitation
+else
+
+u -> sc : Accepter invitation
+sc -> sc : Ajouter un utilisateur au compte
+sc -> u : Afficher le compte
+
+
+end
+end
+
+
+
+@enduml

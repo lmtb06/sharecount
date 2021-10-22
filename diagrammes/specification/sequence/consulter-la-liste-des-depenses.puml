@@ -1,0 +1,19 @@
+@startuml  Consulter la liste des dépenses/montant de la cagnotte
+
+actor utilisateur as u
+participant ShareCount as sc
+
+sc -> u : Choisir un compte commun
+u -> sc : Ouvrir le compte
+sc -> u : Afficher l'information du compte
+u -> sc : Choisir les dates
+sc -> sc : Vérifier les dates
+
+alt Format incorrect
+sc -> u : Dates incorrecte
+else
+
+sc -> u : Afficher la liste des dépenses
+end
+
+@enduml

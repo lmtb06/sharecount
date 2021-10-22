@@ -1,0 +1,37 @@
+@startuml  Enregistrer une dépense
+
+actor utilisateur as u
+participant ShareCount as sc
+
+sc -> u : Choisir un compte commun
+u -> sc : Ouvrir le compte
+sc -> u : Afficher l'information du compte
+u -> sc : Choisir une date
+sc -> sc : Vérifier la date
+
+alt Format incorrect ou avant la création du compte ou à l'avenir
+sc -> u : Date incorrecte
+else
+
+
+u -> sc : Entrer le montant
+sc -> sc : Vérifier le montant
+alt Format incorrect ou inférieur ou égal à 0
+sc -> u : Montant incorrect
+else
+
+u -> sc : Ajouter un commentaire
+u -> sc : Sélectionner le nombre de personnes à partager
+else
+
+alt Nombre incorrect
+sc -> u : Nombre incorrect
+else
+
+sc -> sc : Enregistrer une dépense
+sc -> u : Dépense enregistrée
+
+end
+end
+end
+@enduml
