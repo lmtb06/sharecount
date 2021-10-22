@@ -6,5 +6,11 @@ u 	-> 	sc : Compte à consulter
 sc	-> 	sc : Récuperation des informations du compte choisi
 u		<-	sc : Informations du compte choisi
 u 	->	sc : Consulter ses dettes
+alt L'utilisateur n'a pas de dette
+u 	<-	sc : Vous n'avez pas de dette
+else
+u 	<-	sc : Total dette à payer
+u 	<-	sc : Liste des sommes que l'utilisateur doit pour chaque participant
+end
 
 @enduml

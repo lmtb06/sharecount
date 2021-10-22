@@ -2,10 +2,17 @@
 
 actor Utilisateur as u
 participant ShareCount as sc
+participant ServiceBancaire as sb
 
 u 	-> 	sc : Régler partie dette
-u		<- 	sc : Montant à régler
-u		->	sc : Montant
+u		<- 	sc : Liste des dettes à régler
+u		-> 	sc : Sélection des dettes à regler
+alt Absence de compte bancaire
+sc -> u : Absence de compte bancaire
+else
+sc -> sb : 
+end
+
 
 
 @enduml
