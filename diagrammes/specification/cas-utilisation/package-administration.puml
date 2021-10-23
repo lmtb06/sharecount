@@ -1,20 +1,23 @@
 @startuml Cas utilisation - Administration
 left to right direction
 
-actor "Utilisateur" as User
-
 actor "Administrateur" as Admin
 
 package "Administration"{
     usecase "Recherche un profil utilisateur" as rpu
-    usecase "Consulter un profil utilisateur" as cpu
-    usecase "Transférer de l’argent d’un compte à un autre" as tda
+    usecase "Afficher les transferts d’un profil utilisateur" as atpu
+    usecase "Annuler le transfert d’un utilisateur" as atu
+		usecase "Réinitialiser le mot de passe d’un utilisateur" as rmpu
 }
 
 actor "Administrateur" as Admin
 
 Admin --> rpu
-Admin --> cpu
-Admin --> tda
+Admin --> atpu
+Admin --> atu
+Admin --> rmpu
 
+atpu <|.. atu  : <<include>>
+rpu <|.. atpu  : <<include>>
+rpu <|.. rmpu  : <<include>>
 @enduml

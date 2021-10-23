@@ -13,7 +13,7 @@ package "Gestion des dépenses"{
         usecase "Valider une dépense" as vud
         usecase "Consulter ses dettes" as csd
 				clcc <|.. csd : <<Include>>
-        usecase "Régler une partie de sa dette envers quelqu’un" as rpd
+        usecase "Régler une partie de sa dette" as rpd
 				csd <|.. rpd : <<Include>>
 }
 

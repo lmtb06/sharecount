@@ -1,0 +1,15 @@
+@startuml
+actor Administrateur as a
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+a 	-> 	sc : Annuler transaction
+a 	<- 	sc : Transaction à annuler
+a 	-> 	sc : Choix transaction à annuler
+alt transfert impossible
+a 	<- 	sc : impossible d'annuler la transaction
+else
+a 	<- 	sc : 
+a 	<- 	sc : Liste des transactions de l'utilisateur
+end
+@enduml

@@ -6,13 +6,39 @@ participant ServiceBancaire as sb
 
 u 	-> 	sc : Régler partie dette
 u		<- 	sc : Liste des dettes à régler
-u		-> 	sc : Sélection des dettes à regler
-alt Absence de compte bancaire
-sc -> u : Absence de compte bancaire
+u		-> 	sc : Sélection des dettes à régler
+sc 	->	sc : Calcul du montant total à règler
+u 	<-	sc : Montant total à régler
+u 	<-	sc : Valider paiement
+alt Annulation paiement
+u 	->	sc : Annuler
+u 	<-	sc : Paiement annulé
 else
-sc -> sb : 
+u 	->	sc : Valider
+sc 	-> 	sc : Récuperation informations bancaire du compte utilisateur
+alt Absence de compte bancaire
+sc 	-> u : Absence de compte bancaire
+else
+sc 	->	sc : Calcul montant à regler à chaque autre utilisateur du compte commun
+sc 	-> 	sc : Récuperation informations bancaire des comptes des utilisateurs du compte commun
+sc 	-> 	sc : Decodage des informations bancaire
+sc 	-> 	sb : Informations bancaire
+sc 	<- 	sb : Transactions à éffectuer
+sc 	->	sb : Transfert d'argent d'un compte vers d'autres
+sc 	<-	sb : Liste des transfert à effectuer
+sc 	->	sb : Transferts à effectuer
+alt Paiement échoué
+sc 	<-	sb : Paiement impossible
+u 	<-	sc : Impossible de payer les dettes veuillez réessayer
+else
+sc 	<-	sb : Paiement validé
+sc 	->	sc : Suppression des dettes payées du compte utilisateur
+sc 	-> 	sc : Notification des utilisateurs du compte commun du remboursement des dette
+sc 	->	sc : Enregistrement des paiements du compte utilisateur
+u 	<-	sc : Dettes réglées
 end
-
+end
+end
 
 
 @enduml
