@@ -6,6 +6,8 @@ u 	-> 	sc : Compte à consulter
 sc	-> 	sc : Récuperation des informations du compte choisi
 u		<-	sc : Informations du compte choisi
 u 	->	sc : Consulter ses dettes
+sc	-> 	sc : Récuperation dépenses du compte commun
+sc	-> 	sc : Calcul des dettes de l'utilisateur
 alt L'utilisateur n'a pas de dette
 u 	<-	sc : Vous n'avez pas de dette
 else
