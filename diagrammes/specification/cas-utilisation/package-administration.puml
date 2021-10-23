@@ -5,8 +5,8 @@ actor "Administrateur" as Admin
 
 package "Administration"{
     usecase "Recherche un profil utilisateur" as rpu
-    usecase "Afficher les transferts d’un profil utilisateur" as atpu
-    usecase "Annuler le transfert d’un utilisateur" as atu
+    usecase "Afficher les transactions d’un profil utilisateur" as atpu
+    usecase "Annuler une transaction d’un utilisateur" as atu
 		usecase "Réinitialiser le mot de passe d’un utilisateur" as rmpu
 }
 

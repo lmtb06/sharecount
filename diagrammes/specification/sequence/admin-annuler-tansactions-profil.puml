@@ -6,10 +6,23 @@ participant ServiceBancaire as sb
 a 	-> 	sc : Annuler transaction
 a 	<- 	sc : Transaction à annuler
 a 	-> 	sc : Choix transaction à annuler
-alt transfert impossible
-a 	<- 	sc : impossible d'annuler la transaction
+a 	<- 	sc : Saisir mot de passe admin
+a 	-> 	sc : Mot de passe admin
+sc 	-> 	sc : Vérifier mot de passe
+alt Mot de passe invalide
+a 	<- 	sc : Mot de passe invalide veuillez réeesayer
 else
-a 	<- 	sc : 
-a 	<- 	sc : Liste des transactions de l'utilisateur
+sc 	-> 	sc : Récuperation informations bancaire du compte utilisateur
+sc 	->	sb : Demande annulation d'un transfert d'argent
+sc 	-> 	sb : Informations bancaire
+sc 	->	sb : Transfert à annuler
+
+alt Annulation impossible
+sc 	<-	sb : Annulation impossible
+a 	<- 	sc : Impossible d'annuler la transaction
+else
+sc 	<-	sb : Transaction annulée
+a 	<- 	sc : Transaction annulé
+end
 end
 @enduml

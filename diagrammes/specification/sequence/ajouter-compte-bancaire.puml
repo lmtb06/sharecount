@@ -1,3 +1,26 @@
 @startuml "Ajouter un compte bancaire"
+actor Utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
 
+u 	-> 	sc : Ajouter compte bancaire
+u		<- 	sc : Saisir Informations bancaires
+u		-> 	sc : Informations bancaires
+u 	<- 	sc : Saisir mot de passe
+u 	-> 	sc : Mot de passe
+sc 	-> 	sc : Vérifier mot de passe
+alt Mot de passe invalide
+u 	<- 	sc : Mot de passe invalide veuillez réeesayer
+else
+sc	-> 	sb : Verifier informations bancaires
+sc	-> 	sb : Informations bancaires utilisateur
+alt Compte bancaire invalide
+sc	<- 	sb : Informations bancaires non valides
+u 	<-	sc : Compte non enregistré, informations bancaires non valides
+else
+sc	<- 	sb : Informations bancaires valides
+sc 	->	sc : Enregistrement infos bancaires
+u 	<-	sc : Compte enregistré
+end
+end
 @enduml
