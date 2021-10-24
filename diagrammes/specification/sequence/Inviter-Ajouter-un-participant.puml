@@ -1,0 +1,7 @@
+@startuml  Inviter/Ajouter un participant
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+@enduml

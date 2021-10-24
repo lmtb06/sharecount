@@ -1,0 +1,18 @@
+@startuml  Clôturer un compte commun
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+u -> sc : Clôturer un compte commun 
+sc -> u : Vérifier si les conditions sont réunies
+
+alt Conditions pas réunies
+sc -> u : Impossible de supprimer le compte
+else
+
+sc -> u : Compte fermé
+
+end
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml  Créer compte personnel
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+u -> sc : Créer un nouveau compte personnel
+sc -> u : Entrez vos informations
+u -> sc : Envoyer les informations
+sc -> sc : Vérifier les informations
+
+alt Information déjà prise
+sc -> u : Informations non valides
+else
+
+sc -> u : Compte créé
+
+end
+
+@enduml

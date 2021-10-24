@@ -1,0 +1,11 @@
+@startuml  Consulter la liste des comptes communs
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+u -> sc : Consulter la liste des comptes communs
+sc -> sc : Vérifier la liste des comptes communs
+sc -> u : Liste des comptes communs auquels l'utilisateur participe
+
+@enduml

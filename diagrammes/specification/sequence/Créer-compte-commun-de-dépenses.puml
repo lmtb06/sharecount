@@ -1,0 +1,14 @@
+@startuml  Créer compte commun de dépenses
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+u -> sc : Créer un nouveau compte commun de dépenses
+sc -> u : Choisir entre cagnotte ou compte de dépenses communes
+u -> sc : Selection entre cagnotte ou compte de dépenses communes
+sc -> u : Choisir une liste d'au moins 2 participants
+u -> sc : Selectionne au moins 2 participants
+sc -> u : Compte de dépenses créé
+
+@enduml

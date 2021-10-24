@@ -1,0 +1,8 @@
+@startuml  Consulter sa liste d’invitations
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+
+@enduml
