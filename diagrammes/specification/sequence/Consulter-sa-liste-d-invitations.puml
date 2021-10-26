@@ -4,5 +4,8 @@ actor utilisateur as u
 participant ShareCount as sc
 participant ServiceBancaire as sb
 
+u -> sc : Consulter la liste des invitations
+sc -> sc : Vérifier la liste des invitations
+sc -> u : Liste des invitations envoyées à l'utilisateur
 
 @enduml
