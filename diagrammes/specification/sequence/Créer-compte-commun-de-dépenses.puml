@@ -20,6 +20,7 @@ else
 sc -> u : Compte de dépenses communes créé
 
 end
+else
 
 u -> sc : Selection cagnotte
 sc -> u : Choisir le montant de la cagnotte
