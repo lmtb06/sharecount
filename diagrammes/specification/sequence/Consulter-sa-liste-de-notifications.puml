@@ -1,0 +1,17 @@
+@startuml  Consulter sa liste d’invitations
+
+actor utilisateur as u
+participant ShareCount as sc
+
+u -> sc : Consulter la liste des notifications
+sc -> sc : Récupérer la liste des notifications
+
+alt pas de notifications
+sc -> u : pas de notifications
+else
+
+sc -> u : Liste des notifications envoyées à l'utilisateur
+
+end
+
+@enduml

@@ -2,13 +2,40 @@
 
 actor utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 u -> sc : Créer un nouveau compte commun de dépenses
 sc -> u : Choisir entre cagnotte ou compte de dépenses communes
-u -> sc : Selection entre cagnotte ou compte de dépenses communes
-sc -> u : Choisir une liste d'au moins 2 participants
-u -> sc : Selectionne au moins 2 participants
-sc -> u : Compte de dépenses créé
+
+alt Selection de compte de dépenses communes
+u -> sc : Selection compte de dépenses communes
+sc -> u : Choisir une liste d'au moins un autre utilisateur
+u -> sc : Selectionne au moins un autre utilisateur
+sc -> sc : Envoie une notification d'invitation aux utilisateurs invités
+
+
+alt Personne n'accepte
+sc -> u : Compte de dépenses communes annulé
+else
+
+sc -> u : Compte de dépenses communes créé
+
+end
+
+u -> sc : Selection cagnotte
+sc -> u : Choisir le montant de la cagnotte
+u -> sc : Entre le montant de la cagnotte
+sc -> u : Choisir une liste d'au moins un autre utilisateur
+u -> sc : Selectionne au moins un autre utilisateur
+sc -> sc : Envoie une notification d'invitation aux utilisateurs invités
+
+alt Personne n'accepte
+sc -> u : Compte de dépenses communes annulé
+else
+
+sc -> u : Compte de dépenses communes créé
+
+end
+
+end
 
 @enduml

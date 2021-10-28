@@ -2,18 +2,31 @@
 
 actor utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 u -> sc : Créer un nouveau compte personnel
-sc -> u : Entrez vos informations
-u -> sc : Envoyer les informations
+sc -> u : Entrez votre prénom
+u -> sc : Envoyer le prénom
+sc -> u : Entrez votre nom
+u -> sc : Envoyer le nom
+sc -> u : Entrez votre adresse email
+u -> sc : Envoyer l'adresse email
+sc -> u : Entrez votre pseudo
+u -> sc : Envoyer le pseudo
 sc -> sc : Vérifier les informations
 
+alt Information non valide
+sc -> u : Cette information est non valide
+sc -> u : Resaisir l'information non valide
+else
+
 alt Information déjà prise
-sc -> u : Informations non valides
+sc -> u : Cette information est déjà prise
+sc -> u : Resaisir l'information non disponible
 else
 
 sc -> u : Compte créé
+
+end
 
 end
 

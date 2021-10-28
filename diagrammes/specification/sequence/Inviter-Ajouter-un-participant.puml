@@ -2,12 +2,11 @@
 
 actor utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
-u -> sc : Ajouter un participant à un compte commun
-sc -> sc : Vérifier si le participant existe
-sc -> sc : Vérifier si le participant n'est pas déjà dans le groupe
-sc -> sc : Envoie une invitation à un autre utilisateur 
+u -> sc : Ajouter un utilisateur à un compte commun
+sc -> sc : Vérifier si l'utilisateur existe
+sc -> sc : Vérifier si l'utilisateur n'est pas déjà dans le groupe
+sc -> sc : Envoie une invitation à l'utilisateur 
 sc -> u : Demande d'ajout envoyée
 
 @enduml

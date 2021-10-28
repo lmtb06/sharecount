@@ -2,16 +2,25 @@
 
 actor utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 u -> sc : Clôturer un compte commun 
 sc -> u : Vérifier si les conditions sont réunies
 
 alt Conditions pas réunies
+sc -> u : Suppression refusée car il reste de l'argent
+sc -> u : Impossible de supprimer le compte
+else
+
+sc -> sc : Envoyer une notification de suppression de compte commun
+
+alt Refus d'un membre
+sc -> u : Suppression refusée par un membre
 sc -> u : Impossible de supprimer le compte
 else
 
 sc -> u : Compte fermé
+
+end
 
 end
 

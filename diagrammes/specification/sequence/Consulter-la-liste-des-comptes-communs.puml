@@ -2,10 +2,16 @@
 
 actor utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 u -> sc : Consulter la liste des comptes communs
 sc -> sc : Vérifier la liste des comptes communs
+
+alt Liste vide
+sc -> u : Liste des comptes vide
+else
+
 sc -> u : Liste des comptes communs auquels l'utilisateur participe
+
+end
 
 @enduml
