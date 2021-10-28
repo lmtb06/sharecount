@@ -4,4 +4,5 @@ left to right direction
 !include package-gestiondecompte.puml
 !include package-gestiondesdepenses.puml
 !include package-gestiondesparticipants.puml
+!include package-notifications.puml
 @enduml

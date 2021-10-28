@@ -11,7 +11,6 @@ package "Gestion de compte"{
 	usecase "Clôturer un compte commun" as ccc
 	usecase "Consulter la liste des comptes communs" as clcc
 	usecase "Ajouter un compte bancaire" as acb
-
 }
 
 User --> cccd
