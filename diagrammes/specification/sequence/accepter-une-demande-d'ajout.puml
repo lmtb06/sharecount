@@ -3,12 +3,7 @@
 actor utilisateur as u
 participant ShareCount as sc
 
-u -> sc : Demander sa liste des notifications
-sc -> u : Afficher la liste
-
-alt Aucune invitation
-sc -> u : Aucune invitation
-else
+u -> u : Ouvrir sa liste des notifications
 
 u -> sc : Demander l'informations sur le compte
 sc -> u : Afficher l'informations sur le compte
@@ -22,7 +17,6 @@ sc -> sc : Ajouter un utilisateur au compte
 sc -> u : Afficher le compte
 
 
-end
 end
 
 

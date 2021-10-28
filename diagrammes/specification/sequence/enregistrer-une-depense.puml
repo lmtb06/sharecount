@@ -21,7 +21,7 @@ sc -> u : Montant incorrect
 else
 
 u -> sc : Ajouter un commentaire
-u -> sc : Sélectionner le nombre de personnes à partager
+u -> sc : Choisir le nombre de personnes à partager et le pourcentage
 else
 
 alt Nombre incorrect
