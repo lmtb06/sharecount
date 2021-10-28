@@ -1,0 +1,17 @@
+@startuml
+
+package Notifications {
+		usecase "Consulter sa liste de notifications" as cln
+		usecase "Valider un transfert d’argent" as vuta
+		usecase "Valider la cloture d'un compte" as vcc
+		usecase "Valider une dépense" as vud
+		usecase "Accepter une demande d’ajout" as auda
+
+		cln <|.. auda : <<include>>
+		cln <|.. vud : <<include>>
+		cln <|.. vcc : <<include>>
+		cln <|.. vuta : <<include>>
+
+}
+
+@enduml

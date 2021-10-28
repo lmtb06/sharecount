@@ -7,6 +7,6 @@ sc 	->	sc : Récuperer les transaction de l'utilisateur
 alt aucun transfert de l'utilisateur
 a 	<- 	sc : L'utilisateur n'a pas encore réalisé de transaction
 else
-a 	<- 	sc : Liste des transactions de l'utilisateur
+a 	<- 	sc : Liste des transactions de l'utilisateur suivant si c'est des dépenses ou des transfert d'argent
 end
 @enduml
