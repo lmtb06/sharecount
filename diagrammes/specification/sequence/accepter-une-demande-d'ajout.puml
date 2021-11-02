@@ -3,9 +3,6 @@
 actor utilisateur as u
 participant ShareCount as sc
 
-u -> u : Ouvrir sa liste des notifications
-
-u -> sc : Demander l'informations sur le compte
 sc -> u : Afficher l'informations sur le compte
 
 alt Refus
@@ -13,7 +10,9 @@ u -> sc : Refuser invitation
 else
 
 u -> sc : Accepter invitation
-sc -> sc : Ajouter un utilisateur au compte
+sc -> sc : Ajouter l'utilisateur au compte
+sc -> sc : Ajouter le compte dans le liste des comptes
+
 sc -> u : Afficher le compte
 
 

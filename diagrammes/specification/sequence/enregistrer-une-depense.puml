@@ -29,6 +29,8 @@ sc -> u : Nombre incorrect
 else
 
 sc -> sc : Enregistrer une dépense
+sc -> sc : Notifier les utilisateur
+
 sc -> u : Dépense enregistrée
 
 end

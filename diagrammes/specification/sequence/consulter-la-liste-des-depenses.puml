@@ -3,14 +3,13 @@
 actor utilisateur as u
 participant ShareCount as sc
 
-sc -> u : Choisir un compte commun
-u -> sc : Ouvrir le compte
+u -> sc : Récupérer l'information du compte
 sc -> u : Afficher l'information du compte
-u -> sc : Choisir les dates
-sc -> sc : Vérifier les dates
+u -> sc : Sélectionner une période
+sc -> sc : Vérifier une période
 
 alt Format incorrect
-sc -> u : Dates incorrecte
+sc -> u : Format incorrect
 else
 
 sc -> u : Afficher la liste des dépenses

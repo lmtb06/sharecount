@@ -1,4 +1,4 @@
-@startuml
+@startuml Cas utilisation - Gestion des dépenses
 
 package Notifications {
 		usecase "Consulter sa liste de notifications" as cln
