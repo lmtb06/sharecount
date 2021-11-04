@@ -12,7 +12,10 @@ sc -> u : Entrez votre adresse email
 u -> sc : Envoyer l'adresse email
 sc -> u : Entrez votre pseudo
 u -> sc : Envoyer le pseudo
+sc -> u : Entrez votre mot de passe
+u -> sc : Envoyer le mot de passe
 sc -> sc : Vérifier les informations
+sc -> sc : Vérifier l'unicité de l'adresse mail et du pseudo
 
 alt Information non valide
 sc -> u : Cette information est non valide

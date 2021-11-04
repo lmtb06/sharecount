@@ -11,15 +11,8 @@ u -> sc : Selection compte de dépenses communes
 sc -> u : Choisir une liste d'au moins un autre utilisateur
 u -> sc : Selectionne au moins un autre utilisateur
 sc -> sc : Envoie une notification d'invitation aux utilisateurs invités
-
-
-alt Personne n'accepte
-sc -> u : Compte de dépenses communes annulé
-else
-
 sc -> u : Compte de dépenses communes créé
 
-end
 else
 
 u -> sc : Selection cagnotte
@@ -28,14 +21,7 @@ u -> sc : Entre le montant de la cagnotte
 sc -> u : Choisir une liste d'au moins un autre utilisateur
 u -> sc : Selectionne au moins un autre utilisateur
 sc -> sc : Envoie une notification d'invitation aux utilisateurs invités
-
-alt Personne n'accepte
-sc -> u : Compte de dépenses communes annulé
-else
-
 sc -> u : Compte de dépenses communes créé
-
-end
 
 end
 

@@ -12,15 +12,7 @@ sc -> u : Impossible de supprimer le compte
 else
 
 sc -> sc : Envoyer une notification de suppression de compte commun
-
-alt Refus d'un membre
-sc -> u : Suppression refusée par un membre
-sc -> u : Impossible de supprimer le compte
-else
-
 sc -> u : Compte fermé
-
-end
 
 end
 
