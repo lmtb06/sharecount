@@ -1,0 +1,16 @@
+@startuml Affichage
+
+[*] --> EcranDAccueil
+EcranDAccueil --> Notification
+EcranDAccueil --> ListeDeComptes
+EcranDAccueil --> InfoPersonnelles
+
+Notification --> EcranDAccueil
+
+ListeDeComptes --> EcranDAccueil
+ListeDeComptes --> Compte
+
+InfoPersonnelles --> EcranDAccueil
+
+
+@enduml

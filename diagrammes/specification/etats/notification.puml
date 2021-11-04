@@ -1,0 +1,10 @@
+@startuml Notifications
+
+[*] --> EnAttente
+EnAttente --> Consultee : Consulter notification a valider
+EnAttente --> [*] : Consulter notification a lire
+Consultee --> [*] : Valider
+Consultee --> [*] : Refuser
+Consultee --> Consultee : Ignorer
+
+@enduml

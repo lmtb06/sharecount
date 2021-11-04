@@ -1,0 +1,8 @@
+@startuml Session
+
+[*] --> Deconnecte
+Deconnecte --> Connecte : Connecter
+Connecte --> Deconnecte : Deconnecter
+Deconnecte --> [*] : Quitter
+
+@enduml

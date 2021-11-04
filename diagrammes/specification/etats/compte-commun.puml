@@ -1,0 +1,10 @@
+@startuml Compte commun
+
+[*] --> EnAttenteDeValidation : Creer
+EnAttenteDeValidation --> Cree : Accepter demande d'ajout
+EnAttenteDeValidation --> [*] : Refuser demande d'ajout
+Cree --> EnAttenteDeCloturation : Cloturer
+EnAttenteDeCloturation --> Cree : Refuser demande de cloturation
+EnAttenteDeCloturation --> Cloture : Accepter demande de cloturation
+
+@enduml
