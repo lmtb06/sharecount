@@ -1,0 +1,8 @@
+@startuml
+
+[*] --> NonReglee : Ajouter
+NonReglee --> NonReglee : Regler partiellement
+NonReglee --> Reglee : Regler totalement
+NonReglee --> [*] : Annuler
+
+@enduml

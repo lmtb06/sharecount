@@ -1,0 +1,7 @@
+@startuml
+
+[*] --> EnAttente : Envoyer
+EnAttente --> [*] : Valider
+EnAttente --> [*] : Refuser
+
+@enduml

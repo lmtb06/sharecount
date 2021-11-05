@@ -13,14 +13,11 @@ package "Administration"{
 	usecase "Supprimer son compte" as ssca
 }
 
-actor "Administrateur" as Admin
-
 Admin --> rpu
 Admin --> atpu
 Admin --> atu
 Admin --> rmpu
 Admin --> cca
-Admin --> mmpa
 Admin --> msia
 Admin --> ssca
 
