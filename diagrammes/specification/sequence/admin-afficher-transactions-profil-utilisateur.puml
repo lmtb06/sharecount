@@ -3,10 +3,10 @@ actor Administrateur as a
 participant ShareCount as sc
 
 a 	-> 	sc : Afficher les transactions
-sc 	->	sc : Récuperer les transaction de l'utilisateur
+sc 	->	sc : Récuperer les transactions de l'utilisateur
 alt aucun transfert de l'utilisateur
 a 	<- 	sc : L'utilisateur n'a pas encore réalisé de transaction
 else
-a 	<- 	sc : Liste des transactions de l'utilisateur suivant si c'est des dépenses ou des transfert d'argent
+a 	<- 	sc : Liste des transactions de l'utilisateur suivant si c'est des dépenses ou des transfert d'argent ainsi que leur états
 end
 @enduml

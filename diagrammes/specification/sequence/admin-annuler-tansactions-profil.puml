@@ -1,28 +1,22 @@
 @startuml
 actor Administrateur as a
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 a 	-> 	sc : Annuler transaction
-a 	<- 	sc : Transaction à annuler
+sc 	-> 	sc : Recuperation des transactions de l'utilisateur
+a 	<- 	sc : Liste des transactions
+a 	<- 	sc : Transactions à annuler
 a 	-> 	sc : Choix transaction à annuler
 a 	<- 	sc : Saisir mot de passe admin
 a 	-> 	sc : Mot de passe admin
-sc 	-> 	sc : Vérifier mot de passe
+sc 	-> 	sc : Vérification mot de passe
 alt Mot de passe invalide
 a 	<- 	sc : Mot de passe invalide veuillez réeesayer
 else
-sc 	-> 	sc : Récuperation informations bancaire du compte utilisateur
-sc 	->	sb : Demande annulation d'un transfert d'argent
-sc 	-> 	sb : Informations bancaire
-sc 	->	sb : Transfert à annuler
-
-alt Annulation impossible
-sc 	<-	sb : Annulation impossible
-a 	<- 	sc : Impossible d'annuler la transaction
-else
-sc 	<-	sb : Transaction annulée
+sc 	-> 	sc : Suppression transaction du compte commun
+sc 	-> 	sc : Recalcul des dettes du compte commun
+sc 	-> 	sc : Mise à jour des dettes du compte commun
+sc 	-> 	sc : Notification des utilisateurs de l'annulation de la transaction
 a 	<- 	sc : Transaction annulé
-end
 end
 @enduml

@@ -1,4 +1,6 @@
-@startuml Cas utilisation - Gestion des dépenses
+@startuml Gestion des dépenses
+
+actor "Utilisateur" as User
 
 package Notifications {
 		usecase "Consulter sa liste de notifications" as cln
@@ -13,5 +15,11 @@ package Notifications {
 		cln <|.. vuta : <<include>>
 
 }
+
+User --> cln
+User --> auda
+User --> vud
+User --> vcc
+User --> vuta
 
 @enduml

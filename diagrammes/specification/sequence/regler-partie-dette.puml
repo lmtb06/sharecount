@@ -2,48 +2,26 @@
 
 actor Utilisateur as u
 participant ShareCount as sc
-participant ServiceBancaire as sb
 
 u 	-> 	sc : Régler partie dette
+sc	-> 	sc : Récuperation dépenses du compte commun
+sc	-> 	sc : Calcul des dettes de l'utilisateur
+u		<- 	sc : Liste des dettes à régler pour chaque dépenses
 u		<- 	sc : Choisir liste des dettes à régler
 u		-> 	sc : Sélection des dettes à régler
-sc 	->	sc : Calcul du montant total à règler
-u 	<-	sc : Montant total à régler
+sc 	->	sc : Calcul du montant total que l'utilisateur doit règler aux autres utilisateurs pour les dettes choisies
+u 	<-	sc : Montant total à régler par utlisateur
 u 	<-	sc : Veuillez valider le paiement
 alt Annulation paiement
 u 	->	sc : Annuler
 u 	<-	sc : Paiement annulé
 else
 u 	->	sc : Valider
-u 	<- 	sc : Saisir mot de passe
-u 	-> 	sc : Mot de passe
-sc 	-> 	sc : Vérifier mot de passe
-alt Mot de passe invalide
-u 	<- 	sc : Mot de passe invalide veuillez réeesayer
-else
-sc 	-> 	sc : Récuperation informations bancaire du compte utilisateur
-alt Absence de compte bancaire
-sc 	-> u : Absence de compte bancaire
-else
-sc 	->	sc : Calcul montant à regler à chaque autre utilisateur du compte commun
-sc 	-> 	sc : Récuperation informations bancaire des comptes des utilisateurs du compte commun
-sc 	-> 	sc : Decodage des informations bancaire
-sc 	->	sb : Demande transfert d'argent d'un compte vers d'autres
-sc 	-> 	sb : Informations bancaire
-sc 	->	sb : Transferts à effectuer
-alt Paiement échoué
-sc 	<-	sb : Paiement impossible
-u 	<-	sc : Impossible de payer les dettes veuillez réessayer
-else
-sc 	<-	sb : Paiement validé
-sc 	->	sc : Suppression des dettes payées du compte utilisateur
-sc 	-> 	sc : Notification des utilisateurs du compte commun du remboursement des dette
-sc 	->	sc : Enregistrement des paiements du compte utilisateur
+sc 	->	sc : Validation des dettes payées du compte utilisateur
+sc 	-> 	sc : Notification des utilisateurs du compte commun du remboursement des dettes
 u 	<-	sc : Dettes réglées
 end
-end
-end
-end
+
 
 
 @enduml

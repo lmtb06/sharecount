@@ -8,11 +8,11 @@ u		<- 	sc : Saisir Informations bancaires
 u		-> 	sc : Informations bancaires
 u 	<- 	sc : Saisir mot de passe
 u 	-> 	sc : Mot de passe
-sc 	-> 	sc : Vérifier mot de passe
+sc 	-> 	sc : Vérification mot de passe
 alt Mot de passe invalide
 u 	<- 	sc : Mot de passe invalide veuillez réeesayer
 else
-sc	-> 	sb : Verifier informations bancaires
+sc	-> 	sb : Demande verification informations bancaires
 sc	-> 	sb : Informations bancaires utilisateur
 alt Compte bancaire invalide
 sc	<- 	sb : Informations bancaires non valides

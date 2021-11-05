@@ -5,10 +5,10 @@ participant ShareCount as sc
 a 	-> 	sc : rechercher un utilisateur
 a 	<- 	sc : entrez le nom d'utilisateur ou l' email
 a 	-> 	sc : nom d'utilisateur ou email
-sc 	-> 	sc : Récuperer profil utilisateur
 alt aucun utilisateur ne correspond
 a 	<- 	sc : Aucun utilisateur ne correspond à ce nom d'utilisateur ou ce mail
 else
+sc 	-> 	sc : Récuperation profil utilisateur
 a 	<- 	sc : profil de l'utilisateur correspondant
 end
 @enduml
