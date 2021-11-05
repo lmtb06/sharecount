@@ -1,0 +1,31 @@
+@startuml  Créer compte personnel
+
+actor admin as a
+participant ShareCount as sc
+
+a -> sc : Modifier infos personnelles
+sc -> a : Entrez votre prénom
+a -> sc : Envoyer le prénom
+sc -> a : Entrez votre nom
+a -> sc : Envoyer le nom
+sc -> a : Entrez votre mot de passe
+a -> sc : Envoyer le mot de passe
+sc -> sc : Vérifier les informations
+
+alt Information non valide
+sc -> a : Cette information est non valide
+sc -> a : Resaisir l'information non valide
+else
+
+alt Information déjà prise
+sc -> a : Cette information est déjà prise
+sc -> a : Resaisir l'information non disponible
+else
+
+sc -> a : Infos modifiées
+
+end
+
+end
+
+@enduml
