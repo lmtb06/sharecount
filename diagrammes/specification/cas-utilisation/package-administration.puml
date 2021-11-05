@@ -7,9 +7,10 @@ package "Administration"{
     usecase "Recherche un profil utilisateur" as rpu
     usecase "Afficher les transactions d’un profil utilisateur" as atpu
     usecase "Annuler une transaction d’un utilisateur" as atu
-		usecase "Réinitialiser le mot de passe d’un utilisateur" as rmpu
-		usecase "Creer un compte admin" as cca
-		usecase "Modifier son mot de passe admin" as mmpa
+	usecase "Réinitialiser le mot de passe d’un utilisateur" as rmpu
+	usecase "Creer un compte admin" as cca
+	usecase "Modifier ses infos admin" as msia
+	usecase "Supprimer son compte" as ssca
 }
 
 actor "Administrateur" as Admin
@@ -20,6 +21,8 @@ Admin --> atu
 Admin --> rmpu
 Admin --> cca
 Admin --> mmpa
+Admin --> msia
+Admin --> ssca
 
 atpu <|.. atu  : <<include>>
 rpu <|.. atpu  : <<include>>

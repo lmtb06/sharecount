@@ -1,4 +1,4 @@
-@startuml  Créer compte personnel
+@startuml  Supprimer son compte personnel
 
 actor utilisateur as u
 participant ShareCount as sc

@@ -11,9 +11,13 @@ package "Gestion de compte"{
 	usecase "Clôturer un compte commun" as ccc
 	usecase "Consulter la liste des comptes communs" as clcc
 	usecase "Ajouter un compte bancaire" as acb
+	usecase "Modifier ses infos personnelles" as msip
+	usecase "Supprimer son compte" as ssc
 }
 
 User --> cccd
+User --> msip
+User --> ssc
 User --> ccp
 User --> ccc
 User --> clcc
