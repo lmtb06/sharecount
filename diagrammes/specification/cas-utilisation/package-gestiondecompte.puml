@@ -13,6 +13,9 @@ package "Gestion de compte"{
 	usecase "Ajouter un compte bancaire" as acb
 	usecase "Modifier ses infos personnelles" as msip
 	usecase "Supprimer son compte" as ssc
+
+	clcc <|.. ccc : <<Include>>
+
 }
 
 User --> cccd

@@ -11,4 +11,6 @@ package "Gestion des participants"{
 
 User --> iup
 
+clcc <|.. iup : <<Include>>
+
 @enduml

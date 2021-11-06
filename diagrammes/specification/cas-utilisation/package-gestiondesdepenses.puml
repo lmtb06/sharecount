@@ -8,6 +8,7 @@ actor "Administrateur" as Admin
 package "Gestion des dépenses"{
         usecase "Enregistrer une dépense" as eud
         usecase "Consulter la liste des dépenses/montant de la cagnotte" as cllddmdlc
+        usecase "Transférer de l'argent sur compte commun" as tdascc
         usecase "Transférer de l'argent sur son compte" as tdassc
         usecase "Consulter ses dettes" as csd
         usecase "Régler une partie de sa dette" as rpd
@@ -20,5 +21,10 @@ User --> tdassc
 User --> csd
 User --> rpd
 
+clcc <|.. eud : <<Include>>
+clcc <|.. cllddmdlc : <<Include>>
+clcc <|.. tdascc : <<Include>>
+clcc <|.. tdassc : <<Include>>
+clcc <|.. csd : <<Include>>
 
 @enduml
