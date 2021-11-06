@@ -18,6 +18,7 @@ u -> sc : Entrer le motif
 sc -> u : Demander un montant
 u -> sc : Entrer le montant
 sc -> sc : Enregistrer le transfert
+' Faudrait plutot notifier les utlisateurs
 sc -> sc : Demander la confirmation d'autres utilisateurs
 sc -> u : Demande de transfert enregistré
 

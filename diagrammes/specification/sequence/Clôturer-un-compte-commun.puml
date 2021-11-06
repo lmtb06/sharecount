@@ -3,8 +3,8 @@
 actor utilisateur as u
 participant ShareCount as sc
 
-u -> sc : Clôturer un compte commun 
-sc -> u : Vérifier si les conditions sont réunies
+u -> sc : Clôturer un compte commun
+sc -> sc : Vérifier si les conditions sont réunies
 
 alt Conditions pas réunies
 sc -> u : Suppression refusée car il reste de l'argent

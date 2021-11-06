@@ -1,8 +1,4 @@
 @startuml
-[*]	->	EnAttente
-EnAttente	->	Validee
-Validee	-> Autorisee
-Autorisee	->	Effectif
-Autorisee --> [*] : Annuler
-Effectif --> Annulee : Annuler
+[*]	->	Enregistree
+Enregistree --> Annulee : Annuler
 @enduml

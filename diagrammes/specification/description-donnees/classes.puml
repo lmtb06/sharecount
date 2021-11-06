@@ -1,0 +1,53 @@
+@startuml
+	class Utilisateur {
+		String nom
+		String prenom
+		String pseudo
+		String email
+		String hashMotDePasse
+	}
+
+	class Administrateur {
+		String nom
+		String prenom
+		String pseudo
+		String email
+		String hashMotDePasse
+	}
+
+	class Cagnotte {
+		float montantTotal
+	}
+
+	class CompteDette {
+		
+	}
+	CompteDette --"*" Utilisateur
+
+	class Depense {
+		String description
+	}
+
+	class Dette {
+		float somme
+		float sommeReglee
+	}
+
+	class Transaction {
+
+
+	}
+
+	class CompteBancaire {
+
+	}
+
+	class NotificationSimple {
+
+	}
+
+	class NotificationAValider {
+
+	}
+
+@enduml
