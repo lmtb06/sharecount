@@ -1,4 +1,5 @@
-@startuml
+@startuml Classes
+
 	class Utilisateur {
 		String nom
 		String prenom
@@ -26,6 +27,7 @@
 		Date dateCreation
 		Date dateCloture
 		boolean cloture
+		int nombreDeParticipants
 	}
 	CompteDette "*"--"*" Utilisateur
 	CompteDette --"*" Depense

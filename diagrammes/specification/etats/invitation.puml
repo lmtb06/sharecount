@@ -1,4 +1,4 @@
-@startuml
+@startuml Invitation
 
 [*] --> EnAttente : Envoyer
 EnAttente --> [*] : Valider

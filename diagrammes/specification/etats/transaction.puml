@@ -1,4 +1,5 @@
-@startuml
+@startuml Transaction
+
 [*]	->	Enregistree
 Enregistree --> Annulee : Annuler
 @enduml

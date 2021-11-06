@@ -1,4 +1,4 @@
-@startuml
+@startuml Dette
 
 [*] --> NonReglee : Ajouter
 NonReglee --> NonReglee : Regler partiellement
