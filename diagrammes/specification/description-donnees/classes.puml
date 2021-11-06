@@ -19,24 +19,33 @@
 		float montantTotal
 	}
 
+	Cagnotte "*"--"*" Utilisateur
+	Cagnotte --"*" Transaction
+
 	class CompteDette {
-		
+		Date dateCreation
+		Date dateCloture
+		boolean cloture
 	}
-	CompteDette --"*" Utilisateur
+	CompteDette "*"--"*" Utilisateur
+	CompteDette --"*" Depense
 
 	class Depense {
 		String description
 	}
+	Depense --"*" Dette
 
 	class Dette {
 		float somme
 		float sommeReglee
 	}
+	Dette --"2" Utilisateur
 
 	class Transaction {
 
-
 	}
+
+	Transaction --"2" CompteBancaire
 
 	class CompteBancaire {
 
