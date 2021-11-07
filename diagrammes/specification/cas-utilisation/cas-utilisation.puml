@@ -1,8 +1,9 @@
 @startuml Cas utilisation
 left to right direction
-!include package-administration.puml
-!include package-gestiondecompte.puml
-!include package-gestiondesdepenses.puml
-!include package-gestiondesparticipants.puml
-!include package-notifications.puml
+
+!include gestion-compte-personnel.puml
+!include administration.puml
+!include notifications.puml
+!include cagnotte.puml
+!include compte-depenses-communes.puml
 @enduml

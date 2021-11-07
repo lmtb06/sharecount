@@ -1,0 +1,35 @@
+@startuml Notifications
+
+actor "Utilisateur" as user
+
+package Notifications {
+	usecase "Consulter sa liste de notifications" as cln
+	usecase "Valider le retrait d'un participant d'un compte de dépense" as vrpcd
+	usecase "Valider un retrait d'argent" as vra
+	usecase "Valider la clôture d'une cagnotte" as vcc
+	usecase "Accepter une invitation à une cagnotte" as aic
+	usecase "Valider la clôture d'un compte de dépense communes" as vccdc
+	usecase "Accepter une invitation à un compte de dépenses" as aicd
+	usecase "Valider le retrait d'un participant d'une cagnotte" as vrpc
+	usecase "Valider un remboursement de dépense" as vrd
+}
+'	appartenance
+	user 	--		vrpcd
+	user 	-		vra
+	user 	-		vcc
+	user 	--		cln
+	user 	-		aic
+	user 	--		vccdc
+	user 	--		aicd
+	user 	--		vrpc
+	user 	-		vrd
+'	includes
+	cln 	<|.. vrpcd  : <<include>>
+	cln 	<|.. vra  	: <<include>>
+	cln 	<|.. vcc  	: <<include>>
+	cln 	<|.. aic  	: <<include>>
+	cln 	<|.. vccdc  : <<include>>
+	cln 	<|.. aicd  	: <<include>>
+	cln 	<|.. vrpc  	: <<include>>
+	cln 	<|.. vrd 		: <<include>>
+@enduml

@@ -1,0 +1,19 @@
+@startuml  Supprimer son compte admin
+
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+admin -> sc : Supprimer son compte
+admin 	<- 	sc : Saisir mot de passe
+admin 	-> 	sc : Mot de passe
+sc 	-> 	sc : Vérifier mot de passe
+alt Mot de passe admin invalide
+admin 	<- 	sc : Mot de passe invalide veuillez réeesayer
+else
+sc -> admin : Demander confirmation
+admin -> sc : Confirmer la suppression de compte
+sc -> admin : Votre compte va être supprimé
+sc -> sc : Déconnecter l'utilisateur
+sc -> sc : Supprimer le compte
+end
+@enduml

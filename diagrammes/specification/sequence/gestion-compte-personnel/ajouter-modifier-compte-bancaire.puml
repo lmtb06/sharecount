@@ -3,13 +3,13 @@ actor Utilisateur as u
 participant ShareCount as sc
 participant ServiceBancaire as sb
 
-u 	-> 	sc : Ajouter compte bancaire
+u 	-> 	sc : Ajouter/modifier compte bancaire
 u		<- 	sc : Saisir Informations bancaires
 u		-> 	sc : Informations bancaires
 u 	<- 	sc : Saisir mot de passe
 u 	-> 	sc : Mot de passe
-sc 	-> 	sc : Vérification mot de passe
-alt Mot de passe invalide
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Hash différents
 u 	<- 	sc : Mot de passe invalide veuillez réeesayer
 else
 sc	-> 	sb : Demande verification informations bancaires

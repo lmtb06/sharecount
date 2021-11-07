@@ -1,0 +1,30 @@
+@startuml Gestion de compte personnel
+
+actor "Administrateur" as admin
+actor "Utilisateur" as user
+
+
+package "Gestion de compte personnel" {
+	usecase "Creer un compte administrateur" as cca
+	usecase "Modifier ses informations personnelles administrateur" as mipa
+	usecase "Supprimer son compte administrateur" as sca
+
+	usecase "Creer un compte utilisateur" as ccp
+	usecase "Modifier ses informations personnelles utilisateur" as mipu
+	usecase "Ajouter/modifier un compte bancaire" as acb
+
+'	appartenance
+	'	Administrateur
+	admin 	--		cca
+	admin 	--		mipa
+	admin 	--		sca
+
+	'	Utilisateur
+	user 		--		ccp
+	user 		--		mipu
+	user 		--		acb
+'	includes
+
+}
+
+@enduml

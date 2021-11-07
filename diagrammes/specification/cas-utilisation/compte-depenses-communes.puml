@@ -1,0 +1,41 @@
+@startuml
+
+actor "Utilisateur" as user
+
+package "Compte de Depenses Communes" {
+	usecase "Consulter la liste de ses comptes de dépenses communes" as clcdc
+	usecase "Consulter un compte de dépenses" as ccd
+	usecase "Creer un compte de dépenses communes" as ccdc
+	usecase "Clôturer un compte de dépense communes" as cocdc
+	usecase "Consulter la liste des participants" as clp
+	usecase "Inviter un participant" as ip
+	usecase "Retirer un participant" as ri
+	usecase "Ajouter une dépense" as ad
+	usecase "Rembourser une dépense" as rd
+	usecase "Consulter ses dûs" as cd
+	usecase "Consulter ses dettes" as cdt
+}
+'	appartenance
+	user	--	clcdc
+	user	--	ccd
+	user	-	ccdc
+	user	-	cocdc
+	user	---	clp
+	user	--	ip
+	user	-	ri
+	user	-	ad
+	user	--	rd
+	user	-	cd
+	user	-	cdt
+'	includes
+	clcdc 	<|.. ccd  	: <<include>>
+	ccd 		<|.. ccdc  	: <<include>>
+	ccd			<|..	cocdc : <<include>>
+	ccd			<|..	clp 	: <<include>>
+	ccd			<|..	ip 		: <<include>>
+	ccd			<|..	ri 		: <<include>>
+	ccd			<|..	ad 		: <<include>>
+	ccd			<|..	rd 		: <<include>>
+	ccd			<|..	cd 		: <<include>>
+	ccd			<|..	cdt 	: <<include>>
+@enduml

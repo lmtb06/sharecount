@@ -1,0 +1,36 @@
+@startuml
+
+actor "Utilisateur" as user
+
+package cagnotte {
+	usecase "Consulter la liste de ses cagnottes" as clc
+	usecase "Consulter une cagnotte" as couc
+	usecase "Creer une cagnotte" as cc
+	usecase "Clôturer une cagnotte" as cuc
+	usecase "Consulter la liste des participants à la cagnotte" as clpc
+	usecase "Inviter un participant à la cagnotte" as ipc
+	usecase "Retirer un participant à la cagnote" as rpc
+	usecase "Ajouter de l'argent" as aa
+	usecase "Retirer de l'argent" as ra
+}
+'	appartenance
+	user 	--	clc
+	user 	--	couc
+	user 	-	cc
+	user 	-	cuc
+	user 	-	clpc
+	user 	-	ipc
+	user 	-	rpc
+	user 	-	aa
+	user 	-	ra
+
+'	includes
+	clc 	<|.. couc  	: <<include>>
+	couc 	<|.. cc  		: <<include>>
+	couc 	<|.. cuc 		: <<include>>
+	couc 	<|.. aa  		: <<include>>
+	couc 	<|.. ra  		: <<include>>
+	couc 	<|.. rpc  		: <<include>>
+	couc 	<|.. ipc  		: <<include>>
+	couc 	<|.. clpc  	: <<include>>
+@enduml

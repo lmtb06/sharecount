@@ -16,7 +16,11 @@
 	}
 
 	class Cagnotte {
+		Date dateCreation
+		Date dateCloture
+		boolean cloture
 		float montantTotal
+		Utilisateur createur
 	}
 
 	Cagnotte "*"--"*" Utilisateur
@@ -26,12 +30,14 @@
 		Date dateCreation
 		Date dateCloture
 		boolean cloture
+		Utilisateur createur
 	}
 	CompteDette "*"--"*" Utilisateur
 	CompteDette --"*" Depense
 
 	class Depense {
 		String description
+		Date dateDeCreation
 	}
 	Depense --"*" Dette
 

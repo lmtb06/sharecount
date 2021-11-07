@@ -1,0 +1,40 @@
+@startuml  Modifier ses infos personnelles admin
+
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+admin -> sc : Modifier ses informations personnelles administrateur
+admin 	<- 	sc : Entrez le prénom
+admin 	-> 	sc : prénom
+admin 	<- 	sc : Entrez le nom
+admin 	-> 	sc : nom
+admin 	<- 	sc : Entrez l'ancien mot de passe
+admin 	-> 	sc : mot de passe
+admin 	<- 	sc : Entrez le nouveau mot de passe
+admin 	-> 	sc : nouveau mot de passe
+admin 	<- 	sc : Entrez la confirmation du nouveau mot de passe
+admin 	-> 	sc : confirmation nouveau mot de passe
+sc 	-> 	sc : Vérifier les informations
+alt Prénom non valide
+admin 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
+else
+sc 	-> 	sc : Conservation de l'ancien prénom si le champ est vide
+alt Nom non valide
+admin 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
+else
+sc 	-> 	sc : Conservation de l'ancien nom si le champ est vide
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Les hash ne correspondent pas
+admin 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
+else
+sc 	-> 	sc : Comparaison du nouveau mot de passe et de la confirmation
+alt Les mot de passe ne sont pas les même
+admin 	<- 	sc : Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer
+else
+sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
+admin 	<- 	sc : Vos informations ont bien été sauvegardées
+end
+end
+end
+end
+@enduml

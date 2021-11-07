@@ -1,0 +1,36 @@
+@startuml "Creer un compte Administrateur"
+actor Administrateur as admin
+participant ShareCount as sc
+
+admin 	-> 	sc : Creer un compte administrateur
+admin 	<- 	sc : Entrez le prénom
+admin 	-> 	sc : prénom
+admin 	<- 	sc : Entrez le nom
+admin 	-> 	sc : nom
+admin 	<- 	sc : Entrez l'adresse email
+admin 	-> 	sc : email
+admin 	<- 	sc : Entrez le pseudo
+admin 	-> 	sc : pseudo
+sc 	-> 	sc : Vérification des informations
+alt Prénom non valide
+admin 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
+else
+alt Nom non valide
+admin 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
+else
+alt Pseudo déjà utilisé
+admin 	<- 	sc : Le pseudo est déjà attribué veuillez en choisir un autre
+else
+alt Email déjà utilisé
+admin 	<- 	sc : L'email est déjà attribué veuillez en choisir un autre
+else
+sc 	-> 	sc : Génération d'un mot de passe sécurisé pour le compte
+sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
+admin 	<- 	sc : Compte créé
+admin 	<- 	sc : Pseudo
+admin 	<- 	sc : Mot de passe du compte généré automatiquement
+end
+end
+end
+end
+@enduml
