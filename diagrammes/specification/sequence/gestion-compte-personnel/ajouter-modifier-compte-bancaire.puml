@@ -12,15 +12,15 @@ sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stock
 alt Hash différents
 u 	<- 	sc : Mot de passe invalide veuillez réeesayer
 else
-sc	-> 	sb : Demande verification informations bancaires
-sc	-> 	sb : Informations bancaires utilisateur
+sc -> sb : Demande verification informations bancaires
+sc -> sb : Informations bancaires utilisateur
 alt Compte bancaire invalide
-sc	<- 	sb : Informations bancaires non valides
-u 	<-	sc : Compte non enregistré, informations bancaires non valides
+sc <- sb : Informations bancaires non valides
+u <- sc : Compte non enregistré, informations bancaires non valides
 else
-sc	<- 	sb : Informations bancaires valides
-sc 	->	sc : Enregistrement infos bancaires
-u 	<-	sc : Compte enregistré
+sc <- sb : Informations bancaires valides
+sc -> sc : Enregistrement infos bancaires
+u <- sc : Compte enregistré
 end
 end
 @enduml

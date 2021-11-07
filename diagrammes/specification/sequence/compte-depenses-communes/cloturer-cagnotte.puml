@@ -3,16 +3,19 @@
 actor utilisateur as u
 participant ShareCount as sc
 
+sc -> u : Choisir un compte commun
+u -> sc : Ouvrir le compte
+sc -> u : Afficher l'information du compte
 u -> sc : Clôturer un compte commun
-sc -> sc : Vérifier si les conditions sont réunies
+sc -> sc : Vérifier s'il reste de l'argent
 
 alt Conditions pas réunies
-sc -> u : Suppression refusée car il reste de l'argent
 sc -> u : Impossible de supprimer le compte
 else
 
-sc -> sc : Envoyer une notification de suppression de compte commun
-sc -> u : Compte fermé
+sc -> sc : Demander la confirmation d'autres utilisateurs
+sc -> u : Demande de suppression enregistré
+
 
 end
 

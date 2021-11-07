@@ -4,19 +4,10 @@ actor utilisateur as u
 participant ShareCount as sc
 participant ServiceBancaire as sb
 
-u -> sc : Demander sa liste des notifications
-sc -> u : Afficher la liste
-
-alt Aucune demande 
-sc -> u : Aucune demande
-else
-
-sc -> u : Afficher le demande de validation
-u -> sc : Demander l'informations sur le compte
 sc -> u : Afficher l'informations sur le compte
 
-alt Refus
 u -> sc : Refuser le transfert
+alt Refus
 sc -> sc : Notifier le demandeur de transfert
 else
 
@@ -33,10 +24,9 @@ sc -> sc : Notifier le demandeur de transfert
 else
 sb -> sc : Transférer de l'argent
 sc -> sc : Modifier le montant du compte
-sc -> sc : Notifier le demandeur de transfert
+sc -> sc : Notifier les participants
 
 
-end
 end
 end
 end

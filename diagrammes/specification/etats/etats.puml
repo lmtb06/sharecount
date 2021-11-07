@@ -1,0 +1,61 @@
+@startuml Etats
+
+[*] --> AttenteDeLUtilisateur
+AttenteDeLUtilisateur --> EcranDAccueil : Connexion
+EcranDAccueil --> Notifications
+Notifications --> EcranDAccueil
+
+EcranDAccueil --> ListeDesComptes
+ListeDesComptes --> EcranDAccueil
+
+EcranDAccueil --> InfoPersonnelles
+InfoPersonnelles --> EcranDAccueil
+
+state c_notifications <<choice>>
+state c_invitation <<choice>>
+Notifications --> c_notifications
+c_notifications --> NotificationALire : Lire
+c_notifications --> NotificationAValider : Consulter
+NotificationALire --> Notifications : Accepter
+NotificationAValider --> Notifications: Ignorer
+NotificationAValider --> NotificationDesParticipants : Refuser
+NotificationAValider --> c_invitation
+c_invitation --> NotificationDesParticipants : Valider
+c_invitation --> InformationsSurLeCompte : Accepter une demande d'ajout
+NotificationDesParticipants --> Notifications
+
+state c_type_de_compte_cree <<choice>>
+ListeDesComptes --> CreationDeCompte : Creer le compte
+CreationDeCompte --> c_type_de_compte_cree
+c_type_de_compte_cree --> CreationDeCagnotte : Cree le cagnotte
+c_type_de_compte_cree --> CreationDeCompteDeDepenses : Cree le compte de depenses
+CreationDeCagnotte --> NotificationDesUtilisateurs : Envoyer l'invitation
+CreationDeCompteDeDepenses --> NotificationDesUtilisateurs : Envoyer l'invitation
+NotificationDesUtilisateurs --> ListeDesComptes
+
+state c_cloture_de_compte <<choice>>
+ListeDesComptes --> InformationsSurLeCompte : Consulter le compte
+InformationsSurLeCompte --> ClotureDeCompte : Cloturer le compte
+ClotureDeCompte --> EnAttenteDeValidation : Envoyer le notification
+EnAttenteDeValidation --> c_cloture_de_compte
+c_cloture_de_compte --> CompteFermé : Confirmation par les utilisateurs
+c_cloture_de_compte --> NotificationDesUtilisateurs : Refus par les utilisateurs
+CompteFermé --> NotificationDesUtilisateurs
+
+state c_type_de_compte <<choice>>
+InformationsSurLeCompte --> c_type_de_compte
+c_type_de_compte --> CompteDeDepenses
+CompteDeDepenses --> ListeDesDepences : Consulter la liste des dépenses
+ListeDesDepences --> CompteDeDepenses
+CompteDeDepenses --> ListeDesDettes : Consulter la liste de ses dépenses
+ListeDesDettes --> CompteDeDepenses
+
+c_type_de_compte --> Cagnotte
+Cagnotte --> MontantDeCagnotte : Consulter le montant
+MontantDeCagnotte --> Cagnotte
+
+InfoPersonnelles --> ModificationDInfo : Modifier les informations personnelles
+ModificationDInfo --> InfoPersonnelles
+
+
+@enduml

@@ -21,18 +21,23 @@ sc -> u : Montant incorrect
 else
 
 u -> sc : Ajouter un commentaire
-u -> sc : Choisir le nombre de personnes à partager et le pourcentage
-else
+u -> sc : Choisir le nombre de personnes à partager
 
 alt Nombre incorrect
 sc -> u : Nombre incorrect
 else
 
+u -> sc : Entrer le pourcentage pour chaque personne
+alt Pourcentage >100 ou =0
+sc -> u : Pourcentage incorrect
+else
+
 sc -> sc : Enregistrer une dépense
-sc -> sc : Notifier les utilisateur
+sc -> sc : Notifier les utilisateurs
 
 sc -> u : Dépense enregistrée
 
+end
 end
 end
 end
