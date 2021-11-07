@@ -1,0 +1,21 @@
+@startuml  Valider un remboursement de dépense
+
+actor utilisateur as u
+participant ShareCount as sc
+
+sc -> u : Afficher l'informations sur le compte
+
+
+u -> sc : Refuser le remboursement
+alt Refus
+sc -> sc : Notifier le demandeur de remboursement
+else
+sc -> sc : Supprimer les notification
+sc -> sc : Recalculer les dettes
+sc -> sc : Notifier le demandeur
+
+
+end
+
+
+@enduml

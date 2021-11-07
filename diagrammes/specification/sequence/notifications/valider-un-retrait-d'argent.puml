@@ -1,0 +1,32 @@
+@startuml  Valider un retrait d'argent
+
+actor utilisateur as u
+participant ShareCount as sc
+participant ServiceBancaire as sb
+
+sc -> u : Afficher l'informations sur le compte
+
+u -> sc : Refuser le transfert
+alt Refus
+sc -> sc : Notifier le demandeur de transfert
+else
+
+alt nb de validation >=2
+sc -> sc : Supprimer les notification
+
+sc -> sb 	: demande d'envoie d'argent
+sc -> sb 	: informations bancaire utilisateur
+alt Paiement impossible
+sc <- sb 	: Impossible de transferer de l'argent dans le compte
+else
+sc <- sb 	:  Paiement effectué
+sc <- sb 	:  Informations de la transaction
+sc -> sc   : Enregistrement de la transaction
+sc -> sc   : Soustraction du montant à la cagnotte
+end
+
+end
+end
+
+
+@enduml
