@@ -1,0 +1,19 @@
+@startuml "Consulter une cagnotte"
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+admin 	-> 	sc : Rechercher une cagnote
+admin 	<- 	sc : entrez l'identifiant de la cagnotte
+admin 	-> 	sc : identifiant cagnotte
+sc 	-> 	sc : Recherche de la cagnotte
+alt aucune cagnotte ne correspond
+admin 	<- 	sc : Aucune cagnotte ne correspond à cet id
+else
+sc 	-> 	sc : Récuperation des informations de la cagnotte
+alt Aucune transaction dans la cagnotte
+admin 	<- 	sc : il n'y a pas encore de transfert dans cette cagnotte
+else
+admin 	<- 	sc : liste des transactions de la cagnotte
+end
+end
+@enduml

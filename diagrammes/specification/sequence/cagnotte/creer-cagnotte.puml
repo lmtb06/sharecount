@@ -1,0 +1,17 @@
+@startuml  Creer une cagnotte
+
+actor Utilisateur as user
+participant ShareCount as sc
+
+user 	-> sc 		: Creer une cagnotte
+user 	<- sc 		: Saisir le nom de la cagnotte
+user 	-> sc 		: Nom
+user 	<- sc 		: Saisir la description de la cagnotte
+user 	-> sc 		: Description
+
+sc 		-> sc 		: Creation et enregistrement de la cagnotte avec un id unique \n et la date de creation
+sc 		-> sc 		: Enregistrement de l'utilisateur comme le créateur de la cagnotte
+user 	<- sc 		: La cagnotte a été crée
+user 	<- sc 		: Affichage de la cagnotte
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml  "Ajouter de l'argent"
+
+actor Utilisateur as user
+participant ShareCount as sc
+participant "Service Bancaire" as sb
+
+user -> sc : Ajouter de l'argent
+user <- sc : Entrez mot de passe
+user -> sc : mot de passe
+sc -> sc : Comparaison hash du mot de passe avec celui enregistré
+alt les hash ne correspondent pas
+user <- sc : Le mot de passe n'est pas le bon
+else
+sc -> sc : Vérification du compte bancaire
+
+alt Absence de compte bancaire
+sc -> user : Absence de compte bancaire
+else
+
+sc -> user : Entrez le montant
+user -> sc : montant
+sc -> user : Entrez le motif
+user -> sc : motif
+sc -> sb 	: demande de paiement
+sc -> sb 	: informations bancaire utilisateur
+alt Paiement impossible
+sc <- sb 	: Paiement impossible
+sc <- sb 	: Impossible de transferer de l'argent dans la cagnotte
+else
+sc <- sb 	:  Paiement effectué
+sc <- sb 	:  Informations de la transaction
+sc -> sc   : Enregistrement de la transaction
+sc -> sc   : Ajout du montant à la cagnotte
+sc -> user : Transaction effectué
+end
+end
+end
+
+@enduml

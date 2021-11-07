@@ -1,0 +1,25 @@
+@startuml  Supprimer son compte personnel
+
+actor Administrateur as admin
+participant ShareCount as sc
+
+admin -> sc : Supprimer un compte d'utilisateur
+sc -> admin : Demander confirmation
+alt Annulation
+admin -> sc : Annuler la suppression de compte
+sc -> admin : Le compte n'a pas été supprimé
+else
+admin -> sc : Confirmer la suppression de compte
+admin 	<- 	sc : Saisir mot de passe admin
+admin 	-> 	sc : Mot de passe admin
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Les hash ne correspondent pas
+admin 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
+else
+sc -> sc : Notifier a tous les utilisateurs qui partagent un compte\n ou une cagnotte avec le compte que le compte \nva être supprimé
+' On garde quand même les dépenses et les transactions
+sc -> sc : Supprimer le compte de l'application
+sc -> admin : Le compte a été supprimé
+end
+end
+@enduml

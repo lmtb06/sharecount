@@ -1,0 +1,31 @@
+@startuml  Clôturer une cagnotte
+
+actor Utilisateur as user
+participant ShareCount as sc
+
+' Les compte déjà clôturés ne peuvent pas être sélectionné
+user 	-> sc 		: Clôturer cagnotte
+user 	<- sc 		: Saisir le motif de la clôture
+user 	-> sc 	: Motif
+user 	<- 	sc : Entrez le mot de passe
+user 	-> 	sc : mot de passe
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Les hash ne correspondent pas
+user 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
+else
+user 	<- 	sc	: Confirmer la clôture de la cagnotte
+alt Annulation
+user -> sc : Annuler la clôture de la cagnotte
+sc -> user : La cagnotte n'a pas été supprimé
+else
+user -> sc 			: Confirmer clôture
+sc -> sc 				: Verification que la cagnotte ne contient pas d'argent
+alt Le cagnotte contient encore de l'argent
+user 	<- sc 		: Veuillez vider la cagnotte avant de clôturer
+else
+sc -> sc 				: Envoie demande de clôture de la cagnotte aux autres participants\n avec le motif de fermeture
+user 	<- sc 		: La demande de clôture a été envoyé aux autres participants
+end
+end
+end
+@enduml

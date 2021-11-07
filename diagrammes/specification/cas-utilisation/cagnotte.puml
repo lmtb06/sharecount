@@ -30,7 +30,7 @@ package cagnotte {
 	couc 	<|.. cuc 		: <<include>>
 	couc 	<|.. aa  		: <<include>>
 	couc 	<|.. ra  		: <<include>>
-	couc 	<|.. rpc  		: <<include>>
-	couc 	<|.. ipc  		: <<include>>
+	clpc 	<|.. rpc  		: <<include>>
+	clpc 	<|.. ipc  		: <<include>>
 	couc 	<|.. clpc  	: <<include>>
 @enduml

@@ -5,7 +5,6 @@ actor "Administrateur" as admin
 package "administration" {
 	usecase "Consulter un profil utilisateur" as cpu
 	usecase "Consulter une cagnotte" as ccag
-	usecase "Consulter les transactions d’une cagnotte" as ctc
 	usecase "Annuler une transaction d’une cagnotte" as atc
 	usecase "Consulter les participants d'une cagnotte" as cpc
 	usecase "Modifier les informations d'un utilisateur" as miu
@@ -14,7 +13,6 @@ package "administration" {
 ' appartenance
 	admin	--	cpu
 	admin	--	ccag
-	admin	--	ctc
 	admin	-	cpc
 	admin	-	miu
 	admin	-	scu
@@ -22,7 +20,6 @@ package "administration" {
 '	includes
 	cpu	<|.. miu	: <<include>>
 	cpu	<|.. scu	: <<include>>
-	ccag	<|.. ctc	: <<include>>
 	ccag	<|.. cpc	: <<include>>
 	ccag	<|.. atc	: <<include>>
 

@@ -1,0 +1,26 @@
+@startuml
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+' Pour l'instant on ne peut que changer le mot de passe
+admin -> sc : Modifier informations personnelles de l'utilisateur
+admin 	<- 	sc : Saisir mot de passe admin
+admin 	-> 	sc : Mot de passe admin
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Les hash ne correspondent pas
+admin 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
+else
+admin 	<- 	sc : Entrez le nouveau mot de passe pour l'utilisateur
+admin 	-> 	sc : nouveau mot de passe
+admin 	<- 	sc : Entrez la confirmation du nouveau mot de passe
+admin 	-> 	sc : confirmation nouveau mot de passe
+sc 	-> 	sc : Comparaison du nouveau mot de passe et de la confirmation
+alt Les mot de passe ne sont pas les même
+admin 	<- 	sc : Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer
+else
+sc 	-> 	sc : Enregistrement du hash du mot de passe dans le compte de l'utilisateur
+sc 	-> 	sc : Notification du changement à l'utilisateur
+admin 	<- 	sc : les informations ont bien été sauvegardées
+end
+end
+@enduml

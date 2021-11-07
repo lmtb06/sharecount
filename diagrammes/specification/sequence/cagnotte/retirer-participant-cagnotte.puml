@@ -1,0 +1,12 @@
+@startuml Retirer un participant à la cagnote
+
+actor utilisateur as user
+participant ShareCount as sc
+
+user -> sc 	: Retirer un participant à la cagnote
+user <- sc 	: selectionnez le participant à retirer
+user -> sc 	: Participant à retirer
+sc 	-> sc 	: Envoie de la demande de validation de\nretrait du participant aux autres participants
+user <- sc 	: La demande de retrait de l'utilisateur a été envoyée
+
+@enduml

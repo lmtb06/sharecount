@@ -1,0 +1,29 @@
+@startuml  Inviter/Ajouter un participant
+
+actor utilisateur as user
+participant ShareCount as sc
+
+user -> sc : Inviter un participant à la cagnotte
+sc -> sc : Vérifier si l'utilisateur existe
+
+alt Utilisateur n'existe pas
+sc -> user : utilisateur invalide
+else
+
+sc -> sc : Vérifier si l'invitation n'a pas déjà été envoyée
+
+alt Invitation déjà envoyée
+sc -> user : Invitation déjà envoyée
+else
+
+sc -> sc : Vérifier si l'utilisateur n'est pas déjà dans le groupe
+alt Utilisateur déjà dans le groupe
+sc -> user : Utilisateur déjà présent dans le groupe
+else
+sc -> sc : Envoie une invitation à l'utilisateur
+sc -> user : Demande d'ajout envoyée
+
+end
+end
+end
+@enduml

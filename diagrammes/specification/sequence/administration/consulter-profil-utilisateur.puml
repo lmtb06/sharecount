@@ -1,0 +1,16 @@
+@startuml "Consulter un profil utilisateur"
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+admin 	-> 	sc : Rechercher un profil utilisateur
+admin 	<- 	sc : entrez le nom d'utilisateur ou l' email
+admin 	-> 	sc : nom d'utilisateur ou email
+sc 	-> 	sc : Recherche du profil utilisateur
+alt aucun utilisateur ne correspond
+admin 	<- 	sc : Aucun utilisateur ne correspond à ce nom d'utilisateur ou ce mail
+else
+sc 	-> 	sc : Récuperation profil utilisateur
+admin 	<- 	sc : profil de l'utilisateur correspondant
+admin 	<- 	sc : liste des cagnottes dans lequel l'utilisateur participe faisant apparaitre l'id des cagnottes
+end
+@enduml

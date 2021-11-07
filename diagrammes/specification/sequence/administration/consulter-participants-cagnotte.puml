@@ -1,0 +1,9 @@
+@startuml
+actor "Administrateur" as admin
+participant ShareCount as sc
+
+admin 	-> 	sc : Consulter participants de la cagnotte
+admin 	<- 	sc : Liste des participants à la cagnotte en grisant les comptes supprimés
+
+
+@enduml

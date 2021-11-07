@@ -3,7 +3,7 @@
 actor utilisateur as u
 participant ShareCount as sc
 
-u -> sc : Créer un nouveau compte commun de dépenses
+u -> sc : Creer une cagnotte
 sc -> u : Choisir entre cagnotte ou compte de dépenses communes
 
 alt Selection de compte de dépenses communes

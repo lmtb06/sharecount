@@ -1,0 +1,16 @@
+@startuml  Consulter la liste de ses cagnottes
+
+actor utilisateur as user
+participant ShareCount as sc
+
+user -> sc 	: Consulter la liste de ses cagnottes
+sc -> sc 		: Récuperation cagnottes utilisateur
+
+alt Liste vide
+sc -> user : Vous ne participez à aucune cagnotte
+else
+sc -> user : Liste des cagnottes auxquels l'utilisateur participe en \naffichant pour chacun Le nom, l'id, le montant, la date de creation,\n la date de cloture si elle est cloturée et le\n pseudo du createur de la cagnotte
+
+end
+
+@enduml
