@@ -1,10 +1,11 @@
 @startuml  Consulter un compte de dépenses
 
 actor utilisateur as user
-participant ShareCount as sc
+participant GestionnaireDialogue as gd
+participant BaseDonnees as bd
 
-user 	-> sc 		: Compte de dépenses communes
-sc 		-> sc 		: GetDepenses(Utilisateur, Compte)
-user 	<- sc 		: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
+user 	-> gd 	: Compte de dépenses communes
+gd 		-> bd 	: GetDepenses(idCompteDepenses)
+user 	<- gd 	: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
 
 @enduml

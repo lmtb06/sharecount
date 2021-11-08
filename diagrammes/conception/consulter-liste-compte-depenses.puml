@@ -2,9 +2,10 @@
 
 actor utilisateur as user
 participant GestionnaireDialogue as gd
+participant BaseDonnees as bd
 
 user -> gd 	: Consulter la liste de ses comptes de dépenses communes
-gd -> gd 	: GetListeDesComptesDepenses(Utilisateur)
+gd -> bd 	: GetListeDesComptesDepenses(Utilisateur)
 
 alt Liste vide
 gd -> user  : Vous ne participez à aucun compte de dépenses communes
