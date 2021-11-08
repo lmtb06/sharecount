@@ -1,0 +1,47 @@
+@startuml  Créer compte personnel
+
+actor "Utilisateur" as user
+participant ShareCount as sc
+
+user 	-> 	sc : Creer un compte utilisateur
+user 	<- 	sc : Entrez le prénom
+user 	-> 	sc : prénom
+user 	<- 	sc : Entrez le nom
+user 	-> 	sc : nom
+user 	<- 	sc : Entrez l'adresse email
+user 	-> 	sc : email
+user 	<- 	sc : Entrez le pseudo
+user 	-> 	sc : pseudo
+user 	<- 	sc : Entrez le mot de passe
+user 	-> 	sc : mot de passe
+user 	<- 	sc : Entrez la confirmation du mot de passe
+user 	-> 	sc : confirmation mot de passe
+sc 	-> 	sc : Vérification des informations
+alt Prénom non valide
+user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
+else
+alt Nom non valide
+user 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
+else
+alt Pseudo déjà utilisé
+user 	<- 	sc : Le pseudo est déjà attribué veuillez en choisir un autre
+else
+alt Email déjà utilisé
+user 	<- 	sc : L'email est déjà attribué veuillez en choisir un autre
+else
+alt Le mot de passe n'est pas sécurisé
+user 	<- 	sc : Le mot de passe n'est pas sécurisé, veuillez réessayer
+else
+alt Les mot de passe ne sont pas les même
+user 	<- 	sc : Le mot de passe et la confirmation ne correspondent pas, veuillez réessayer
+else
+sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
+user 	<- 	sc : Compte créé
+end
+end
+end
+end
+end
+end
+
+@enduml

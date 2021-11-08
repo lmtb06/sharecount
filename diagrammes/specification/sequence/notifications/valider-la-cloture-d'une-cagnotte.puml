@@ -16,7 +16,7 @@ sc -> sc : Modifier le nombre de votes
 sc -> u : Votre vote a été pris en compte
 
 alt nb de validation >= 50% des participants
-sc -> sc : Supprimer les notification
+sc -> sc : Supprimer les notifications 
 sc -> sc : Marquer les utilisateurs comme supprimés
 sc -> sc : Interdire aux utilisateur toutes les actions dans le compte
 sc -> sc : Marquer le compte comme fermés dans la liste des comptes d'utilisateurs

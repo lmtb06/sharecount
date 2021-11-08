@@ -1,0 +1,10 @@
+@startuml  Consulter un compte de dépenses
+
+actor utilisateur as user
+participant ShareCount as sc
+
+user 	-> sc 		: Compte de dépenses communes
+sc 		-> sc 		: Récuperation dépense du compte
+user 	<- sc 		: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
+
+@enduml

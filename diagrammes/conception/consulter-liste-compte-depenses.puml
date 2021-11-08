@@ -1,0 +1,16 @@
+@startuml  Consulter la liste de ses comptes de dépenses communes
+
+actor utilisateur as user
+participant ShareCount as sc
+
+user -> sc 	: Consulter la liste de ses comptes de dépenses communes
+sc -> sc 		: Récuperation comptes de dépenses communes utilisateur
+
+alt Liste vide
+sc -> user : Vous ne participez à aucun compte de dépenses communes
+else
+sc -> user : Liste des comptes de dépenses communes auxquels l'utilisateur participe en \naffichant pour chacun Le nom, l'id, la date de creation,\n la date de cloture si elle est cloturée et le\n pseudo du createur du compte
+
+end
+
+@enduml

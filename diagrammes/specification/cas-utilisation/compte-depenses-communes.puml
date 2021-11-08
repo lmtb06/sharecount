@@ -29,7 +29,7 @@ package "Compte de Depenses Communes" {
 	user	-	cdt
 '	includes
 	clcdc 	<|.. ccd  	: <<include>>
-	ccd 		<|.. ccdc  	: <<include>>
+	clcdc 		<|.. ccdc  	: <<include>>
 	ccd			<|..	cocdc : <<include>>
 	ccd			<|..	clp 	: <<include>>
 	clp			<|..	ip 		: <<include>>
