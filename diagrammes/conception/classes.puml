@@ -16,6 +16,15 @@
 		String hashMotDePasseAdmin
 	}
 
+	class GestionnaireDialogue {
+		Utilisateur u
+		nouveauFormulaire()
+		getUtilisateur(Utilisateur)
+		verifierFormulaire(Formulaire)
+		modifierInfosUtilisateur(Utilisateur,Formulaire)
+		enregistrerNouvelUtilisateur(Formulaire)
+	}
+
 	class Cagnotte {
 		Date dateCreationCagnotte
 		Date dateClotureCagnotte
