@@ -1,20 +1,16 @@
-@startuml  Modifier infos personnelles
-
+@startuml
 actor "Utilisateur" as user
-participant ShareCount as sc
+participant GestionnaireDialogue as sc
 
 user -> sc : Modifier ses informations personnelles utilisateur
-user 	<- 	sc : Entrez le prénom
+sc 	-> 	sc : u = getUtilisateur(Utilisateur)
+sc 	-> 	sc : f = nouveauFormulaire()
 user 	-> 	sc : prénom
-user 	<- 	sc : Entrez le nom
 user 	-> 	sc : nom
-user 	<- 	sc : Entrez l'ancien mot de passe
 user 	-> 	sc : mot de passe
-user 	<- 	sc : Entrez le nouveau mot de passe
 user 	-> 	sc : nouveau mot de passe
-user 	<- 	sc : Entrez la confirmation du nouveau mot de passe
 user 	-> 	sc : confirmation nouveau mot de passe
-sc 	-> 	sc : Vérifier les informations
+sc 	-> 	sc : verifierFormulaire(f)
 alt Prénom non valide
 user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
 else
@@ -31,7 +27,7 @@ sc 	-> 	sc : Comparaison du nouveau mot de passe et de la confirmation
 alt Les mot de passe ne sont pas les même
 user 	<- 	sc : Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer
 else
-sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
+sc 	-> 	sc : modifierInfosUtilisateur(u,f)
 user 	<- 	sc : Vos informations ont bien été sauvegardées
 end
 end
