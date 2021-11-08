@@ -1,15 +1,15 @@
-@startuml  Accepter une demande d’ajout
+@startuml  Accepter une invitation a une cagnotte
 
 actor utilisateur as u
 participant ShareCount as sc
 
 sc -> u : Afficher l'informations sur le compte
 
-alt Refus
 u -> sc : Refuser invitation
+alt Refus
+sc -> sc : Notifier le créateur du cagnotte
 else
 
-u -> sc : Accepter invitation
 sc -> sc : Ajouter l'utilisateur au compte
 sc -> sc : Ajouter le compte dans le liste des comptes
 

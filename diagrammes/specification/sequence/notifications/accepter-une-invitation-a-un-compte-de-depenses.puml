@@ -1,0 +1,23 @@
+@startuml  Accepter une invitation à un compte de dépenses
+
+actor utilisateur as u
+participant ShareCount as sc
+
+sc -> u : Afficher l'informations sur le compte
+
+u -> sc : Refuser invitation
+alt Refus
+sc -> sc : Notifier le créateur du compte 
+
+else
+sc -> sc : Ajouter l'utilisateur au compte
+sc -> sc : Ajouter le compte dans le liste des comptes
+
+sc -> u : Afficher le compte
+
+
+end
+
+
+
+@enduml
