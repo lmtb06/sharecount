@@ -1,11 +1,11 @@
-@startuml Retirer un participant à la cagnote
+@startuml Retirer un participant du compte dépenses
 
 actor utilisateur as user
 participant ShareCount as sc
-user -> sc 	: Retirer un participant à la cagnote
+user -> sc 	: Retirer un participant du compte dépenses
 
 alt L'utlisateur n'est pas le créateur
-user <- sc : Vous ne pouvez pas retirer de participant vous n'êtes\n pas le créateur de la cagnotte
+user <- sc : Vous ne pouvez pas retirer de participant vous n'êtes\n pas le créateur du compte dépenses
 else
 user <- sc 	: selectionnez le participant à retirer
 user -> sc 	: Participant à retirer
@@ -15,9 +15,9 @@ sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stock
 alt Les hash ne correspondent pas
 user 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
 else
-sc 	->	sc  :	Retrait du participant de la cagnotte
+sc 	->	sc  :	Retrait du participant du compte dépenses
 sc 	-> sc 	: Notification du retrait du participant aux autres participants
-user <- sc 	: Le participant a bien été retiré de la cagnotte
+user <- sc 	: Le participant a bien été retiré du compte dépenses
 end
 end
 @enduml

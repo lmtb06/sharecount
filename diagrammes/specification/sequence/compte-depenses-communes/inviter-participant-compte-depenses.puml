@@ -1,9 +1,9 @@
-@startuml  Inviter/Ajouter un participant
+@startuml  Inviter un participant au compte de depenses
 
-actor utilisateur as user
+actor Utilisateur as user
 participant ShareCount as sc
 
-user -> sc : Inviter un participant à la cagnotte
+user -> sc : Inviter un participant au compte
 sc -> sc : Vérifier si l'utilisateur existe
 
 alt Utilisateur n'existe pas
@@ -17,13 +17,10 @@ sc -> user : Invitation déjà envoyée
 else
 
 sc -> sc : Vérifier si l'utilisateur n'est pas déjà dans le groupe
-alt Utilisateur déjà dans le groupe
-sc -> user : Utilisateur déjà présent dans le groupe
-else
 sc -> sc : Envoie une invitation à l'utilisateur
 sc -> user : Demande d'ajout envoyée
 
 end
 end
-end
+
 @enduml

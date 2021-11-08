@@ -1,0 +1,10 @@
+@startuml  "Consulter ses dûs"
+
+actor utilisateur as u
+participant ShareCount as sc
+
+u -> sc : Consulter ses dûs
+sc 	->	sc : récuperation de toutes les dettes que les autres participant doivent\nà l'utilisateur
+u 	<-	sc : Liste des dettes
+
+@enduml

@@ -19,7 +19,7 @@
 	class Cagnotte {
 		Date dateCreation
 		Date dateCloture
-		boolean cloture
+		String id
 		float montantTotal
 		Utilisateur createur
 	}
@@ -27,14 +27,14 @@
 	Cagnotte "*"--"*" Utilisateur
 	Cagnotte --"*" Transaction
 
-	class CompteDette {
+	class CompteDepensesCommunes {
 		Date dateCreation
 		Date dateCloture
-		boolean cloture
+		String id
 		Utilisateur createur
 	}
-	CompteDette "*"--"*" Utilisateur
-	CompteDette --"*" Depense
+	CompteDepensesCommunes "*"--"*" Utilisateur
+	CompteDepensesCommunes --"*" Depense
 
 	class Depense {
 		String description
@@ -65,5 +65,14 @@
 	class NotificationAValider {
 
 	}
+
+	class DemandeRetraitArgent {
+		int nb_votes
+		int nb_votes_positifs
+		Utilisateur utilisateur_beneficiaire
+		double montant
+		String motif
+	}
+	DemandeRetraitArgent --"1" CompteDepensesCommunes
 
 @enduml

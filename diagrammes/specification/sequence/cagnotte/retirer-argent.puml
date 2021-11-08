@@ -2,7 +2,6 @@
 
 actor Utilisateur as user
 participant ShareCount as sc
-participant "Service Bancaire" as sb
 
 user -> sc : Retirer de l'argent
 sc -> user : Entrez le montant
@@ -25,18 +24,8 @@ alt Absence de compte bancaire
 sc -> user : Absence de compte bancaire
 else
 
-sc -> sb 	: demande d'envoie d'argent
-sc -> sb 	: informations bancaire utilisateur
-alt Paiement impossible
-sc <- sb 	: Paiement impossible
-sc <- sb 	: Impossible de transferer de l'argent dans le compte
-else
-sc <- sb 	:  Paiement effectué
-sc <- sb 	:  Informations de la transaction
-sc -> sc   : Enregistrement de la transaction
-sc -> sc   : Soustraction du montant à la cagnotte
-sc -> user : Transaction effectué
-end
+sc -> sc 	: envoie de la demande de retrait d'argent aux autres participants
+sc -> user : La demande de retrait a bien été envoyée
 end
 end
 end

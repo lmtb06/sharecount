@@ -25,7 +25,7 @@ sc -> sb 	: demande de paiement
 sc -> sb 	: informations bancaire utilisateur
 alt Paiement impossible
 sc <- sb 	: Paiement impossible
-sc <- sb 	: Impossible de transferer de l'argent dans la cagnotte
+user <- sc 	: Impossible de transferer de l'argent dans la cagnotte
 else
 sc <- sb 	:  Paiement effectué
 sc <- sb 	:  Informations de la transaction

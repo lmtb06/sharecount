@@ -1,0 +1,23 @@
+@startuml  Ajouter une dépense
+
+actor Utilisateur as user
+participant ShareCount as sc
+'Losrque l'ajout est validé les dettes sont mis a jour
+user -> sc : Ajouter une dépense
+sc -> user : Entrez le montant
+user -> sc : montant
+sc -> user : Entrez le motif
+user -> sc : motif
+sc -> user : Entrez la répartition de la dépense en pourcentage pour chaque\n participant y compris vous
+user -> sc : répartition en pourcentage
+user <- sc : Entrez mot de passe
+user -> sc : mot de passe
+sc -> sc : verification répartition
+alt pourcentage total > 100 ou pourcentage total < 100
+user <- sc : La répartition n'est pas valide
+else
+sc -> sc 	: envoie de la demande d'ajout de dépense aux autres participants
+sc -> user : La demande de dépense a bien été envoyée
+end
+
+@enduml
