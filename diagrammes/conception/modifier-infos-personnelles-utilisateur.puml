@@ -1,33 +1,33 @@
 @startuml
-actor "Utilisateur" as user
+actor "Client" as user
 participant GestionnaireDialogue as sc
+participant Utilisateur as u
+participant BaseDeDonnées as bdd
 
 user -> sc : Modifier ses informations personnelles utilisateur
-sc 	-> 	sc : u = getUtilisateur(Utilisateur)
-sc 	-> 	sc : f = nouveauFormulaire()
+sc 	-> 	sc : afficherInterfaceModificationInfosPersonnelles()
 user 	-> 	sc : prénom
 user 	-> 	sc : nom
 user 	-> 	sc : mot de passe
 user 	-> 	sc : nouveau mot de passe
 user 	-> 	sc : confirmation nouveau mot de passe
-sc 	-> 	sc : verifierFormulaire(f)
+sc 	-> 	sc : verifierInformationsUtilisateur(prenom,nom,mdp,pseudo,email)
 alt Prénom non valide
 user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
 else
-sc 	-> 	sc : Conservation de l'ancien prénom si le champ est vide
 alt Nom non valide
 user 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
 else
-sc 	-> 	sc : Conservation de l'ancien nom si le champ est vide
-sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+sc 	->	sc : checkMdp()
 alt Les hash ne correspondent pas
 user 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
 else
-sc 	-> 	sc : Comparaison du nouveau mot de passe et de la confirmation
+sc 	-> 	sc : checkNouveauMdp
 alt Les mot de passe ne sont pas les même
 user 	<- 	sc : Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer
 else
-sc 	-> 	sc : modifierInfosUtilisateur(u,f)
+sc 	-> 	u : modifierInfosUtilisateur(u)
+sc 	-> 	bdd : modifierInfosUtilisateur(u)
 user 	<- 	sc : Vos informations ont bien été sauvegardées
 end
 end
