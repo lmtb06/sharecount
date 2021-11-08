@@ -1,22 +1,16 @@
-@startuml  Créer compte personnel
-
+@startuml
 actor "Utilisateur" as user
-participant ShareCount as sc
+participant GestionnaireDialogue as sc
 
 user 	-> 	sc : Creer un compte utilisateur
-user 	<- 	sc : Entrez le prénom
+sc 	-> 	sc : f = nouveauFormulaire()
 user 	-> 	sc : prénom
-user 	<- 	sc : Entrez le nom
 user 	-> 	sc : nom
-user 	<- 	sc : Entrez l'adresse email
 user 	-> 	sc : email
-user 	<- 	sc : Entrez le pseudo
 user 	-> 	sc : pseudo
-user 	<- 	sc : Entrez le mot de passe
 user 	-> 	sc : mot de passe
-user 	<- 	sc : Entrez la confirmation du mot de passe
 user 	-> 	sc : confirmation mot de passe
-sc 	-> 	sc : Vérification des informations
+sc 	-> 	sc : verifierFormulaire(f)
 alt Prénom non valide
 user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
 else
@@ -35,7 +29,7 @@ else
 alt Les mot de passe ne sont pas les même
 user 	<- 	sc : Le mot de passe et la confirmation ne correspondent pas, veuillez réessayer
 else
-sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
+sc 	-> 	sc : enregistrerNouvelUtilisateur(f)
 user 	<- 	sc : Compte créé
 end
 end
@@ -43,5 +37,4 @@ end
 end
 end
 end
-
 @enduml
