@@ -4,7 +4,7 @@ actor utilisateur as user
 participant ShareCount as sc
 
 user 	-> sc 		: Compte de dépenses communes
-sc 		-> sc 		: Récuperation dépense du compte
+sc 		-> sc 		: GetDepenses(Utilisateur, Compte)
 user 	<- sc 		: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
 
 @enduml

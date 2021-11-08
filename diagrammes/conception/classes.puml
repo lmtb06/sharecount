@@ -1,19 +1,16 @@
 @startuml Classes
 
+	class GestionnaireDialogue {
+		GetListeDesComptesDepenses(Utilisateur)
+		GetDepenses(Utilisateur, Compte)
+	}
+
 	class Utilisateur {
 		String nomUtilisateur
 		String prenomUtilisateur
 		String pseudoUtilisateur
 		String emailUtilisateur
 		String hashMotDePasseUtilisateur
-	}
-	Utilisateur --"1" CompteBancaire
-	class Administrateur {
-		String nomAdmin
-		String prenomAdmin
-		String pseudoAdmin
-		String emailAdmin
-		String hashMotDePasseAdmin
 	}
 
 	class GestionnaireDialogue {
@@ -25,17 +22,6 @@
 		enregistrerNouvelUtilisateur(Formulaire)
 	}
 
-	class Cagnotte {
-		Date dateCreationCagnotte
-		Date dateClotureCagnotte
-		String idCagnotte
-		float montantCagnotte
-		Utilisateur createurCagnotte
-	}
-
-	Cagnotte "*"--"*" Utilisateur
-	Cagnotte --"*" Transaction
-
 	class CompteDepensesCommunes {
 		String nomCompteDepenses
 		String idCompteDepenses
@@ -44,60 +30,6 @@
 		Utilisateur createurCompteDepenses
 	}
 	CompteDepensesCommunes "*"--"*" Utilisateur
-	CompteDepensesCommunes --"*" Depense
-	CompteDepensesCommunes --"*" Dette
-
-	class Depense {
-		String motifDepense
-		float sommeDepense
-		Date dateDeCreationDepense
-		Utilisateur createurDepense
-	}
-	Depense --"*" PartDepense
-
-	class PartDepense {
-		float pourcentageDepense
-	}
-	PartDepense --"1" Utilisateur
-
-	class Dette {
-		float sommeDu
-	}
-	Dette --"2" Utilisateur
-
-	class Transaction {
-		String idTransaction
-		String motifTranscation
-		float sommeTransaction
-		Date dateDeCreationTransaction
-		Date dateAnnulationTransaction
-		String typeTransaction
-	}
-
-	Transaction --"1" Utilisateur
-
-	class CompteBancaire {
-
-	}
-
-	class NotificationSimple {
-
-	}
-
-	class NotificationAValider {
-
-	}
-
-	Utilisateur --"*" NotificationAValider
-	Utilisateur --"*" NotificationSimple
-
-	class DemandeRetraitArgent {
-		int nb_votes
-		int nb_votes_positifs
-		Utilisateur beneficiaireDemande
-		double montantRetrait
-		String motif
-	}
-	DemandeRetraitArgent "*"-- Cagnotte
-
+	GestionnaireDialogue --"*" Utilisateur
+	
 @enduml
