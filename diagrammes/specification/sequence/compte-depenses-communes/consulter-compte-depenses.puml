@@ -1,4 +1,4 @@
-@startuml  Consulter une cagnotte
+@startuml  Consulter un compte de dépenses
 
 actor utilisateur as user
 participant ShareCount as sc

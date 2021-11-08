@@ -11,7 +11,7 @@ package "Compte de Depenses Communes" {
 	usecase "Inviter un participant" as ip
 	usecase "Retirer un participant" as ri
 	usecase "Ajouter une dépense" as ad
-	usecase "Rembourser une dépense" as rd
+	usecase "Rembourser une dette" as rd
 	usecase "Consulter ses dûs" as cd
 	usecase "Consulter ses dettes" as cdt
 }
@@ -32,10 +32,10 @@ package "Compte de Depenses Communes" {
 	ccd 		<|.. ccdc  	: <<include>>
 	ccd			<|..	cocdc : <<include>>
 	ccd			<|..	clp 	: <<include>>
-	ccd			<|..	ip 		: <<include>>
-	ccd			<|..	ri 		: <<include>>
+	clp			<|..	ip 		: <<include>>
+	clp			<|..	ri 		: <<include>>
 	ccd			<|..	ad 		: <<include>>
-	ccd			<|..	rd 		: <<include>>
+	cdt			<|..	rd 		: <<include>>
 	ccd			<|..	cd 		: <<include>>
 	ccd			<|..	cdt 	: <<include>>
 @enduml
