@@ -1,0 +1,35 @@
+@startuml Annuler transaction  cagnotte
+actor "Administrateur" as admin
+participant ShareCount as sc
+participant "Service Bancaire" as sb
+
+'Les transactions déjà annulés ne peuvent pas être seletionné
+admin 	-> 	sc : Transaction à annuler
+admin 	-> 	sc : Annuler transaction
+admin 	<- 	sc : Saisir mot de passe admin
+admin 	-> 	sc : Mot de passe admin
+sc 	->	sc : Comparaison du hash du mot de passe avec celui du mot de passe stocké
+alt Les hash ne correspondent pas
+admin 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
+else
+alt Compte cloturé
+admin 	<- 	sc : Le compte a déjà été cloturé impossible d'annuler la transaction
+else
+sc 	-> 	sb : Annuler transaction
+sc 	-> 	sb : Transaction à annuler
+alt Annulation impossible
+sc 	<- 	sb : annulation de la transaction impossible
+admin 	<- 	sc : Impossible d'annuler la transaction
+else
+alt La transaction est un retrait
+sc -> sc : ajout de la somme à la cagnotte
+else la transaction est un ajout
+sc -> sc : soustraction de la somme à la cagnotte
+end
+sc 	-> 	sc : Marquage de la transaction comme annulée
+sc 	-> 	sc : Notification des utilisateurs de l'annulation de la transaction
+admin 	<- 	sc : Transaction annulé
+end
+end
+end
+@enduml

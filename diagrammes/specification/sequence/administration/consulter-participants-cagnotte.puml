@@ -1,4 +1,4 @@
-@startuml
+@startuml "Consulter les participants de la cagnotte"
 actor "Administrateur" as admin
 participant ShareCount as sc
 

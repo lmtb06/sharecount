@@ -3,10 +3,10 @@
 actor "Administrateur" as admin
 
 package "administration" {
-	usecase "Consulter un profil utilisateur" as cpu
-	usecase "Consulter une cagnotte" as ccag
 	usecase "Annuler une transaction d’une cagnotte" as atc
+	usecase "Consulter une cagnotte" as ccag
 	usecase "Consulter les participants d'une cagnotte" as cpc
+	usecase "Consulter un profil utilisateur" as cpu
 	usecase "Modifier les informations d'un utilisateur" as miu
 	usecase "Supprimer un compte d'utilisateur" as scu
 }
