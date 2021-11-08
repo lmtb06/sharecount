@@ -23,6 +23,8 @@ sc -> sc : Vérification du compte bancaire
 alt Absence de compte bancaire
 sc -> user : Absence de compte bancaire
 else
+sc -> sc : Envoyer une notification à valider aux participants
+sc -> user : Demande enregistrée, attendez la confirmation
 
 sc -> sc 	: envoie de la demande de retrait d'argent aux autres participants
 sc -> user : La demande de retrait a bien été envoyée
