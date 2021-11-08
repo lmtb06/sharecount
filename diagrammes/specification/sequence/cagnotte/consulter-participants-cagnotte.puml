@@ -1,0 +1,7 @@
+@startuml Consulter la liste des participants
+actor Utilisateur as user
+participant ShareCount as sc
+
+user -> sc : Consulter la liste des participants
+user <- sc 	: Liste des participants de la \ncagnotte en précisant le nom et le pseudo de \nchacun et en mettant en evidence le créateur et en triant la liste par ordre alphabétique
+@enduml

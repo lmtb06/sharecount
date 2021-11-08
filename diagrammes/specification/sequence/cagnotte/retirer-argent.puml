@@ -26,6 +26,8 @@ else
 sc -> sc : Envoyer une notification à valider aux participants
 sc -> user : Demande enregistrée, attendez la confirmation
 
+sc -> sc 	: envoie de la demande de retrait d'argent aux autres participants
+sc -> user : La demande de retrait a bien été envoyée
 end
 end
 end
