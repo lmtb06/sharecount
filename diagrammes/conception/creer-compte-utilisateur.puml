@@ -1,75 +1,76 @@
 @startuml
-actor "Utilisateur" as user
-participant ":GestionnaireDialogue" as sc
+actor "Utilisateur" as us
+participant ":GestionnaireDialogue" as gd
 participant "compteU:CompteUtilisateur" as cu
 participant "db:GestionnaireSauvegarde" as gs
 
-user 	-> 	sc : creerCompteUtilisateur(pseudo, prenom, nom, email, motDePasse, confirmationMotDePasse)
+us 	-> 	gd : creerCompteUtilisateur(pseudo, prenom, nom, email, motDePasse, confirmationMotDePasse)
 ' verification du pseudo
-sc 	-> gs ++: pseudoExiste(pseudo)
-gs --> sc --: retour
+gd 	-> gs ++: pseudoExiste(pseudo)
+gs 	--> gd --: retour
 alt retour = false
-sc 	-> 	sc ++: pseudoConforme(pseudo)
-sc 	--> 	sc --: retour
+gd 	-> 	gd ++: pseudoConforme(pseudo)
+gd 	--> 	gd --: retour
 alt retour = true
 ' verification du prénom
-sc 	-> 	sc ++: prenomConforme(prenom)
-sc 	--> 	sc --: retour
+gd 	-> 	gd ++: prenomConforme(prenom)
+gd 	--> 	gd --: retour
 alt retour = true
 ' verification du nom
-sc 	-> 	sc ++: nomConforme(nom)
-sc 	--> 	sc --: retour
+gd 	-> 	gd ++: nomConforme(nom)
+gd 	--> 	gd --: retour
 alt retour = true
 ' verification de l'email
-sc 	-> 	sc ++: emailConforme(email)
-sc 	--> 	sc --: retour
+gd 	-> 	gd ++: emailConforme(email)
+gd 	--> 	gd --: retour
 alt retour = true
 ' verification du mot de passe
-sc 	-> 	sc ++: motDePasseConforme(motDePasse)
-sc 	--> 	sc --: retour
+gd 	-> 	gd ++: motDePasseConforme(motDePasse)
+gd 	--> 	gd --: retour
 alt retour = true
 alt motDePasse = confirmationMotDePasse
-sc -> sc ++: hasher(motDePasse)
-sc --> sc --: hashMDP
-sc -> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
-cu --> sc --: compteU
-sc -> cu ++: sauvegarder(db)
-cu -> gs : sauvegarderCompteUtilisateur(compteU)
-gs --> cu : retour
-cu --> sc --: retour
+gd 	-> gd ++: hasher(motDePasse)
+gd 	--> gd --: hashMDP
+gd 	-> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
+cu 	--> gd --: compteU
+gd 	-> cu : sauvegarder(db)
+cu 	-> gs : sauvegarderCompteUtilisateur(compteU)
+gs 	--> cu : retour
+cu 	--> gd : retour
 alt retour = true
-sc 	-> 	sc : afficherMessageInformation("Le compte a été créé")
-sc 	--> 	user : Le compte a été créé
+gd 	-> 	gd : afficherMessageInformation("Le compte a été créé")
+gd 	--> 	us : Le compte a été créé
+ref over gd : consulter son compte utilisateur
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("Le compte n'a pas été sauvegardé")
-sc 	--> 	user : Le compte n'a pas été sauvegardé
+gd 	-> 	gd : afficherMessageErreur("Le compte n'a pas été sauvegardé")
+gd 	--> 	us : Le compte n'a pas été sauvegardé
 end
 else
-sc 	-> 	sc : afficherMessageErreur("Les mots de passe ne correspondent pas")
-sc 	--> 	user : Les mots de passe ne correspondent pas
+gd 	-> 	gd : afficherMessageErreur("Les mots de passe ne correspondent pas")
+gd 	--> 	us : Les mots de passe ne correspondent pas
 end
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("Le mot de passe n'est pas valide")
-sc 	--> 	user : Le mot de passe n'est pas valide
+gd 	-> 	gd : afficherMessageErreur("Le mot de passe n'est pas valide")
+gd 	--> 	us : Le mot de passe n'est pas valide
 end
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("L'email n'est pas valide")
-sc 	--> 	user : L'email n'est pas valide
+gd 	-> 	gd : afficherMessageErreur("L'email n'est pas valide")
+gd 	--> 	us : L'email n'est pas valide
 end
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("Le nom n'est pas valide")
-sc 	--> 	user : Le nom n'est pas valide
+gd 	-> 	gd : afficherMessageErreur("Le nom n'est pas valide")
+gd 	--> 	us : Le nom n'est pas valide
 end
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("Le prénom n'est pas valide")
-sc 	--> 	user : Le prénom n'est pas valide
+gd 	-> 	gd : afficherMessageErreur("Le prénom n'est pas valide")
+gd 	--> 	us : Le prénom n'est pas valide
 end
 else retour = false
-sc 	-> 	sc : afficherMessageErreur("Le pseudo n'est pas valide")
-sc 	--> 	user : Le pseudo n'est pas valide
+gd 	-> 	gd : afficherMessageErreur("Le pseudo n'est pas valide")
+gd 	--> 	us : Le pseudo n'est pas valide
 end
 else retour = true
-sc 	-> 	sc : afficherMessageErreur("Ce pseudo est déjà utilisé")
-sc 	--> 	user : Ce pseudo est déjà utilisé
+gd 	-> 	gd : afficherMessageErreur("Ce pseudo est déjà utilisé")
+gd 	--> 	us : Ce pseudo est déjà utilisé
 end
 @enduml

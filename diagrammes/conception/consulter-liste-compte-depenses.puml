@@ -1,17 +1,23 @@
 @startuml  Consulter la liste de ses comptes de dépenses communes
 
-actor utilisateur as user
-participant GestionnaireDialogue as gd
-participant BaseDonnees as bd
+actor "Utilisateur" as us
+participant ":GestionnaireDialogue" as gd
+participant "compteU:CompteUtilisateur" as cu
+participant "db:GestionnaireSauvegarde" as gs
 
-user -> gd 	: Consulter la liste de ses comptes de dépenses communes
-gd -> bd 	: GetListeDesComptesDepenses(Utilisateur)
-
-alt Liste vide
-gd -> user  : Vous ne participez à aucun compte de dépenses communes
-else
-gd -> user  : Liste des comptes de dépenses communes auxquels l'utilisateur participe en \naffichant pour chacun Le nom, l'id, la date de creation,\n la date de cloture si elle est cloturée et le\n pseudo du createur du compte
-
+us 	-> 	gd 	: consulterListeCompteDepensesCommunes(compteU)
+gd 	-> 	cu 	: recupererComptesDepensesCommunes(gs)
+cu 	->	gs 	: getListeComptesDepensesCommunes(cu)
+gs 	--> cu 	: listeComptesDepenses
+cu 	-> 	cu 	: setComptesDepensesCommunes(listeComptesDepenses)
+cu 	--> gd 	:
+gd 	-> 	cu 	: getListeComptesDepensesCommunes()
+cu 	--> gd 	: listeComptesDepenses
+alt listeComptesDepenses != vide
+gd 	->	gd 	: afficherListeComptesDepensesCommunes(listeComptesDepenses)
+gd 	-->	us 	: listeComptesDepenses
+else listeComptesDepenses = vide
+gd 	-> 	gd  : afficherMessageInformation("Vous ne participez à aucun compte de dépenses communes")
+gd 	-->	us 	:Vous ne participez à aucun compte de dépenses communes
 end
-
 @enduml

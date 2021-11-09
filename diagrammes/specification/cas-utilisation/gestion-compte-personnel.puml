@@ -12,6 +12,7 @@ package "Gestion de compte personnel" {
 	usecase "Creer un compte utilisateur" as ccp
 	usecase "Modifier ses informations personnelles utilisateur" as mipu
 	usecase "Ajouter/modifier un compte bancaire" as acb
+	usecase "Consulter son compte utilisateur" as ccu
 
 '	appartenance
 	'	Administrateur
@@ -23,6 +24,7 @@ package "Gestion de compte personnel" {
 	user 		--		ccp
 	user 		--		mipu
 	user 		--		acb
+	user 		-- 		ccu
 '	includes
 
 }

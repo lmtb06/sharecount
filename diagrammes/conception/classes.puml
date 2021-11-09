@@ -2,19 +2,24 @@
 
 	class GestionnaireDialogue {
 		+void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
+		+void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
 		+String hasher(String phraseAHasher)
 		+void afficherMessageInformation(String message)
 		+void afficherMessageErreur(String message)
+		+afficherListeComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean pseudoConforme(String pseudo)
 		+boolean prenomConforme(String prenom)
 		+boolean nomConforme(String nom)
 		+boolean emailConforme(String email)
 		+boolean motDePasseConforme(String motDePasse)
 	}
+	GestionnaireDialogue --"1" CompteUtilisateur
+	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	class GestionnaireSauvegarde {
 		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
 		+boolean pseudoExiste(String pseudo)
+		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur cu)
 	}
 
 	class CompteUtilisateur {
@@ -24,8 +29,14 @@
 		String emailUtilisateur
 		String hashMotDePasseUtilisateur
 		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
+		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean sauvegarder(GestionnaireSauvegarde gs)
+		+void recupererComptesDepensesCommunes(GestionnaireSauvegarde gs)
+		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
 	}
+	CompteUtilisateur --"*" CompteDepensesCommunes
+	class CompteDepensesCommunes {
 
+	}
 
 @enduml
