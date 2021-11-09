@@ -1,38 +1,31 @@
 @startuml Classes
 
 	class GestionnaireDialogue {
+		+void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
+		+String hasher(String phraseAHasher)
+		+void afficherMessageInformation(String message)
+		+void afficherMessageErreur(String message)
+		+boolean pseudoConforme(String pseudo)
+		+boolean prenomConforme(String prenom)
+		+boolean nomConforme(String nom)
+		+boolean emailConforme(String email)
+		+boolean motDePasseConforme(String motDePasse)
+	}
 
+	class GestionnaireSauvegarde {
+		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
+		+boolean pseudoExiste(String pseudo)
 	}
 
 	class CompteUtilisateur {
-		String nomUtilisateur
-		String prenomUtilisateur
 		String pseudoUtilisateur
+		String prenomUtilisateur
+		String nomUtilisateur
 		String emailUtilisateur
 		String hashMotDePasseUtilisateur
-	}
-	CompteDepensesCommunes "*"--"*" CompteUtilisateur
-
-	class GestionnaireDialogue {
-		CompteUtilisateur u
-		GetListeDesComptesDepenses(CompteUtilisateur)
-		GetDepenses(CompteUtilisateur, Compte)
-		verifierInfosCreationCompteDepense(nom, description)
-		afficherInterfaceCreationCompteDepensesCommunes()
-		nouveauFormulaire()
-		verifierFormulaire(Formulaire)
-		modifierInfosUtilisateur(CompteUtilisateur,Formulaire)
-		enregistrerNouvelUtilisateur(Formulaire)
+		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
+		+boolean sauvegarder(GestionnaireSauvegarde gs)
 	}
 
-	class CompteDepensesCommunes {
-		String nomCompteDepenses
-		String idCompteDepenses
-		Date dateCreationCompteDepenses
-		Date dateClotureCompteDepenses
-		CompteUtilisateur createurCompteDepenses
-	}
-	CompteDepensesCommunes "*"--"*" CompteUtilisateur
-	GestionnaireDialogue --"*" CompteUtilisateur
 
 @enduml
