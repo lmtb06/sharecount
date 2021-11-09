@@ -17,31 +17,53 @@ user 	-> 	sc : mot de passe
 user 	<- 	sc : Entrez la confirmation du mot de passe
 user 	-> 	sc : confirmation mot de passe
 sc 	-> 	sc : Vérification des informations
-alt Prénom non valide
-user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
+' verification du pseudo
+sc 	-> sc : verification de l'existence du pseudo
+alt le pseudo n'existe pas encore
+sc 	-> 	sc : verification de la conformite du pseudo
+alt le pseudo est conforme
+' verification du prénom
+sc 	-> 	sc : verification de la conformite du prenom
+alt le prenom est conforme
+' verification du nom
+sc 	-> 	sc : verification de la conformite du nom
+alt le nom est conforme
+' verification de l'email
+sc 	-> 	sc : verification de la conformite de l'email
+alt l'email est conforme
+' verification du mot de passe
+sc 	-> 	sc : verification de la conformite du mot de passe
+alt le mot de passe est conforme
+alt le mot de passe et la confirmation du mot de passe correspondent
+sc -> sc : hashage du motDePasse
+sc --> sc : enregistrement du compte de l'utilisateur avec le hash du mot de passe à la place du mot de passe
+alt enregistrement reussi
+sc 	--> 	user : Le compte a été créé
+ref over sc : consulter compte d'utilisateur
 else
-alt Nom non valide
-user 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
+sc 	--> 	user : Le compte n'a pas été sauvegardé
+end
 else
-alt Pseudo déjà utilisé
-user 	<- 	sc : Le pseudo est déjà attribué veuillez en choisir un autre
+sc 	--> 	user : Les mots de passe ne correspondent pas
+end
 else
-alt Email déjà utilisé
-user 	<- 	sc : L'email est déjà attribué veuillez en choisir un autre
+sc 	--> 	user : Le mot de passe n'est pas valide
+end
 else
-alt Le mot de passe n'est pas sécurisé
-user 	<- 	sc : Le mot de passe n'est pas sécurisé, veuillez réessayer
+sc 	--> 	user : L'email n'est pas valide
+end
 else
-alt Les mot de passe ne sont pas les même
-user 	<- 	sc : Le mot de passe et la confirmation ne correspondent pas, veuillez réessayer
+sc 	--> 	user : Le nom n'est pas valide
+end
 else
-sc 	-> 	sc : Enregistrement des informations du compte et du hash du mot de passe
-user 	<- 	sc : Compte créé
+sc 	--> 	user : Le prénom n'est pas valide
 end
+else
+sc 	--> 	user : Le pseudo n'est pas valide
 end
+else
+sc 	--> 	user : Ce pseudo est déjà utilisé
 end
-end
-end
-end
+@enduml
 
 @enduml
