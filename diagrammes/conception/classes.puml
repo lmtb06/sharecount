@@ -2,6 +2,7 @@
 
 	class GestionnaireDialogue {
 		+void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
+		+void creerCompteDepensesCommunes(String nom, String description)
 		+void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
 		+String hasher(String phraseAHasher)
 		+void afficherMessageInformation(String message)
@@ -12,11 +13,13 @@
 		+boolean nomConforme(String nom)
 		+boolean emailConforme(String email)
 		+boolean motDePasseConforme(String motDePasse)
+		+boolean nomCompteConforme(String nom)
 	}
 	GestionnaireDialogue --"1" CompteUtilisateur
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	class GestionnaireSauvegarde {
+		+CompteDepensesCommunes creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, String description)
 		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
 		+boolean pseudoExiste(String pseudo)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur cu)
@@ -31,12 +34,13 @@
 		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
 		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean sauvegarder(GestionnaireSauvegarde gs)
+		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
 		+void recupererComptesDepensesCommunes(GestionnaireSauvegarde gs)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
 	}
 	CompteUtilisateur --"*" CompteDepensesCommunes
 	class CompteDepensesCommunes {
-
+		+CompteDepenseCommunes(String identifiant, CompteUtilisateur compteU, String nom, String description, Date dateCreation)
 	}
 
 @enduml

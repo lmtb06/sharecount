@@ -8,10 +8,14 @@ user 	<- sc 		: Saisir le nom du compte
 user 	-> sc 		: Nom
 user 	<- sc 		: Saisir la description du compte
 user 	-> sc 		: Description
-
+sc -> sc : verification conformite du nom de compte
+alt Nom de compte conforme
 sc 		-> sc 		: Creation et enregistrement du compte avec un id unique \n et la date de creation
 sc 		-> sc 		: Enregistrement de l'utilisateur comme le créateur du compte
-user 	<- sc 		: Le compte a été crée
-user 	<- sc 		: Affichage du compte
+user 	<-- sc 		: Le compte a été crée
+user 	<-- sc 		: Affichage du compte
+else
+sc 	--> 	user : Le nom de compte n'est pas valide
+end
 
 @enduml

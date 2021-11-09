@@ -1,26 +1,30 @@
 @startuml  Creer un compte de dépenses communes
 
-actor Client as client
-participant GestionnaireDialogue as gd
-participant Utilisateur as user
-participant CompteDepensesCommunes as cdc
-participant BaseDonnees as bd
+actor "Utilisateur" as us
+participant ":GestionnaireDialogue" as gd
+participant "compteU:CompteUtilisateur" as cu
+participant "db:GestionnaireSauvegarde" as gs
+participant "cdc:CompteDepensesCommunes" as cdc
 
-client 	-> gd 		: Creer un compte de dépenses communes
-gd 		-> gd 	: afficherInterfaceCreationCompteDepensesCommunes()
-client 	<- gd 		: Saisir le nom du compte
-client 	-> gd 		: Nom
-client 	<- gd 		: Saisir la description du compte
-client 	-> gd 		: Description
-gd 		-> gd 		: verifierInfosCreationCompteDepense(nom, description)
-alt Nom invalide
-client 	<- gd 		: Le nom du compte est invalide
-else
-gd 		-> user 		: compte = creerCompteDepensesCommunes(nom, description)
-user 		-> cdc 		: c = new CompteDepensesCommunes(nom, description, this)
-user 		-> cdc 		: sauvegarder()
-cdc 		-> bd 		: enregistrerCompteDepensesCommunes(this)
-client 	<- gd 		: Le compte a été crée
-gd 	-> gd 		: afficherInterfaceCompteDepensesCommunes(compte)
+us 	-> 	gd : creerCompteDepensesCommunes(nom, description)
+' verification du nom
+gd 	-> 	gd ++: nomCompteConforme(nom)
+gd 	--> 	gd --: retour
+alt retour = true
+gd 	-> 	gs : creerCompteDepensesCommunes(compteU, nom, description)
+gs 	-> 	cdc **: CompteDepenseCommunes(identifiant, compteU, nom, description, dateCreation)
+cdc --> gs : cdc
+gs --> 	gd : cdc
+alt cdc != vide
+gd -> 	cu : addCompteDepenseCommunes(cdc)
+cu 	--> gd :
+ref over gd : consulter son compte utilisateur
+else cdc = vide
+gd 	-> 	gd 	: afficherMessageErreur("Impossible de créer le compte de dépense")
+gd 	--> 	us : Impossible de créer le compte de dépense
+end
+else retour = false
+gd 	-> 	gd : afficherMessageErreur("Le nom de compte n'est pas valide")
+gd 	--> 	us : Le nom de compte n'est pas valide
 end
 @enduml
