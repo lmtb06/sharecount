@@ -1,4 +1,4 @@
-@startuml
+@startuml Compte de Depenses Communes
 
 actor "Utilisateur" as user
 

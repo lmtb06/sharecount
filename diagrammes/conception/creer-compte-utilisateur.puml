@@ -1,44 +1,75 @@
 @startuml
-actor "Client" as user
-participant GestionnaireDialogue as sc
-participant Utilisateur as u
-participant BaseDeDonnées as bdd
+actor "Utilisateur" as user
+participant ":GestionnaireDialogue" as sc
+participant "compteU:CompteUtilisateur" as cu
+participant "db:GestionnaireSauvegarde" as gs
 
-user 	-> 	sc : Creer un compte utilisateur
-sc 	-> 	sc : afficherInterfaceCreationComptePersonnel()
-user 	-> 	sc : prénom
-user 	-> 	sc : nom
-user 	-> 	sc : email
-user 	-> 	sc : pseudo
-user 	-> 	sc : mot de passe
-user 	-> 	sc : confirmation mot de passe
-sc 	-> 	sc : verifierInformationsUtilisateur(prenom,nom,mdp,mdpconfirm,pseudo,email)
-sc 	-> 	sc : hash = hashMdp(mdp)
-alt Prénom non valide
-user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
-else
-alt Nom non valide
-user 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
-else
-alt Pseudo déjà utilisé
-user 	<- 	sc : Le pseudo est déjà attribué veuillez en choisir un autre
-else
-alt Email déjà utilisé
-user 	<- 	sc : L'email est déjà attribué veuillez en choisir un autre
-else
-alt Le mot de passe n'est pas sécurisé
-user 	<- 	sc : Le mot de passe n'est pas sécurisé, veuillez réessayer
-else
-alt Les mot de passe ne sont pas les même
-user 	<- 	sc : Le mot de passe et la confirmation ne correspondent pas, veuillez réessayer
-else
-sc 	-> 	u : u = Utilisateur(prenom,nom,hash,pseudo,email)
-sc 	-> 	bdd : enregistrerNouvelUtilisateur(prenom,nom,hash,pseudo,email)
-user 	<- 	sc : Compte créé
+user 	-> 	sc : creerCompteUtilisateur(pseudo, prenom, nom, email, motDePasse, confirmationMotDePasse)
+' verification du pseudo
+sc 	-> gs ++: pseudoExiste(pseudo)
+gs --> sc --: retour
+alt retour = false
+sc 	-> 	sc ++: pseudoConforme(pseudo)
+sc 	--> 	sc --: retour
+alt retour = true
+' verification du prénom
+sc 	-> 	sc ++: prenomConforme(prenom)
+sc 	--> 	sc --: retour
+alt retour = true
+' verification du nom
+sc 	-> 	sc ++: nomConforme(nom)
+sc 	--> 	sc --: retour
+alt retour = true
+' verification de l'email
+sc 	-> 	sc ++: emailConforme(email)
+sc 	--> 	sc --: retour
+alt retour = true
+' verification du mot de passe
+sc 	-> 	sc ++: motDePasseConforme(motDePasse)
+sc 	--> 	sc --: retour
+alt retour = true
+alt motDePasse = confirmationMotDePasse
+sc -> sc ++: hasher(motDePasse)
+sc --> sc --: hashMDP
+sc -> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
+cu --> sc --: compteU
+sc -> cu ++: sauvegarder(db)
+cu -> gs : sauvegarderCompteUtilisateur(compteU)
+gs --> cu : retour
+cu --> sc --: retour
+alt retour = true
+sc 	-> 	sc : afficherMessageInformation("Le compte a été créé")
+sc 	--> 	user : Le compte a été créé
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("Le compte n'a pas été sauvegardé")
+sc 	--> 	user : Le compte n'a pas été sauvegardé
 end
+else
+sc 	-> 	sc : afficherMessageErreur("Les mots de passe ne correspondent pas")
+sc 	--> 	user : Les mots de passe ne correspondent pas
 end
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("Le mot de passe n'est pas valide")
+sc 	--> 	user : Le mot de passe n'est pas valide
 end
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("L'email n'est pas valide")
+sc 	--> 	user : L'email n'est pas valide
 end
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("Le nom n'est pas valide")
+sc 	--> 	user : Le nom n'est pas valide
 end
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("Le prénom n'est pas valide")
+sc 	--> 	user : Le prénom n'est pas valide
+end
+else retour = false
+sc 	-> 	sc : afficherMessageErreur("Le pseudo n'est pas valide")
+sc 	--> 	user : Le pseudo n'est pas valide
+end
+else retour = true
+sc 	-> 	sc : afficherMessageErreur("Ce pseudo est déjà utilisé")
+sc 	--> 	user : Ce pseudo est déjà utilisé
 end
 @enduml

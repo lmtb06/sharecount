@@ -1,4 +1,4 @@
-@startuml
+@startuml Consulter la liste de ses cagnottes
 
 actor "Utilisateur" as user
 

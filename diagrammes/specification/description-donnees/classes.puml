@@ -1,14 +1,14 @@
 @startuml Classes
 
-	class Utilisateur {
+	class User {
 		String nomUtilisateur
 		String prenomUtilisateur
 		String pseudoUtilisateur
 		String emailUtilisateur
 		String hashMotDePasseUtilisateur
 	}
-	Utilisateur --"1" CompteBancaire
-	class Administrateur {
+	User --"1" CompteBancaire
+	class Admin {
 		String nomAdmin
 		String prenomAdmin
 		String pseudoAdmin
@@ -21,10 +21,10 @@
 		Date dateClotureCagnotte
 		String idCagnotte
 		float montantCagnotte
-		Utilisateur createurCagnotte
+		User createurCagnotte
 	}
 
-	Cagnotte "*"--"*" Utilisateur
+	Cagnotte "*"--"*" User
 	Cagnotte --"*" Transaction
 
 	class CompteDepensesCommunes {
@@ -32,9 +32,9 @@
 		String idCompteDepenses
 		Date dateCreationCompteDepenses
 		Date dateClotureCompteDepenses
-		Utilisateur createurCompteDepenses
+		User createurCompteDepenses
 	}
-	CompteDepensesCommunes "*"--"*" Utilisateur
+	CompteDepensesCommunes "*"--"*" User
 	CompteDepensesCommunes --"*" Depense
 	CompteDepensesCommunes --"*" Dette
 
@@ -42,19 +42,19 @@
 		String motifDepense
 		float sommeDepense
 		Date dateDeCreationDepense
-		Utilisateur createurDepense
+		User createurDepense
 	}
 	Depense --"*" PartDepense
 
 	class PartDepense {
 		float pourcentageDepense
 	}
-	PartDepense --"1" Utilisateur
+	PartDepense --"1" User
 
 	class Dette {
 		float sommeDu
 	}
-	Dette --"2" Utilisateur
+	Dette --"2" User
 
 	class Transaction {
 		String idTransaction
@@ -65,7 +65,7 @@
 		String typeTransaction
 	}
 
-	Transaction --"1" Utilisateur
+	Transaction --"1" User
 
 	class CompteBancaire {
 
@@ -79,13 +79,13 @@
 
 	}
 
-	Utilisateur --"*" NotificationAValider
-	Utilisateur --"*" NotificationSimple
+	User --"*" NotificationAValider
+	User --"*" NotificationSimple
 
 	class DemandeRetraitArgent {
 		int nb_votes
 		int nb_votes_positifs
-		Utilisateur beneficiaireDemande
+		User beneficiaireDemande
 		double montantRetrait
 		String motif
 	}

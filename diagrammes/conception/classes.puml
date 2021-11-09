@@ -1,24 +1,27 @@
 @startuml Classes
 
 	class GestionnaireDialogue {
-		GetListeDesComptesDepenses(Utilisateur)
-		GetDepenses(Utilisateur, Compte)
+
 	}
 
-	class Utilisateur {
+	class CompteUtilisateur {
 		String nomUtilisateur
 		String prenomUtilisateur
 		String pseudoUtilisateur
 		String emailUtilisateur
 		String hashMotDePasseUtilisateur
 	}
+	CompteDepensesCommunes "*"--"*" CompteUtilisateur
 
 	class GestionnaireDialogue {
-		Utilisateur u
+		CompteUtilisateur u
+		GetListeDesComptesDepenses(CompteUtilisateur)
+		GetDepenses(CompteUtilisateur, Compte)
+		verifierInfosCreationCompteDepense(nom, description)
+		afficherInterfaceCreationCompteDepensesCommunes()
 		nouveauFormulaire()
-		getUtilisateur(Utilisateur)
 		verifierFormulaire(Formulaire)
-		modifierInfosUtilisateur(Utilisateur,Formulaire)
+		modifierInfosUtilisateur(CompteUtilisateur,Formulaire)
 		enregistrerNouvelUtilisateur(Formulaire)
 	}
 
@@ -27,9 +30,9 @@
 		String idCompteDepenses
 		Date dateCreationCompteDepenses
 		Date dateClotureCompteDepenses
-		Utilisateur createurCompteDepenses
+		CompteUtilisateur createurCompteDepenses
 	}
-	CompteDepensesCommunes "*"--"*" Utilisateur
-	GestionnaireDialogue --"*" Utilisateur
-	
+	CompteDepensesCommunes "*"--"*" CompteUtilisateur
+	GestionnaireDialogue --"*" CompteUtilisateur
+
 @enduml

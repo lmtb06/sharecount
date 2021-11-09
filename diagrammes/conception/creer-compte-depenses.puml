@@ -1,17 +1,26 @@
 @startuml  Creer un compte de dépenses communes
 
-actor utilisateur as user
-participant ShareCount as sc
+actor Client as client
+participant GestionnaireDialogue as gd
+participant Utilisateur as user
+participant CompteDepensesCommunes as cdc
+participant BaseDonnees as bd
 
-user 	-> sc 		: Creer un compte de dépenses communes
-user 	<- sc 		: Saisir le nom du compte
-user 	-> sc 		: Nom
-user 	<- sc 		: Saisir la description du compte
-user 	-> sc 		: Description
-
-sc 		-> sc 		: Creation et enregistrement du compte avec un id unique \n et la date de creation
-sc 		-> sc 		: Enregistrement de l'utilisateur comme le créateur du compte
-user 	<- sc 		: Le compte a été crée
-user 	<- sc 		: Affichage du compte
-
+client 	-> gd 		: Creer un compte de dépenses communes
+gd 		-> gd 	: afficherInterfaceCreationCompteDepensesCommunes()
+client 	<- gd 		: Saisir le nom du compte
+client 	-> gd 		: Nom
+client 	<- gd 		: Saisir la description du compte
+client 	-> gd 		: Description
+gd 		-> gd 		: verifierInfosCreationCompteDepense(nom, description)
+alt Nom invalide
+client 	<- gd 		: Le nom du compte est invalide
+else
+gd 		-> user 		: compte = creerCompteDepensesCommunes(nom, description)
+user 		-> cdc 		: c = new CompteDepensesCommunes(nom, description, this)
+user 		-> cdc 		: sauvegarder()
+cdc 		-> bd 		: enregistrerCompteDepensesCommunes(this)
+client 	<- gd 		: Le compte a été crée
+gd 	-> gd 		: afficherInterfaceCompteDepensesCommunes(compte)
+end
 @enduml
