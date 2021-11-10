@@ -1,4 +1,4 @@
-@startuml
+@startuml Modifier infos personnelles
 actor "Client" as user
 participant GestionnaireDialogue as sc
 participant Utilisateur as u

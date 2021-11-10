@@ -1,4 +1,4 @@
-@startuml
+@startuml Creer un compte utilisateur
 actor "Utilisateur" as us
 participant ":GestionnaireDialogue" as gd
 participant "compteU:CompteUtilisateur" as cu
@@ -40,7 +40,7 @@ cu 	--> gd : retour
 alt retour = true
 gd 	-> 	gd : afficherMessageInformation("Le compte a été créé")
 gd 	--> 	us : Le compte a été créé
-ref over gd : consulter son compte utilisateur
+gd -> gd : afficherPageAccueil(compte)
 else retour = false
 gd 	-> 	gd : afficherMessageErreur("Le compte n'a pas été sauvegardé")
 gd 	--> 	us : Le compte n'a pas été sauvegardé

@@ -7,13 +7,17 @@
 		+String hasher(String phraseAHasher)
 		+void afficherMessageInformation(String message)
 		+void afficherMessageErreur(String message)
-		+afficherListeComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
+		+void afficherListeComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean pseudoConforme(String pseudo)
 		+boolean prenomConforme(String prenom)
 		+boolean nomConforme(String nom)
 		+boolean emailConforme(String email)
 		+boolean motDePasseConforme(String motDePasse)
 		+boolean nomCompteConforme(String nom)
+		+boolean verifiePseudo(String pseudo, String hash)
+		+void seConnecter(String pseudo, String motDePasse)
+		+CompteUtilisateur recuperationInformations(String pseudo)
+		+void afficherPageAccueil(CompteUtilisateur utilisateur)
 	}
 	GestionnaireDialogue --"1" CompteUtilisateur
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
