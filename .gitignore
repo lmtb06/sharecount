@@ -1,0 +1,10 @@
+*
+!**.cpp
+!**.hpp
+!Makefile
+!**.md
+!**.txt
+!**.puml
+!**.pdf
+!.gitignore
+!/**
