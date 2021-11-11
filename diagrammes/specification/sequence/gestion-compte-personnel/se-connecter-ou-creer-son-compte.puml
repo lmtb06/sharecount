@@ -1,0 +1,37 @@
+@startuml Se connecter ou créer son compte
+
+actor utilisateur as user
+participant ShareCount as sc
+
+alt Création de compte
+
+user -> sc : Creer un compte
+ref over sc : Creer un compte utilisateur
+else Connexion
+
+user -> sc : Se connecter
+sc --> user 	: Entrez le pseudo
+user -> sc 	: pseudo
+sc --> user 	: Entrez le mot de passe
+user -> sc 	: mot de passe
+sc -> sc : Vérification des informations
+
+alt Informations incorrectes
+sc --> user : Pseudo ou mot de passe incorrect, veuillez les ré entrer
+else
+
+sc -> sc : Récupération des informations du comtpe
+
+alt Identifiant correspond à un utilisateur
+sc --> user : Afficher la page d'accueil pour utilisateur
+else Identifiant correspond à un administrateur
+
+sc --> user : Afficher la page d'accueil pour administrateur 
+
+end
+
+end
+
+end
+
+@enduml

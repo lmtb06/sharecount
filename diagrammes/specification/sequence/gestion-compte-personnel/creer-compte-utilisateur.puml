@@ -1,4 +1,4 @@
-@startuml  Créer compte personnel
+@startuml  Creer un compte utilisateur
 
 actor "Utilisateur" as user
 participant ShareCount as sc
