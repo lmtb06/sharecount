@@ -22,13 +22,16 @@
 	GestionnaireDialogue --"1" CompteUtilisateur
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
-	class GestionnaireSauvegarde {
+	interface GestionnaireSauvegarde {
 		+CompteDepensesCommunes creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, String description)
 		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
 		+boolean pseudoExiste(String pseudo)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur cu)
 	}
 
+	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
+
+	}
 	class CompteUtilisateur {
 		String pseudoUtilisateur
 		String prenomUtilisateur

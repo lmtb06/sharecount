@@ -10,11 +10,15 @@ BINS := main
 .PRECIOUS: %.o
 
 %.o: %.cpp
-	$(CCPP) $(CFLAGS) -o $*.o -c $*.cpp
+	@$(CCPP) $(CFLAGS) -o $*.o -c $*.cpp
 
-main:  main.o
-	$(CCPP) $(CFLAGS) -o $@ $^
-	./$@
+main:  $(OBJ)
+	@$(CCPP) $(CFLAGS) -o $@ $^
+	@echo "Compilation finie"
+	@echo "Début du programme"
+	@./$@
 
 clean:
-	rm -f $(OBJ) $(BINS)
+	@rm -f $(OBJ) $(BINS)
+	@echo "Suppression des fichiers objets :" $(OBJ)
+	@echo "Suppression des executables :" $(BINS)
