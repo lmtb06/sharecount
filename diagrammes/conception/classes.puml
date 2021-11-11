@@ -37,6 +37,16 @@
 		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
 		+void recupererComptesDepensesCommunes(GestionnaireSauvegarde gs)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
+		+String getPseudoUtilisateur()
+		+String getPrenomUtilisateur()
+		+String getNomUtilisateur()
+		+String getEmailUtilisateur()
+		+String getHashMotDePasseUtilisateur()
+		+String setPseudoUtilisateur(String pseudo)
+		+String setPrenomUtilisateur(String prenom)
+		+String setNomUtilisateur(String nom)
+		+String setEmailUtilisateur(String email)
+		+String setHashMotDePasseUtilisateur(String motDePasse)
 	}
 	CompteUtilisateur --"*" CompteDepensesCommunes
 	class CompteDepensesCommunes {
