@@ -1,34 +1,43 @@
 @startuml Modifier infos personnelles
 actor "Client" as user
-participant GestionnaireDialogue as sc
+participant GestionnaireDialogue as gd
 participant Utilisateur as u
 participant BaseDeDonnées as bdd
 
-user -> sc : Modifier ses informations personnelles utilisateur
-sc 	-> 	sc : afficherInterfaceModificationInfosPersonnelles()
-user 	-> 	sc : prénom
-user 	-> 	sc : nom
-user 	-> 	sc : mot de passe
-user 	-> 	sc : nouveau mot de passe
-user 	-> 	sc : confirmation nouveau mot de passe
-sc 	-> 	sc : verifierInformationsUtilisateur(prenom,nom,mdp,pseudo,email)
-alt Prénom non valide
-user 	<- 	sc : Le prénom n'est pas valide, veuillez fournir un prénom valide
+user -> gd : Modifier ses informations personnelles utilisateur
+gd 	-> 	gd : afficherInterfaceModificationInfosPersonnelles()
+user 	-> 	gd : prénom
+user 	-> 	gd : nom
+user 	-> 	gd : mot de passe
+user 	-> 	gd : nouveau mot de passe
+user 	-> 	gd : confirmation nouveau mot de passe
+gd 	-> 	gd ++: verifierInformationsUtilisateur(prenom,nom,mdp,pseudo,email)
+gd 	--> 	gd --: retour
+alt retour = prenom invalide
+user 	<-- 	gd : afficherMessageInformation("Le prénom n'est pas valide, veuillez fournir un prénom valide")
 else
-alt Nom non valide
-user 	<- 	sc : Le nom n'est pas valide, veuillez fournir un nom valide
+alt retour = nom invalide
+user 	<-- 	gd : afficherMessageInformation("Le nom n'est pas valide, veuillez fournir un nom valide")
 else
-sc 	->	sc : checkMdp()
-alt Les hash ne correspondent pas
-user 	<- 	sc : Ceci n'est pas votre mot de passe veuillez réessayer
-else
-sc 	-> 	sc : checkNouveauMdp
-alt Les mot de passe ne sont pas les même
-user 	<- 	sc : Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer
-else
-sc 	-> 	u : modifierInfosUtilisateur(u)
-sc 	-> 	bdd : modifierInfosUtilisateur(u)
-user 	<- 	sc : Vos informations ont bien été sauvegardées
+gd 	-> gd ++: hasher(motDePasse)
+gd 	--> gd --: hashMDP
+gd -> bdd : combinaisonExiste(pseudo,hashMDP)
+bdd --> gd : retour
+alt retour = false
+user 	<-- 	gd : afficherMessageInformation("Ceci n'est pas votre mot de passe veuillez réessayer")
+else retour = true
+gd 	-> gd ++: hasher(motDePasse)
+gd 	--> gd --: hashMDP1
+gd 	-> gd ++: hasher(confirmationMotDePasse)
+gd 	--> gd --: hashMDP2
+gd 	-> 	gd ++: checkNouveauMdp(hashMDP1,hashMDP2)
+gd --> gd --: retour 
+alt retour = false
+user 	<-- 	gd : afficherMessageInformation("Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer")
+else retour = true
+gd 	-> 	u : modifierInfosUtilisateur(u)
+gd 	-> 	bdd : modifierInfosUtilisateur(u)
+user 	<-- 	gd : afficherMessageInformation("Vos informations ont bien été sauvegardées")
 end
 end
 end
