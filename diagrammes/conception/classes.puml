@@ -14,9 +14,7 @@
 		+boolean emailConforme(String email)
 		+boolean motDePasseConforme(String motDePasse)
 		+boolean nomCompteConforme(String nom)
-		+boolean verifiePseudo(String pseudo, String hash)
 		+void seConnecter(String pseudo, String motDePasse)
-		+CompteUtilisateur recuperationInformations(String pseudo)
 		+void afficherPageAccueil(CompteUtilisateur utilisateur)
 	}
 	GestionnaireDialogue --"1" CompteUtilisateur
@@ -26,6 +24,8 @@
 		+CompteDepensesCommunes creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, String description)
 		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
 		+boolean pseudoExiste(String pseudo)
+		+boolean combinaisonExiste(String pseudo, String hash)
+		+CompteUtilisateur recuperationInformations(String pseudo)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur cu)
 	}
 
