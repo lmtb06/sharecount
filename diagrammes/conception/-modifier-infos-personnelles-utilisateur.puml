@@ -2,7 +2,7 @@
 actor "Client" as user
 participant GestionnaireDialogue as gd
 participant Utilisateur as u
-participant BaseDeDonnées as bdd
+participant GestionnaireSauvegarde as gs
 
 user -> gd : Modifier ses informations personnelles utilisateur
 gd 	-> 	gd : afficherInterfaceModificationInfosPersonnelles()
@@ -11,8 +11,10 @@ user 	-> 	gd : nom
 user 	-> 	gd : mot de passe
 user 	-> 	gd : nouveau mot de passe
 user 	-> 	gd : confirmation nouveau mot de passe
-gd 	-> 	gd ++: verifierInformationsUtilisateur(prenom,nom,mdp,pseudo,email)
-gd 	--> 	gd --: retour
+gd 	-> gd ++: hasher(motDePasse)
+gd 	--> gd --: hashMDP
+gd 	-> 	gs : verifierInformationsUtilisateur(prenom,nom,hashMDP)
+gs 	--> 	gd : retour
 alt retour = prenom invalide
 user 	<-- 	gd : afficherMessageInformation("Le prénom n'est pas valide, veuillez fournir un prénom valide")
 else
@@ -21,8 +23,8 @@ user 	<-- 	gd : afficherMessageInformation("Le nom n'est pas valide, veuillez fo
 else
 gd 	-> gd ++: hasher(motDePasse)
 gd 	--> gd --: hashMDP
-gd -> bdd : combinaisonExiste(pseudo,hashMDP)
-bdd --> gd : retour
+gd -> gs : combinaisonExiste(pseudo,hashMDP)
+gs --> gd : retour
 alt retour = false
 user 	<-- 	gd : afficherMessageInformation("Ceci n'est pas votre mot de passe veuillez réessayer")
 else retour = true
@@ -36,7 +38,7 @@ alt retour = false
 user 	<-- 	gd : afficherMessageInformation("Le nouveau mot de passe et la confirmation ne correspondent pas, veuillez réessayer")
 else retour = true
 gd 	-> 	u : modifierInfosUtilisateur(u)
-gd 	-> 	bdd : modifierInfosUtilisateur(u)
+gd 	-> 	gs : modifierInfosUtilisateur(u)
 user 	<-- 	gd : afficherMessageInformation("Vos informations ont bien été sauvegardées")
 end
 end

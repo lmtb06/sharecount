@@ -16,6 +16,8 @@
 		+boolean nomCompteConforme(String nom)
 		+void seConnecter(String pseudo, String motDePasse)
 		+void afficherPageAccueil(CompteUtilisateur utilisateur)
+		+void afficherInterfaceModificationInfosPersonnelles()
+		+boolean checkNouveauMdp(String hashMDP1,String hashMDP2)
 	}
 	GestionnaireDialogue --"1" CompteUtilisateur
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
@@ -27,6 +29,8 @@
 		+boolean combinaisonExiste(String pseudo, String hash)
 		+CompteUtilisateur recuperationInformations(String pseudo)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur cu)
+		+String verifierInformationsUtilisateur(String prenom,String nom, String hashMDP)
+		+void modifierInfosUtilisateur(CompteUtilisateur u)
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
@@ -44,6 +48,7 @@
 		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
 		+void recupererComptesDepensesCommunes(GestionnaireSauvegarde gs)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
+		+void modifierInfosUtilisateur(CompteUtilisateur u)
 		+String getPseudoUtilisateur()
 		+String getPrenomUtilisateur()
 		+String getNomUtilisateur()
