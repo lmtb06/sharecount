@@ -1,0 +1,30 @@
+@startuml  Consulter un compte de dépenses
+
+'actor utilisateur as user
+'participant GestionnaireDialogue as gd
+'participant BaseDonnees as bd
+
+'user 	-> gd 	: Compte de dépenses communes
+'gd 		-> bd 	: GetDepenses(idCompteDepenses)
+'user 	<- gd 	: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
+
+actor "Utilisateur" as us
+participant ":GestionnaireDialogue" as gd
+participant "compteU:CompteUtilisateur" as cu
+participant "db:GestionnaireSauvegarde" as gs
+
+us 	-> 	gd 	: consulterCompteDepensesCommunes(CompteU, CompteDC)
+gd 	-> 	cu 	: recupererCompteDepensesCommunes(gs)
+cu 	->	gs 	: getCompteDepensesCommunes(cu)
+gs 	--> cu 	: CompteDepenses
+cu 	--> gd 	:
+gd 	-> 	cu 	: getCompteDepensesCommunes()
+cu 	--> gd 	: CompteDepenses
+alt ComptesDepenses != vide
+gd 	->	gd 	: afficherCompteDepensesCommunes(listeComptesDepenses)
+gd 	-->	us 	: CompteDepenses
+else ComptesDepenses = vide
+gd 	-> 	gd  : afficherMessageInformation("Vous ne participez à ce compte de dépenses communes")
+gd 	-->	us 	: Vous ne participez à ce compte de dépenses communes
+end
+@enduml
