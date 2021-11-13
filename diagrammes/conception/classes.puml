@@ -49,12 +49,7 @@
 		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean sauvegarder(GestionnaireSauvegarde gs)
 		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
-<<<<<<< HEAD
 		+void recupererCompteDepensesCommunes(GestionnaireSauvegarde gs)
-=======
-		+void getComptesDepensesCommunes(GestionnaireSauvegarde gs)
-		+void getCompteDepensesCommunes(GestionnaireSauvegarde gs)
->>>>>>> 8c151272bae4096d0aa45a12f81e71420c0012b0
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
 		+String getPseudo()
 		+String getPrenom()
