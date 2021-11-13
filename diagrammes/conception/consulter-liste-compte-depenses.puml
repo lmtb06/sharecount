@@ -6,7 +6,7 @@ participant "compteU:CompteUtilisateur" as cu
 participant "db:GestionnaireSauvegarde" as gs
 
 us 	-> 	gd 	: consulterListeCompteDepensesCommunes(compteU)
-gd 	-> 	cu 	: recupererComptesDepensesCommunes(gs)
+gd 	-> 	cu 	: getComptesDepensesCommunes(gs)
 cu 	->	gs 	: getListeComptesDepensesCommunes(cu)
 gs 	--> cu 	: listeComptesDepenses
 cu 	-> 	cu 	: setComptesDepensesCommunes(listeComptesDepenses)
