@@ -20,7 +20,7 @@ alt retour = false
 gd --> us : afficherMessageInformation("Pseudo ou mot de passe incorrect, veuillez les ré entrer")
 else retour = true
 
-gd -> gs : recuperationInformations(pseudo)
+gd -> gs : getInformations(pseudo)
 gs --> gd : compteUtilisateur
 
 alt Identifiant correspond à un utilisateur
