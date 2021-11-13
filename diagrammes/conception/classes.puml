@@ -57,7 +57,6 @@
 		String nom
 		String email
 		String hashMotDePasse
-<<<<<<< HEAD
 		bool sauvegarder()
 		String getPseudo()
 		String getPrenom()
@@ -69,24 +68,6 @@
 		void setNom(String nom)
 		void setEmail(String email)
 		void setHashMotDePasse(String hashMDP)
-=======
-		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
-		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
-		+boolean sauvegarder(GestionnaireSauvegarde gs)
-		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
-		+void recupererCompteDepensesCommunes(GestionnaireSauvegarde gs)
-		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
-		+String getPseudo()
-		+String getPrenom()
-		+String getNom()
-		+String getEmail()
-		+String getHashMotDePasse()
-		+void setPseudo(String pseudo)
-		+void setPrenom(String prenom)
-		+void setNom(String nom)
-		+void setEmail(String email)
-		+void setHashMotDePasse(String HashMDP)
->>>>>>> f185b55f985d42616e76e0126118b24873cd80f3
 	}
 	ComptePersonnel --"1" GestionnaireSauvegarde
 
