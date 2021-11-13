@@ -6,5 +6,10 @@ CompteUtilisateur::CompteUtilisateur(std::string pseudo, std::string prenom, std
 }
 CompteUtilisateur::~CompteUtilisateur()
 {
-	
+
+}
+
+bool CompteUtilisateur::sauvegarder() const
+{
+	return ComptePersonnel::sauvegarder();
 }

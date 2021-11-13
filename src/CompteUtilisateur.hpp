@@ -28,5 +28,6 @@ public:
 	 */
 	~CompteUtilisateur();
 
+	bool sauvegarder() const;
 };
 #endif

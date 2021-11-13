@@ -118,5 +118,12 @@ public:
 	 * @param hashMDP le nouvel hash du mot de passe (dans une chaîne de caractère c++)
 	 */
 	virtual void setHashMotDePasse(std::string hashMDP);
+	/**
+	 * @brief Sauvegarde les données du compte grâce au gestionnaire de compte
+	 *
+	 * @return true la sauvegarde a réussi
+	 * @return false la sauvegarde a échoué
+	 */
+	virtual bool sauvegarder() const;
 };
 #endif

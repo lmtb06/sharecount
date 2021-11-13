@@ -4,7 +4,7 @@
 /**
  * @brief Test de la classe CompteUtilisateur
  *
- * @version 0.2
+ * @version 0.1
  *
  * @author Elhadji Moussa FAYE
  */

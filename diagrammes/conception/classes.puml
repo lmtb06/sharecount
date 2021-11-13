@@ -8,13 +8,10 @@
 		void afficherMessageErreur(String message)
 		void afficherListeComptesDepensesCommunes(List<CompteDepensesCommunes> listeComptesDepenses)
 		void afficherPageAccueil(CompteUtilisateur compte)
-
 		void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
 		void creerCompteDepensesCommunes(String nom, String description)
-
 		void seConnecter(String pseudo, String motDePasse)
 		String hasher(String motDePasse)
-
 		bool pseudoConforme(String pseudo)
 		bool prenomConforme(String prenom)
 		bool nomConforme(String nom)
@@ -26,13 +23,13 @@
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	interface GestionnaireSauvegarde {
-		creerCompteDepensesCommunes(compteU, nom, description)
-		getDepenses(CompteDepensesCommunes)
-		getComptesDepensesCommunes(CompteUtilisateur)
-		getCompte(pseudo)
-		bool sauvegarderCompteUtilisateur(CompteUtilisateur)
-		bool compteExiste(pseudo,hashMDP)
-		bool pseudoExiste(pseudo)
+		creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, string description)
+		getDepenses(CompteDepensesCommunes compteDC)
+		getComptesDepensesCommunes(CompteUtilisateur compteU)
+		getCompte(String pseudo)
+		bool sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
+		bool compteExiste(String pseudo, String hashMDP)
+		bool pseudoExiste(String pseudo)
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
@@ -40,15 +37,12 @@
 	}
 
 	class CompteUtilisateur implements ComptePersonnel {
-		bool recupererInfosCompteDepensesCommunes(compteDC)
+		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		bool recupererComptesDepensesCommunes()
-
-		void addCompteDepensesCommunes(cdc)
-		void setComptesDepensesCommunes(listeComptesDepenses)
-
+		void addCompteDepensesCommunes(CompteDepensesCommunes compteDC)
+		void setComptesDepensesCommunes(List<CompteDepensesCommunes>listeComptesDepenses)
 		List<CompteDepensesCommunes>  getComptesDepensesCommunes()
 		bool sauvegarder()
-
 	}
 	CompteUtilisateur --"*" CompteDepensesCommunes
 
@@ -63,7 +57,6 @@
 		String nom
 		String email
 		String hashMotDePasse
-
 		bool sauvegarder()
 		String getPseudo()
 		String getPrenom()
@@ -76,15 +69,13 @@
 		void setEmail(String email)
 		void setHashMotDePasse(String hashMDP)
 	}
+	ComptePersonnel --"1" GestionnaireSauvegarde
 
 	class CompteDepensesCommunes {
 		+CompteDepensesCommunes(String identifiant, CompteUtilisateur compteU, String nom, String description, Date dateCreation)
-
-		void setDepenses(listeDepenses)
-
 		bool recupererDepenses()
-
 		List<Depenses> getDepenses()
+		void setDepenses(listeDepenses)
 	}
 
 	class Depense {

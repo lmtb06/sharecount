@@ -58,3 +58,8 @@ void ComptePersonnel::setHashMotDePasse(std::string hashMDP)
 {
 	this->hashMotDePasse = hashMDP;
 }
+
+bool ComptePersonnel::sauvegarder() const
+{
+	return false;
+}
