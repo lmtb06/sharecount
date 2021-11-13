@@ -40,29 +40,27 @@
 
 	}
 	class CompteUtilisateur {
-		String pseudoUtilisateur
-		String prenomUtilisateur
-		String nomUtilisateur
-		String emailUtilisateur
-		String hashMotDePasseUtilisateur
+		String pseudo
+		String prenom
+		String nom
+		String email
+		String hashMotDePasse
 		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
 		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
 		+boolean sauvegarder(GestionnaireSauvegarde gs)
 		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
-		+void recupererComptesDepensesCommunes(GestionnaireSauvegarde gs)
 		+void recupererCompteDepensesCommunes(GestionnaireSauvegarde gs)
 		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
-		+void modifierInfosUtilisateur(CompteUtilisateur u)
-		+String getPseudoUtilisateur()
-		+String getPrenomUtilisateur()
-		+String getNomUtilisateur()
-		+String getEmailUtilisateur()
-		+String getHashMotDePasseUtilisateur()
-		+String setPseudoUtilisateur(String pseudo)
-		+String setPrenomUtilisateur(String prenom)
-		+String setNomUtilisateur(String nom)
-		+String setEmailUtilisateur(String email)
-		+String setHashMotDePasseUtilisateur(String motDePasse)
+		+String getPseudo()
+		+String getPrenom()
+		+String getNom()
+		+String getEmail()
+		+String getHashMotDePasse()
+		+void setPseudo(String pseudo)
+		+void setPrenom(String prenom)
+		+void setNom(String nom)
+		+void setEmail(String email)
+		+void setHashMotDePasse(String HashMDP)
 	}
 	CompteUtilisateur --"*" CompteDepensesCommunes
 	class CompteDepensesCommunes {
