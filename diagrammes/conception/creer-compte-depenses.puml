@@ -12,11 +12,11 @@ gd 	-> 	gd ++: nomCompteConforme(nom)
 gd 	--> 	gd --: retour
 alt retour = true
 gd 	-> 	gs : creerCompteDepensesCommunes(compteU, nom, description)
-gs 	-> 	cdc **: CompteDepenseCommunes(identifiant, compteU, nom, description, dateCreation)
+gs 	-> 	cdc **: CompteDepensesCommunes(identifiant, compteU, nom, description, dateCreation)
 cdc --> gs : cdc
 gs --> 	gd : cdc
 alt cdc != vide
-gd -> 	cu : addCompteDepenseCommunes(cdc)
+gd -> 	cu : addCompteDepensesCommunes(cdc)
 cu 	--> gd :
 ref over gd : consulter son compte utilisateur
 else cdc = vide

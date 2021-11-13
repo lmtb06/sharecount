@@ -1,28 +1,25 @@
 @startuml  Consulter un compte de dépenses
 
-'actor utilisateur as user
-'participant GestionnaireDialogue as gd
-'participant BaseDonnees as bd
-
-'user 	-> gd 	: Compte de dépenses communes
-'gd 		-> bd 	: GetDepenses(idCompteDepenses)
-'user 	<- gd 	: Liste des dépenses du compte affichant le motif,\n la date de la dépense, la somme, les participants concernés ainsi que leur part dans la dépense
-
 actor "Utilisateur" as us
 participant ":GestionnaireDialogue" as gd
 participant "compteU:CompteUtilisateur" as cu
+participant "compteDC:CompteDepensesCommunes" as cd
 participant "db:GestionnaireSauvegarde" as gs
 
-us 	-> 	gd 	: consulterCompteDepensesCommunes(CompteU, CompteDC)
-gd 	-> 	cu 	: getCompteDepensesCommunes(gs)
-cu 	->	gs 	: getCompteDepensesCommunes(cu)
-gs 	--> cu 	: CompteDepenses
-cu 	--> gd 	:
-gd 	-> 	cu 	: getCompteDepensesCommunes()
-cu 	--> gd 	: CompteDepenses
+us 	-> 	gd 	: consulterCompteDepensesCommunes(compteDC)
+gd 	-> 	cu 	: recupererInfosCompteDepensesCommunes(compteDC)
+cu 	-> cd 	: recupererDepenses()
+cd 	->	gs 	: getDepenses(this)
+gs 	--> cd 	: listeDepenses
+cd 	-> 	cd 	: setDepenses(listeDepenses)
+cd 	--> cu 	: bool recuperé
+cu 	--> gd 	: bool recuperé
+' TODO Verifier que la récupération a marché avant de continuer
+gd 	-> 	cd 	: getDepenses()
+cd 	--> gd 	: listeDepenses
 alt ComptesDepenses != vide
-gd 	->	gd 	: afficherCompteDepensesCommunes(listeComptesDepenses)
-gd 	-->	us 	: CompteDepenses
+gd 	->	gd 	: afficherListeDepensesCommunes(listeDepenses)
+gd 	-->	us 	: listeDepenses
 else ComptesDepenses = vide
 gd 	-> 	gd  : afficherMessageInformation("Vous ne participez à ce compte de dépenses communes")
 gd 	-->	us 	: Vous ne participez à ce compte de dépenses communes

@@ -1,75 +1,94 @@
 @startuml Classes
 
 	class GestionnaireDialogue {
-		+void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
-		+void creerCompteDepensesCommunes(String nom, String description)
-		+void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
-		+void consulterCompteDepensesCommunes(CompteUtilisateur compteU, CompteDepensesCommunes CompteDC)
-		+String hasher(String phraseAHasher)
-		+void afficherMessageInformation(String message)
-		+void afficherMessageErreur(String message)
-		+void afficherListeComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
-		+void afficherCompteDepensesCommunes(CompteDepensesCommunes CompteDC)
-		+boolean pseudoConforme(String pseudo)
-		+boolean prenomConforme(String prenom)
-		+boolean nomConforme(String nom)
-		+boolean emailConforme(String email)
-		+boolean motDePasseConforme(String motDePasse)
-		+boolean nomCompteConforme(String nom)
-		+void seConnecter(String pseudo, String motDePasse)
-		+void afficherPageAccueil(CompteUtilisateur utilisateur)
-		+void afficherInterfaceModificationInfosPersonnelles()
-		+boolean checkNouveauMdp(String hashMDP1,String hashMDP2)
+		void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC)
+		void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
+		void afficherListeDepensesCommunes(List<Depense> listeDepenses)
+		void afficherMessageInformation(String message)
+		void afficherMessageErreur(String message)
+		void afficherListeComptesDepensesCommunes(List<CompteDepensesCommunes> listeComptesDepenses)
+		void afficherPageAccueil(CompteUtilisateur compte)
+
+		void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
+		void creerCompteDepensesCommunes(String nom, String description)
+
+		void seConnecter(String pseudo, String motDePasse)
+		String hasher(String motDePasse)
+
+		bool pseudoConforme(String pseudo)
+		bool prenomConforme(String prenom)
+		bool nomConforme(String nom)
+		bool emailConforme(String email)
+		bool motDePasseConforme(String motDePasse)
+		bool nomCompteConforme(String nom)
 	}
-	GestionnaireDialogue --"1" CompteUtilisateur
+	GestionnaireDialogue --"1" ComptePersonnel
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	interface GestionnaireSauvegarde {
-		+CompteDepensesCommunes creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, String description)
-		+boolean sauvegarderCompteUtilisateur(CompteUtilisateur compte)
-		+boolean pseudoExiste(String pseudo)
-		+boolean combinaisonExiste(String pseudo, String hash)
-		+CompteUtilisateur getInformations(String pseudo)
-		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes(CompteUtilisateur compteU)
-		+CompteDepensesCommunes getCompteDepensesCommunes(CompteUtilisateur compteU, CompteDepensesCommunes CompteDC)
-		+String verifierInformationsUtilisateur(String prenom,String nom, String hashMDP)
-		+void modifierInfosUtilisateur(CompteUtilisateur u)
+		creerCompteDepensesCommunes(compteU, nom, description)
+		getDepenses(CompteDepensesCommunes)
+		getComptesDepensesCommunes(CompteUtilisateur)
+		getCompte(pseudo)
+		bool sauvegarderCompteUtilisateur(CompteUtilisateur)
+		bool compteExiste(pseudo,hashMDP)
+		bool pseudoExiste(pseudo)
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
 
 	}
-	class CompteUtilisateur {
+
+	class CompteUtilisateur implements ComptePersonnel {
+		bool recupererInfosCompteDepensesCommunes(compteDC)
+		bool recupererComptesDepensesCommunes()
+
+		void addCompteDepensesCommunes(cdc)
+		void setComptesDepensesCommunes(listeComptesDepenses)
+
+		List<CompteDepensesCommunes>  getComptesDepensesCommunes()
+		bool sauvegarder()
+
+	}
+	CompteUtilisateur --"*" CompteDepensesCommunes
+
+
+	class CompteAdministrateur implements ComptePersonnel {
+		bool sauvegarder()
+	}
+
+	interface ComptePersonnel {
 		String pseudo
 		String prenom
 		String nom
 		String email
 		String hashMotDePasse
-		+CompteUtilisateur(String pseudo, String prenom, String nom, String email, String hashMDP)
-		+void setComptesDepensesCommunes(Liste<CompteDepensesCommunes> listeComptesDepenses)
-		+boolean sauvegarder(GestionnaireSauvegarde gs)
-		+boolean addCompteDepenseCommunes(CompteDepensesCommunes cdc)
-<<<<<<< HEAD
-		+void recupererCompteDepensesCommunes(GestionnaireSauvegarde gs)
-=======
-		+void getComptesDepensesCommunes(GestionnaireSauvegarde gs)
-		+void getCompteDepensesCommunes(GestionnaireSauvegarde gs)
->>>>>>> 8c151272bae4096d0aa45a12f81e71420c0012b0
-		+Liste<CompteDepensesCommunes> getListeComptesDepensesCommunes()
-		+String getPseudo()
-		+String getPrenom()
-		+String getNom()
-		+String getEmail()
-		+String getHashMotDePasse()
-		+void setPseudo(String pseudo)
-		+void setPrenom(String prenom)
-		+void setNom(String nom)
-		+void setEmail(String email)
-		+void setHashMotDePasse(String HashMDP)
+
+		bool sauvegarder()
+		String getPseudo()
+		String getPrenom()
+		String getNom()
+		String getEmail()
+		String getHashMotDePasse()
+		void setPseudo(String pseudo)
+		void setPrenom(String prenom)
+		void setNom(String nom)
+		void setEmail(String email)
+		void setHashMotDePasse(String hashMDP)
 	}
-	CompteUtilisateur --"*" CompteDepensesCommunes
+
 	class CompteDepensesCommunes {
-		+CompteDepenseCommunes(String identifiant, CompteUtilisateur compteU, String nom, String description, Date dateCreation)
+		+CompteDepensesCommunes(String identifiant, CompteUtilisateur compteU, String nom, String description, Date dateCreation)
+
+		void setDepenses(listeDepenses)
+
+		bool recupererDepenses()
+
+		List<Depenses> getDepenses()
+	}
+
+	class Depense {
+
 	}
 
 @enduml

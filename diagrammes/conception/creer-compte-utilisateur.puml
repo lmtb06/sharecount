@@ -33,8 +33,8 @@ gd 	-> gd ++: hasher(motDePasse)
 gd 	--> gd --: hashMDP
 gd 	-> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
 cu 	--> gd --: compteU
-gd 	-> cu : sauvegarder(db)
-cu 	-> gs : sauvegarderCompteUtilisateur(compteU)
+gd 	-> cu : sauvegarder()
+cu 	-> gs : sauvegarderCompteUtilisateur(this)
 gs 	--> cu : retour
 cu 	--> gd : retour
 alt retour = true

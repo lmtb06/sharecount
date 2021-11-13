@@ -3,36 +3,32 @@
 actor "Utilisateur" as us
 participant "GestionnaireDialogue" as gd
 participant "db:GestionnaireSauvegarde" as gs
-
-alt Création de compte
-
-us -> gd : Creer un compte
-ref over gd : Creer un compte utilisateur
-else Connexion
+participant "CompteUtilisateur" as cu
+participant "CompteAdministrateur" as ca
 
 us -> gd : seConnecter(pseudo,motDePasse)
 gd 	-> gd ++: hasher(motDePasse)
 gd 	--> gd --: hashMDP
-gd -> gs : combinaisonExiste(pseudo,hashMDP)
+gd -> gs : compteExiste(pseudo,hashMDP)
 gs --> gd : retour
 
 alt retour = false
 gd --> us : afficherMessageInformation("Pseudo ou mot de passe incorrect, veuillez les ré entrer")
 else retour = true
 
-gd -> gs : getInformations(pseudo)
-gs --> gd : compteUtilisateur
+gd -> gs : getCompte(pseudo)
 
 alt Identifiant correspond à un utilisateur
-gd --> gd : afficherPageAccueil(compteUtilisateur)
+gs -> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
+cu --> gs : compte
 else Identifiant correspond à un administrateur
-
-gd --> gd : afficherPageAccueil(compteUtilisateur)
+gs -> ca **: CompteAdministrateur(pseudo, prenom, nom, email, hashMDP)
+ca --> gs : compte
+end
+gs --> gd : compte
+gd --> gd : afficherPageAccueil(compte)
 
 end
 
-end
-
-end
 
 @enduml

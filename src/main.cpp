@@ -4,14 +4,14 @@
 /**
  * @brief Test de la classe CompteUtilisateur
  *
- * @version 0.1
+ * @version 0.2
  *
  * @author Elhadji Moussa FAYE
  */
 
 int main()
 {
-	CompteUtilisateur c = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+	ComptePersonnel c = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 	// Test des getters
 	std::cout << "Pseudo : " << c.getPseudo() << std::endl
 						<< "Prenom : " << c.getPrenom() << std::endl

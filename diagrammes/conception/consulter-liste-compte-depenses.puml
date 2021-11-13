@@ -4,14 +4,20 @@ actor "Utilisateur" as us
 participant ":GestionnaireDialogue" as gd
 participant "compteU:CompteUtilisateur" as cu
 participant "db:GestionnaireSauvegarde" as gs
+participant "cd:CompteDepensesCommunes" as cd
 
 us 	-> 	gd 	: consulterListeCompteDepensesCommunes(compteU)
-gd 	-> 	cu 	: getComptesDepensesCommunes(gs)
-cu 	->	gs 	: getListeComptesDepensesCommunes(cu)
+gd 	-> 	cu 	: recupererComptesDepensesCommunes()
+cu 	->	gs 	: getComptesDepensesCommunes(this)
+loop pour tous les comptes de depenses communes de l'utilisateur
+gs 	-> 	cd 	**: CompteDepensesCommunes(identifiant, compteU, nom, description, dateCreation)
+cd 	--> gs 	: cd
+end
 gs 	--> cu 	: listeComptesDepenses
 cu 	-> 	cu 	: setComptesDepensesCommunes(listeComptesDepenses)
-cu 	--> gd 	:
-gd 	-> 	cu 	: getListeComptesDepensesCommunes()
+cu 	--> gd 	: bool recuperés
+' TODO Verifier que la récupération a marché avant de continuer
+gd 	-> 	cu 	: getComptesDepensesCommunes()
 cu 	--> gd 	: listeComptesDepenses
 alt listeComptesDepenses != vide
 gd 	->	gd 	: afficherListeComptesDepensesCommunes(listeComptesDepenses)
