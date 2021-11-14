@@ -2,8 +2,9 @@
 #define compte_utilisateur
 #include <string>
 #include <vector>
-#include "CompteDepensesCommunes.hpp"
 #include "ComptePersonnel.hpp"
+
+class CompteDepensesCommunes;
 
 /**
  * @brief Classe qui représente le compte d'un utilisateur
@@ -14,11 +15,12 @@
 class CompteUtilisateur : public ComptePersonnel
 {
 	/**
-	 * @brief Liste des comptes de dépenses de l'utilisateur
-	 * On utilise des pointeurs car vector ne peut pas fonctionner avec des références
-	 *
-	 */
-	std::vector<CompteDepensesCommunes*> comptesDepensesCommunes;
+ * @brief Liste des comptes de dépenses de l'utilisateur
+ * On utilise des pointeurs car vector ne peut pas fonctionner avec des références
+ *	J'utilise un vector car il est mieux pour acceder aux données rapidement
+	*/
+	std::vector<CompteDepensesCommunes *> comptesDepensesCommunes;
+
 public:
 	/**
  * @brief Le constructeur permet de remplir les champs de la classe en fonction des paramètres passés
@@ -31,17 +33,28 @@ public:
  */
 	CompteUtilisateur(std::string pseudo, std::string prenom, std::string nom, std::string email, std::string hashMDP);
 	/**
-	 * @brief Le destructeur ne fait rien pour l'instant
-	 *	TODO destructeur supprimer les comptes dépenses communes
-	 */
+ * @brief Le destructeur détruit les comptes dépenses communes du compte
+	*/
 	~CompteUtilisateur();
 
 	/**
-	 * @brief Ne fait tien pour l'instant
-	 *	TODO sauvegarde les données du compte
-	 * @return true
-	 * @return false
-	 */
+ * @brief Ne fait tien pour l'instant
+ *	TODO sauvegarde les données du compte
+	* @return true
+	* @return false
+	*/
 	bool sauvegarder() const;
+	/**
+	 * @brief Ajout un compte de dépense commun au compte de l'utilisateur
+	 *
+	 * @param compteDC le pointeur vers le compte de depenses (il doit être créé grâce à un new)
+	 */
+	void addCompteDepensesCommunes(CompteDepensesCommunes *compteDC);
+	/**
+	 * @brief Cette methode donne les infos essentiels du compte de l'utilisateur
+	 *
+	 * @return les infos du compte (dans une chaîne de caractère c++)
+	 */
+	const std::string toString() const;
 };
 #endif

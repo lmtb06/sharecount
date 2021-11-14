@@ -125,5 +125,11 @@ public:
 	 * @return false la sauvegarde a échoué
 	 */
 	virtual bool sauvegarder() const;
+	/**
+	 * @brief Cette methode donne les infos essentiels du compte personnel
+	 *
+	 * @return les infos du compte (dans une chaîne de caractère c++)
+	 */
+	virtual const std::string toString() const;
 };
 #endif

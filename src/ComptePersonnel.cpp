@@ -63,3 +63,10 @@ bool ComptePersonnel::sauvegarder() const
 {
 	return false;
 }
+
+const std::string ComptePersonnel::toString() const
+{
+	const std::string resultat = "Pseudo : " + this->pseudo + "\nPrenom : " + this->prenom +
+						+ "\nNom : " + this->nom + "\nEmail : " + this->email + "\nHash mot de passe : " + this->hashMotDePasse;
+	return resultat;
+}

@@ -1,5 +1,10 @@
-#ifndef compte_depense_communes
-#define compte_depense_communes
+#ifndef compte_depenses_communes
+#define compte_depenses_communes
+
+#include <string>
+#include <ctime>
+#include "CompteUtilisateur.hpp"
+
 /**
  * @brief Cette classe représente le compte de dépenses communes
  * @author Nicolas GRAFF
@@ -7,11 +12,6 @@
  * @version 0.2
  * @since 0.2
  */
-#include <string>
-#include <ctime>
-
-class CompteUtilisateur;
-
 class CompteDepensesCommunes
 {
 	/**
@@ -53,11 +53,17 @@ public:
  * @param description description du compte
  * @param dateCreation la date de création du compte
  */
-	CompteDepensesCommunes(const std::string identifiant, const std::string nom, std::string description, const std::time_t dateCreation, const CompteUtilisateur &createur);
+	CompteDepensesCommunes(const std::string &identifiant, std::string nom, std::string description, const std::time_t &dateCreation, CompteUtilisateur &createur);
 	/**
 	 * @brief Le destructeur ne fait rien pour l'instant
 	 *
 	 */
 	~CompteDepensesCommunes();
+	/**
+	 * @brief Cette methode donne les infos essentiels du compte de dépense commun
+	 *
+	 * @return les infos du compte (dans une chaîne de caractère c++)
+	 */
+	const std::string toString() const;
 };
 #endif
