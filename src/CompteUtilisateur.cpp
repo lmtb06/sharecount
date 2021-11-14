@@ -6,6 +6,8 @@ CompteUtilisateur::CompteUtilisateur(std::string pseudo, std::string prenom, std
 }
 CompteUtilisateur::~CompteUtilisateur()
 {
+	
+	// On appelle le destructeur de tous les comptes de dépense communes du compte
 
 }
 

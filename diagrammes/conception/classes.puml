@@ -3,10 +3,10 @@
 	class GestionnaireDialogue {
 		void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
-		void afficherListeDepensesCommunes(List<Depense> listeDepenses)
+		void afficherListeDepensesCommunes(Collection<Depense> listeDepenses)
 		void afficherMessageInformation(String message)
 		void afficherMessageErreur(String message)
-		void afficherListeComptesDepensesCommunes(List<CompteDepensesCommunes> listeComptesDepenses)
+		void afficherListeComptesDepensesCommunes(Collection<CompteDepensesCommunes> listeComptesDepenses)
 		void afficherPageAccueil(CompteUtilisateur compte)
 		void creerCompteUtilisateur(String pseudo, String prenom, String nom, String email, String motDePasse, String confirmationMotDePasse)
 		void creerCompteDepensesCommunes(String nom, String description)
@@ -23,7 +23,7 @@
 	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	interface GestionnaireSauvegarde {
-		creerCompteDepensesCommunes(CompteUtilisateur compteU, String nom, string description)
+		creerCompteDepensesCommunes(CompteUtilisateur createur, String nom, string description)
 		getDepenses(CompteDepensesCommunes compteDC)
 		getComptesDepensesCommunes(CompteUtilisateur compteU)
 		getCompte(String pseudo)
@@ -36,27 +36,13 @@
 
 	}
 
-	class CompteUtilisateur implements ComptePersonnel {
-		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
-		bool recupererComptesDepensesCommunes()
-		void addCompteDepensesCommunes(CompteDepensesCommunes compteDC)
-		void setComptesDepensesCommunes(List<CompteDepensesCommunes>listeComptesDepenses)
-		List<CompteDepensesCommunes>  getComptesDepensesCommunes()
-		bool sauvegarder()
-	}
-	CompteUtilisateur --"*" CompteDepensesCommunes
-
-
-	class CompteAdministrateur implements ComptePersonnel {
-		bool sauvegarder()
-	}
-
 	interface ComptePersonnel {
 		String pseudo
 		String prenom
 		String nom
 		String email
 		String hashMotDePasse
+		ComptePersonnel(String pseudo, String prenom, String nom, String email, String hashMDP);
 		bool sauvegarder()
 		String getPseudo()
 		String getPrenom()
@@ -68,15 +54,36 @@
 		void setNom(String nom)
 		void setEmail(String email)
 		void setHashMotDePasse(String hashMDP)
+		void setGestionnaireSauvegarde(GestionnaireSauvegarde gs)
 	}
 	ComptePersonnel --"1" GestionnaireSauvegarde
 
+	class CompteAdministrateur implements ComptePersonnel {
+		bool sauvegarder()
+	}
+
+
+	class CompteUtilisateur implements ComptePersonnel {
+		bool sauvegarder()
+		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
+		bool recupererComptesDepensesCommunes()
+		Collection<CompteDepensesCommunes>  getComptesDepensesCommunes()
+		void addCompteDepensesCommunes(CompteDepensesCommunes compteDC)
+		void setComptesDepensesCommunes(Collection<CompteDepensesCommunes>listeComptesDepenses)
+	}
+	CompteUtilisateur "1"--"*" CompteDepensesCommunes
+
 	class CompteDepensesCommunes {
-		+CompteDepensesCommunes(String identifiant, CompteUtilisateur compteU, String nom, String description, Date dateCreation)
+		String identifiant
+		String nom
+		String description
+		Date dateCreation
+		CompteDepensesCommunes(String identifiant, String nom, String description, Date dateCreation, CompteUtilisateur createur)
 		bool recupererDepenses()
-		List<Depenses> getDepenses()
+		Collection<Depenses> getDepenses()
 		void setDepenses(listeDepenses)
 	}
+	CompteDepensesCommunes --"*" Depense
 
 	class Depense {
 
