@@ -31,7 +31,7 @@ package gestionnaires {
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
-
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
 	}
 
 }

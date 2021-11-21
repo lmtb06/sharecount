@@ -9,14 +9,11 @@ BINS := main
 .PHONY: all clean
 .PRECIOUS: %.o
 
-test:
-	echo $(OBJ)
-
 %.o: %.cpp
-	$(CCPP) -o $*.o -c $*.cpp
+	@$(CCPP) -o $*.o -c $*.cpp
 
 main:  $(OBJ)
-	$(CCPP) $(CFLAGS) -o $@ $(OBJ) $@.cpp
+	@$(CCPP) $(CFLAGS) -o $@ $(OBJ) $@.cpp
 	@echo "Compilation finie"
 	@echo "Début du programme"
 	@./$@

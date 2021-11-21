@@ -17,9 +17,9 @@ class GestionnaireSauvegarde
 	// virtual void getComptesDepensesCommunes(const CompteUtilisateur& compteU) = 0;
 	// virtual void getCompte(const std::string& pseudo) = 0;
 	/**
-	 * @brief
+	 * @brief Sauvegarde les données d'un compte utilisateur
 	 *
-	 * @param compteU
+	 * @param compteU le compte à sauvegarder
 	 */
 	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur& compteU) const = 0;
 	// virtual bool compteExiste(const std::string& pseudo, const std::string& hashMDP) = 0;
