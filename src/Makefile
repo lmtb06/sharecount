@@ -1,20 +1,22 @@
 CCPP = g++
 CFLAGS = -pedantic -Wall -Wextra
 
-DIRS = comptes
-SRCS := $(wildcard $(join $(DIRS), /*.cpp))
+DIRS := comptes gestionnaires
+SRCS := $(wildcard $(join $(DIRS), /*.cpp /*.cpp))
 OBJ := $(SRCS:%.cpp=%.o)
 BINS := main
 
 .PHONY: all clean
 .PRECIOUS: %.o
 
+test:
+	echo $(OBJ)
 
 %.o: %.cpp
-	@$(CCPP) -o $*.o -c $*.cpp
+	$(CCPP) -o $*.o -c $*.cpp
 
 main:  $(OBJ)
-	@$(CCPP) $(CFLAGS) -I$(DIRS) -o $@ $(OBJ) $@.cpp
+	$(CCPP) $(CFLAGS) -o $@ $(OBJ) $@.cpp
 	@echo "Compilation finie"
 	@echo "Début du programme"
 	@./$@

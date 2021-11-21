@@ -22,9 +22,9 @@ package gestionnaires {
 
 	interface GestionnaireSauvegarde {
 		void creerCompteDepensesCommunes(CompteUtilisateur createur, String nom, string description)
-		void getDepenses(CompteDepensesCommunes compteDC)
-		void getComptesDepensesCommunes(CompteUtilisateur compteU)
-		void getCompte(String pseudo)
+		Collection<Depense> getDepenses(CompteDepensesCommunes compteDC)
+		Collection<CompteDepensesCommunes> getComptesDepensesCommunes(CompteUtilisateur compteU)
+		ComptePersonnel getCompte(String pseudo)
 		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
 		bool compteExiste(String pseudo, String hashMDP)
 		bool pseudoExiste(String pseudo)
