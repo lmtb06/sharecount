@@ -21,9 +21,13 @@ gd -> gs : getCompte(pseudo)
 alt Identifiant correspond à un utilisateur
 gs -> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
 cu --> gs : compte
+gs -> cu 	: setGestionnaireSauvegarde(this)
+cu --> gs 	:
 else Identifiant correspond à un administrateur
 gs -> ca **: CompteAdministrateur(pseudo, prenom, nom, email, hashMDP)
 ca --> gs : compte
+gs -> ca 	: setGestionnaireSauvegarde(this)
+ca --> gs 	:
 end
 gs --> gd : compte
 gd --> gd : afficherPageAccueil(compte)

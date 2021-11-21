@@ -9,7 +9,7 @@ class CompteDepensesCommunes;
 /**
  * @brief Classe qui représente le compte d'un utilisateur
  * @author Elhadji Moussa FAYE
- * @version 0.2
+ * @version 0.3
  * @since 0.1
  */
 class CompteUtilisateur : public ComptePersonnel
@@ -31,7 +31,7 @@ public:
  * @param email l'email de l'utilisateur
  * @param hashMDP le hash du mot de passe de l'utilisateur
  */
-	CompteUtilisateur(std::string pseudo, std::string prenom, std::string nom, std::string email, std::string hashMDP);
+	CompteUtilisateur(const std::string& pseudo, const std::string& prenom, const std::string& nom, const std::string& email, const std::string& hashMDP);
 	/**
  * @brief Le destructeur détruit les comptes dépenses communes du compte
 	*/
@@ -43,13 +43,13 @@ public:
 	* @return true
 	* @return false
 	*/
-	bool sauvegarder() const;
+	void sauvegarder() const;
 	/**
 	 * @brief Ajout un compte de dépense commun au compte de l'utilisateur
 	 *
-	 * @param compteDC le pointeur vers le compte de depenses (il doit être créé grâce à un new)
+	 * @param compteDC le compte de depenses à ajouter
 	 */
-	void addCompteDepensesCommunes(CompteDepensesCommunes *compteDC);
+	void addCompteDepensesCommunes(CompteDepensesCommunes &compteDC);
 	/**
 	 * @brief Cette methode donne les infos essentiels du compte de l'utilisateur
 	 *

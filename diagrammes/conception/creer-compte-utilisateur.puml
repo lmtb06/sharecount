@@ -33,15 +33,20 @@ gd 	-> gd ++: hasher(motDePasse)
 gd 	--> gd --: hashMDP
 gd 	-> cu **: CompteUtilisateur(pseudo, prenom, nom, email, hashMDP)
 cu 	--> gd --: compteU
+gd 	->	cu : setGestionnaireSauvegarde(db)
+cu 	--> gd :
 gd 	-> cu : sauvegarder()
 cu 	-> gs : sauvegarderCompteUtilisateur(this)
-gs 	--> cu : retour
-cu 	--> gd : retour
-alt retour = true
+
+alt sauvegarde réussie
+gs 	--> cu :
+cu 	--> gd :
 gd 	-> 	gd : afficherMessageInformation("Le compte a été créé")
 gd 	--> 	us : Le compte a été créé
 gd -> gd : afficherPageAccueil(compte)
-else retour = false
+else sauvegarde échouée
+gs 	--> cu : <font color=red>ErreurSauvegardeCompteUtilisateur
+cu 	--> gd : <font color=red>ErreurSauvegardeCompteUtilisateur
 gd 	-> 	gd : afficherMessageErreur("Le compte n'a pas été sauvegardé")
 gd 	--> 	us : Le compte n'a pas été sauvegardé
 end
