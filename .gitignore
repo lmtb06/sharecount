@@ -7,4 +7,6 @@
 !**.puml
 !**.pdf
 !.gitignore
-!/**
+!*.pro
+!/*
+build*/*
