@@ -1,28 +1,23 @@
 #include "CompteUtilisateur.hpp"
 #include "CompteDepensesCommunes.hpp"
 
-CompteUtilisateur::CompteUtilisateur(std::string pseudo, std::string prenom, std::string nom, std::string email, std::string hashMDP) : ComptePersonnel(pseudo, prenom, nom, email, hashMDP)
+CompteUtilisateur::CompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &hashMDP) : ComptePersonnel(pseudo, prenom, nom, email, hashMDP)
 {
 
 }
 CompteUtilisateur::~CompteUtilisateur()
 {
-
-	// On appelle le destructeur de tous les comptes de dépense communes du compte
-	for (int i = 0; i < (int)comptesDepensesCommunes.size(); i++)
-	{
-		delete comptesDepensesCommunes[i];
-	}
+	// on ne libére pas le vector car on utilise plus de new
 }
 
-bool CompteUtilisateur::sauvegarder() const
+void CompteUtilisateur::sauvegarder() const
 {
 	return ComptePersonnel::sauvegarder();
 }
 
-void CompteUtilisateur::addCompteDepensesCommunes(CompteDepensesCommunes *compteDC)
+void CompteUtilisateur::addCompteDepensesCommunes(CompteDepensesCommunes &compteDC)
 {
-	this->comptesDepensesCommunes.push_back(compteDC);
+	this->comptesDepensesCommunes.push_back(&compteDC);
 }
 
 const std::string CompteUtilisateur::toString() const

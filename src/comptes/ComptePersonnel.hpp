@@ -3,7 +3,7 @@
 /**
  * @brief Classe qui représente le compte d'une personne (admin ou utilisateur)
  * @author Elhadji Moussa FAYE
- * @version 0.2
+ * @version 0.3
  * @since 0.2
  */
 #include <string>
@@ -47,7 +47,7 @@ protected:
  * @param email l'email de la personne
  * @param hashMDP le hash du mot de passe de la personne
  */
-	ComptePersonnel(std::string pseudo, std::string prenom, std::string nom, std::string email, std::string hashMDP);
+	ComptePersonnel(const std::string& pseudo, const std::string& prenom, const std::string& nom, const std::string& email, const std::string& hashMDP);
 	/**
 	 * @brief Le destructeur ne fait rien pour l'instant
 	 *
@@ -93,38 +93,38 @@ public:
 	 *
 	 * @param pseudo le nouveau pseudo (dans une chaîne de caractère c++)
 	 */
-	virtual void setPseudo(std::string pseudo);
+	virtual void setPseudo(const std::string& pseudo);
 	/**
 	 * @brief Cette méthode modifie le prenom de la personne par un nouveau prenom
 	 *
 	 * @param prenom le nouveau prénom (dans une chaîne de caractère c++)
 	 */
-	virtual void setPrenom(std::string prenom);
+	virtual void setPrenom(const std::string& prenom);
 	/**
 	 * @brief Cette méthode modifie le nom de la personne par un nouveau nom
 	 *
 	 * @param nom le nouveau nom (dans une chaîne de caractère c++)
 	 */
-	virtual void setNom(std::string nom);
+	virtual void setNom(const std::string& nom);
 	/**
 	 * @brief Cette méthode modifie l'email de la personne par un nouvel email
 	 *
 	 * @param email le nouvel email (dans une chaîne de caractère c++)
 	 */
-	virtual void setEmail(std::string email);
+	virtual void setEmail(const std::string& email);
 	/**
 	 * @brief Cette méthode modifie le hash du mot de passe de la personne par un nouveau hash
 	 *
 	 * @param hashMDP le nouvel hash du mot de passe (dans une chaîne de caractère c++)
 	 */
-	virtual void setHashMotDePasse(std::string hashMDP);
+	virtual void setHashMotDePasse(const std::string& hashMDP);
 	/**
 	 * @brief Sauvegarde les données du compte grâce au gestionnaire de compte
 	 *
 	 * @return true la sauvegarde a réussi
 	 * @return false la sauvegarde a échoué
 	 */
-	virtual bool sauvegarder() const;
+	virtual void sauvegarder() const;
 	/**
 	 * @brief Cette methode donne les infos essentiels du compte personnel
 	 *

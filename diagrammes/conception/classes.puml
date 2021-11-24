@@ -1,6 +1,6 @@
 @startuml Classes
-
-	class GestionnaireDialogue {
+package gestionnaires {
+	interface GestionnaireDialogue {
 		void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU)
 		void afficherListeDepensesCommunes(Collection<Depense> listeDepenses)
@@ -19,23 +19,23 @@
 		bool motDePasseConforme(String motDePasse)
 		bool nomCompteConforme(String nom)
 	}
-	GestionnaireDialogue --"1" ComptePersonnel
-	GestionnaireDialogue --"1" GestionnaireSauvegarde
 
 	interface GestionnaireSauvegarde {
-		creerCompteDepensesCommunes(CompteUtilisateur createur, String nom, string description)
-		getDepenses(CompteDepensesCommunes compteDC)
-		getComptesDepensesCommunes(CompteUtilisateur compteU)
-		getCompte(String pseudo)
-		bool sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
+		void creerCompteDepensesCommunes(CompteUtilisateur createur, String nom, string description)
+		Collection<Depense> getDepenses(CompteDepensesCommunes compteDC)
+		Collection<CompteDepensesCommunes> getComptesDepensesCommunes(CompteUtilisateur compteU)
+		ComptePersonnel getCompte(String pseudo)
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
 		bool compteExiste(String pseudo, String hashMDP)
 		bool pseudoExiste(String pseudo)
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
-
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
 	}
 
+}
+package comptes {
 	interface ComptePersonnel {
 		String pseudo
 		String prenom
@@ -43,7 +43,7 @@
 		String email
 		String hashMotDePasse
 		ComptePersonnel(String pseudo, String prenom, String nom, String email, String hashMDP);
-		bool sauvegarder()
+		void sauvegarder()
 		String getPseudo()
 		String getPrenom()
 		String getNom()
@@ -56,22 +56,20 @@
 		void setHashMotDePasse(String hashMDP)
 		void setGestionnaireSauvegarde(GestionnaireSauvegarde gs)
 	}
-	ComptePersonnel --"1" GestionnaireSauvegarde
 
 	class CompteAdministrateur implements ComptePersonnel {
-		bool sauvegarder()
+		void sauvegarder()
 	}
 
 
 	class CompteUtilisateur implements ComptePersonnel {
-		bool sauvegarder()
+		void sauvegarder()
 		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		bool recupererComptesDepensesCommunes()
 		Collection<CompteDepensesCommunes>  getComptesDepensesCommunes()
 		void addCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		void setComptesDepensesCommunes(Collection<CompteDepensesCommunes>listeComptesDepenses)
 	}
-	CompteUtilisateur "1"--"*" CompteDepensesCommunes
 
 	class CompteDepensesCommunes {
 		String identifiant
@@ -83,10 +81,21 @@
 		Collection<Depenses> getDepenses()
 		void setDepenses(listeDepenses)
 	}
-	CompteDepensesCommunes --"*" Depense
 
 	class Depense {
 
 	}
+}
+package exceptions {
+	class ErreurSauvegardeCompteUtilisateur {
+
+	}
+}
+
+GestionnaireDialogue --"1" ComptePersonnel
+GestionnaireDialogue --"1" GestionnaireSauvegarde
+CompteDepensesCommunes --"*" Depense
+CompteUtilisateur "1"--"*" CompteDepensesCommunes
+ComptePersonnel --"1" GestionnaireSauvegarde
 
 @enduml

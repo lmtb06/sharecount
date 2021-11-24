@@ -9,7 +9,7 @@
  * @brief Cette classe représente le compte de dépenses communes
  * @author Nicolas GRAFF
  * @author Elhadji Moussa FAYE
- * @version 0.2
+ * @version 0.3
  * @since 0.2
  */
 class CompteDepensesCommunes
@@ -53,7 +53,7 @@ public:
  * @param description description du compte
  * @param dateCreation la date de création du compte
  */
-	CompteDepensesCommunes(const std::string &identifiant, std::string nom, std::string description, const std::time_t &dateCreation, CompteUtilisateur &createur);
+	CompteDepensesCommunes(const std::string& identifiant, const std::string& nom, const std::string& description, const std::time_t& dateCreation, const CompteUtilisateur& createur);
 	/**
 	 * @brief Le destructeur ne fait rien pour l'instant
 	 *
