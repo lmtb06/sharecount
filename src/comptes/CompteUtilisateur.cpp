@@ -3,7 +3,6 @@
 
 CompteUtilisateur::CompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &hashMDP) : ComptePersonnel(pseudo, prenom, nom, email, hashMDP)
 {
-
 }
 CompteUtilisateur::~CompteUtilisateur()
 {

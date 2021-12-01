@@ -31,7 +31,7 @@ public:
  * @param email l'email de l'utilisateur
  * @param hashMDP le hash du mot de passe de l'utilisateur
  */
-	CompteUtilisateur(const std::string& pseudo, const std::string& prenom, const std::string& nom, const std::string& email, const std::string& hashMDP);
+	CompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &hashMDP);
 	/**
  * @brief Le destructeur détruit les comptes dépenses communes du compte
 	*/

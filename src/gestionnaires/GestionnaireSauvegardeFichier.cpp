@@ -2,5 +2,4 @@
 
 void GestionnaireSauvegardeFichier::sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU)
 {
-	
 }

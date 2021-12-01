@@ -7,13 +7,12 @@
  * @since 0.1
  */
 class GestionnaireDialogue
-
 {
 private:
-    /* data */
+	/* data */
 public:
-    GestionnaireDialogue(/* args */);
-    ~GestionnaireDialogue();
+	GestionnaireDialogue(/* args */);
+	~GestionnaireDialogue();
 };
 
 #endif GestionnaireDialogue
