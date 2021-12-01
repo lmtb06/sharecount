@@ -2,7 +2,7 @@
 #include "comptes/CompteDepensesCommunes.hpp"
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
-#include "exceptions/ExceptionSC.hpp"
+#include "exceptions/ExceptionSauvegardeCompteUtilisateur.hpp"
 
 /**
  * @brief Test de la classe CompteUtilisateur
@@ -38,5 +38,7 @@ int main()
 
 	ExceptionSC exception = ExceptionSC("Exception de test");
 	std::cout << exception.what() << std::endl;
+	ExceptionSauvegardeCompteUtilisateur exceptionSv = ExceptionSauvegardeCompteUtilisateur();
+	std::cout << exceptionSv.what() << std::endl;
 	return 0;
 }
