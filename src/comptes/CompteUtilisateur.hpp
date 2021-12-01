@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "ComptePersonnel.hpp"
+#include "../gestionnaires/GestionnaireSauvegarde.hpp"
 
 class CompteDepensesCommunes;
 
@@ -37,12 +38,12 @@ public:
 	~CompteUtilisateur();
 
 	/**
- * @brief Ne fait tien pour l'instant
- *	TODO sauvegarde les données du compte
-	* @return true
-	* @return false
-	*/
-	void sauvegarder() const;
+	 * @brief Sauvegarde les données du compte grâce au gestionnaire de sauvegarde
+	 *
+	 * @param gs le gestionnaire de sauvegarde
+	 */
+	virtual void sauvegarder(const GestionnaireSauvegarde &gs) const;
+
 	/**
 	 * @brief Ajout un compte de dépense commun au compte de l'utilisateur
 	 *

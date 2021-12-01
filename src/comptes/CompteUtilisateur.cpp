@@ -10,9 +10,10 @@ CompteUtilisateur::~CompteUtilisateur()
 	// on ne libére pas le vector car on utilise plus de new
 }
 
-void CompteUtilisateur::sauvegarder() const
+void CompteUtilisateur::sauvegarder(const GestionnaireSauvegarde &gs) const
 {
-	return ComptePersonnel::sauvegarder();
+	// Pattern visiteur
+	gs.sauvegarderCompteUtilisateur(*this);
 }
 
 void CompteUtilisateur::addCompteDepensesCommunes(const CompteDepensesCommunes &compteDC)
