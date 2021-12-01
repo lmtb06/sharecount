@@ -25,9 +25,9 @@ package gestionnaires {
 		Collection<Depense> getDepenses(CompteDepensesCommunes compteDC)
 		Collection<CompteDepensesCommunes> getComptesDepensesCommunes(CompteUtilisateur compteU)
 		ComptePersonnel getCompte(String pseudo)
-		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
-		bool compteExiste(String pseudo, String hashMDP)
 		bool pseudoExiste(String pseudo)
+		bool compteExiste(String pseudo, String hashMDP)
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
@@ -43,7 +43,7 @@ package comptes {
 		String email
 		String hashMotDePasse
 		ComptePersonnel(String pseudo, String prenom, String nom, String email, String hashMDP);
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs)
 		String getPseudo()
 		String getPrenom()
 		String getNom()
@@ -54,16 +54,15 @@ package comptes {
 		void setNom(String nom)
 		void setEmail(String email)
 		void setHashMotDePasse(String hashMDP)
-		void setGestionnaireSauvegarde(GestionnaireSauvegarde gs)
 	}
 
 	class CompteAdministrateur implements ComptePersonnel {
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs)
 	}
 
 
 	class CompteUtilisateur implements ComptePersonnel {
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs)
 		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		bool recupererComptesDepensesCommunes()
 		Collection<CompteDepensesCommunes>  getComptesDepensesCommunes()
@@ -88,7 +87,7 @@ package comptes {
 }
 package exceptions {
 	abstract ExceptionSC {
-		
+
 	}
 
 	class ErreurSauvegardeCompteUtilisateur extends ExceptionSC {

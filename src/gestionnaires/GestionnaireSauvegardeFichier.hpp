@@ -17,7 +17,7 @@ class GestionnaireSauvegardeFichier
 	 *
 	 * @param compteU le compte à sauvegarder
 	 */
-	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU) const = 0;
+	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU);
 };
 
 #endif
