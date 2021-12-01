@@ -87,7 +87,11 @@ package comptes {
 	}
 }
 package exceptions {
-	class ErreurSauvegardeCompteUtilisateur {
+	abstract ExceptionSC {
+		
+	}
+
+	class ErreurSauvegardeCompteUtilisateur extends ExceptionSC {
 
 	}
 }

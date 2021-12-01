@@ -16,10 +16,9 @@ class CompteUtilisateur : public ComptePersonnel
 {
 	/**
  * @brief Liste des comptes de dépenses de l'utilisateur
- * On utilise des pointeurs car vector ne peut pas fonctionner avec des références
  *	J'utilise un vector car il est mieux pour acceder aux données rapidement
 	*/
-	std::vector<CompteDepensesCommunes *> comptesDepensesCommunes;
+	std::vector<CompteDepensesCommunes> comptesDepensesCommunes;
 
 public:
 	/**
@@ -49,12 +48,12 @@ public:
 	 *
 	 * @param compteDC le compte de depenses à ajouter
 	 */
-	void addCompteDepensesCommunes(CompteDepensesCommunes &compteDC);
+	void addCompteDepensesCommunes(const CompteDepensesCommunes &compteDC);
 	/**
 	 * @brief Cette methode donne les infos essentiels du compte de l'utilisateur
 	 *
 	 * @return les infos du compte (dans une chaîne de caractère c++)
 	 */
-	const std::string toString() const;
+	virtual std::string toString() const;
 };
 #endif

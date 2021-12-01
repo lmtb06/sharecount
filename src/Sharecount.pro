@@ -3,7 +3,8 @@
 
 #TARGET = Sharecount
 
-QT = core gui widgets
+QT = core gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets 
 
 HEADERS = \
    $$PWD/comptes/CompteDepensesCommunes.hpp \
@@ -22,5 +23,5 @@ SOURCES = \
 
 INCLUDEPATH =
 
-#DEFINES = 
+#DEFINES =
 

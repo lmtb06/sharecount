@@ -15,12 +15,12 @@ void CompteUtilisateur::sauvegarder() const
 	return ComptePersonnel::sauvegarder();
 }
 
-void CompteUtilisateur::addCompteDepensesCommunes(CompteDepensesCommunes &compteDC)
+void CompteUtilisateur::addCompteDepensesCommunes(const CompteDepensesCommunes &compteDC)
 {
-	this->comptesDepensesCommunes.push_back(&compteDC);
+	this->comptesDepensesCommunes.push_back(compteDC);
 }
 
-const std::string CompteUtilisateur::toString() const
+std::string CompteUtilisateur::toString() const
 {
 	std::string resultat = ComptePersonnel::toString();
 	if (0 < (int)comptesDepensesCommunes.size())
@@ -31,7 +31,7 @@ const std::string CompteUtilisateur::toString() const
 	// On appelle le toString de tous les comptes de dépenses communes
 	for (int i = 0; i < (int)comptesDepensesCommunes.size(); i++)
 	{
-		resultat += "\n" + comptesDepensesCommunes[i]->toString();
+		resultat += "\n" + comptesDepensesCommunes[i].toString();
 		if (i + 1 < (int)comptesDepensesCommunes.size())
 		{
 			resultat += "\n---------";
