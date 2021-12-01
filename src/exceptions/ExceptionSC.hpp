@@ -26,8 +26,5 @@ public:
 	 *
 	 * @return le motif de l'exception (const char*)
 	 */
-	const char *what() const throw()
-	{
-		return message.c_str();
-	}
+	const char *what() const throw();
 };

@@ -2,6 +2,7 @@
 #include "comptes/CompteDepensesCommunes.hpp"
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
+#include "exceptions/ExceptionSC.hpp"
 
 /**
  * @brief Test de la classe CompteUtilisateur
@@ -34,5 +35,8 @@ int main()
 	compteU1.addCompteDepensesCommunes(cdc2);
 	compteU1.addCompteDepensesCommunes(cdc3);
 	std::cout << compteU1.toString() << std::endl;
+
+	ExceptionSC exception = ExceptionSC("Exception de test");
+	std::cout << exception.what() << std::endl;
 	return 0;
 }
