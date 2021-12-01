@@ -12,12 +12,15 @@
  */
 class GestionnaireSauvegardeFichier
 {
+protected:
+	std::string chemin_comptes_utilisateur = "ccu.txt";
+	std::string chemin_comptes_depenses = "ccd.txt";
 	/**
 	 * @brief Sauvegarde les données d'un compte utilisateur
 	 *
 	 * @param compteU le compte à sauvegarder
 	 */
-	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur& compteU);
+	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU);
 };
 
 #endif

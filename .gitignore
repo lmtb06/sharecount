@@ -1,6 +1,7 @@
 *
-!src/**.cpp
-!src/**.hpp
+!**/
+!**.cpp
+!**.hpp
 !src/**Makefile
 !**.md
 !**.txt
@@ -8,5 +9,4 @@
 !**.pdf
 !.gitignore
 !src/**.pro
-!*/
 

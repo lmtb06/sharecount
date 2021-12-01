@@ -43,8 +43,8 @@ gd 	-> 	gd : afficherMessageInformation("Le compte a été créé")
 gd 	--> 	us : Le compte a été créé
 gd -> gd : afficherPageAccueil(compte)
 else sauvegarde échouée
-gs 	--> cu : <font color=red>ErreurSauvegardeCompteUtilisateur
-cu 	--> gd : <font color=red>ErreurSauvegardeCompteUtilisateur
+gs 	--> cu : <font color=red>ExceptionSauvegardeCompteUtilisateur
+cu 	--> gd : <font color=red>ExceptionSauvegardeCompteUtilisateur
 gd 	-> 	gd : afficherMessageErreur("Le compte n'a pas été sauvegardé")
 gd 	--> 	us : Le compte n'a pas été sauvegardé
 end
