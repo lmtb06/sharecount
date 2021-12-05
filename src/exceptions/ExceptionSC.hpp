@@ -3,6 +3,7 @@
 
 /**
  * @brief Classe qui represente une exception, elle est le type d'exception que les classes de l'application lance lorsqu'il y a un problème
+ * @author  Elhadji Moussa FAYE
  *
  */
 class ExceptionSC : public std::exception

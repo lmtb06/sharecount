@@ -1,4 +1,18 @@
 @startuml Classes
+
+package exceptions {
+	abstract ExceptionSC {
+		ExceptionSC(String message)
+		String what()
+	}
+
+	class ExceptionSauvegardeCompteUtilisateur extends ExceptionSC {
+		ExceptionSauvegardeCompteUtilisateur()
+	}
+}
+
+newpage
+
 package gestionnaires {
 	interface GestionnaireDialogue {
 		void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC)
@@ -35,6 +49,9 @@ package gestionnaires {
 	}
 
 }
+
+newpage
+
 package comptes {
 	interface ComptePersonnel {
 		String pseudo
@@ -85,21 +102,10 @@ package comptes {
 
 	}
 }
-package exceptions {
-	abstract ExceptionSC {
-		ExceptionSC(String message)
-		String what()
-	}
 
-	class ExceptionSauvegardeCompteUtilisateur extends ExceptionSC {
-		ExceptionSauvegardeCompteUtilisateur()
-	}
-}
-
-GestionnaireDialogue --"1" ComptePersonnel
+GestionnaireDialogue --"1" CompteUtilisateur
 GestionnaireDialogue --"1" GestionnaireSauvegarde
 CompteDepensesCommunes --"*" Depense
 CompteUtilisateur "1"--"*" CompteDepensesCommunes
-ComptePersonnel --"1" GestionnaireSauvegarde
 
 @enduml
