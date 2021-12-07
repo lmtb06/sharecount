@@ -92,6 +92,19 @@ package exceptions {
 	}
 }
 
+package tests {
+	abstract class Test {
+		void tester()
+	}
+
+	class TestCompteUtilisateur implements Test {
+		void tester()
+		void testRecupererInfosCompteDepensesCommunes()
+		void testRecupererComptesDepensesCommunes()
+		void testAddCompteDepensesCommunes()
+	}
+}
+
 GestionnaireDialogue --"1" ComptePersonnel
 GestionnaireDialogue --"1" GestionnaireSauvegarde
 CompteDepensesCommunes --"*" Depense
