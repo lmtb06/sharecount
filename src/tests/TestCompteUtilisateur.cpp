@@ -2,63 +2,166 @@
 
 void TestCompteUtilisateur::tester()
 {
+    bool test = true;
 
-    testRecupererInfosCompteDepensesCommunes();
-    testRecupererComptesDepensesCommunes();
-    testAddCompteDepensesCommunes();
-    testSetCompteDepensesCommunes();
+    if (!testAddCompteDepensesCommunes()) {
+        test = false;
+        std::cout<<"\nLa fonction addCompteDepensesCommunes n'a pas fonctionné correctement\n"<<std::endl;
+    }
+
+    if (!testRecupererInfosCompteDepensesCommunes()) {
+        test = false;
+        std::cout<<"\nLa fonction recupererInfosCompteDepensesCommunes n'a pas fonctionné correctement\n"<<std::endl;
+    }
+
+    if (!testRecupererComptesDepensesCommunes()) {
+        test = false;
+        std::cout<<"\nLa fonction RecupererComptesDepensesCommunes n'a pas fonctionné correctement\n"<<std::endl;
+    }
+
+    if (!testSetCompteDepensesCommunes()) {
+        test = false;
+        std::cout<<"\nLa fonction setCompteDepensesCommunes n'a pas fonctionné correctement\n"<<std::endl;
+    }
+
+    if (test) {
+        std::cout<<"\nTous les tests se sont bien déroulés\n"<<std::endl;
+    }
 
 }
 
-void TestCompteUtilisateur::testAddCompteDepensesCommunes()
+bool TestCompteUtilisateur::testAddCompteDepensesCommunes()
 {
 
-    CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+    std::time_t dateDeCreation = time(0);
 
-    CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compte);
-	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compte);
-	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", time(0), compte);
+    CompteUtilisateur compte = CompteUtilisateur("lmtb06", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+
+    bool test = true;
+
+    CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", dateDeCreation, compte);
+    CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", dateDeCreation, compte);
+    CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", dateDeCreation, compte);
 
 	compte.addCompteDepensesCommunes(cdc1);
 
-    assert(compte.toString().compare("Pseudo : lmtb06\nPrenom : Moussa\nNom : FAYE\nEmail : moussafaye.m@gmail.com\nHash mot de passe : SHA256-HASH\n------COMPTES DEPENSES COMMUNES------\nIdentifiant : id1\nNom : Compte Depense 1\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06"));
+    if (test) {
+        std::string attendu;
+
+        attendu = "Pseudo : lmtb06\n";
+        attendu+= "Prenom : Elhadji Moussa\n";
+        attendu+= "Nom : FAYE\n";
+        attendu+= "Email : moussafaye.m@gmail.com\n";
+        attendu+= "Hash mot de passe : SHA256-HASH\n";
+        attendu+= "------COMPTES DEPENSES COMMUNES------\n";
+        attendu+= "Identifiant : id1\n";
+        attendu+= "Nom : Compte Depense 1\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+
+        test = (compte.toString().compare(attendu)==0);
+    }
 
 	compte.addCompteDepensesCommunes(cdc2);
 
-    assert(compte.toString().compare("Pseudo : lmtb06\nPrenom : Moussa\nNom : FAYE\nEmail : moussafaye.m@gmail.com\nHash mot de passe : SHA256-HASH\n------COMPTES DEPENSES COMMUNES------\nIdentifiant : id1\nNom : Compte Depense 1\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06\n---------\nIdentifiant : id2\nNom : Compte Depense 2\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06"));
+    if (test) {
+        std::string attendu;
+
+        attendu = "Pseudo : lmtb06\n";
+        attendu+= "Prenom : Elhadji Moussa\n";
+        attendu+= "Nom : FAYE\n";
+        attendu+= "Email : moussafaye.m@gmail.com\n";
+        attendu+= "Hash mot de passe : SHA256-HASH\n";
+        attendu+= "------COMPTES DEPENSES COMMUNES------\n";
+        attendu+= "Identifiant : id1\n";
+        attendu+= "Nom : Compte Depense 1\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+        attendu+= "\n---------\n";
+        attendu+= "Identifiant : id2\n";
+        attendu+= "Nom : Compte Depense 2\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+        test = (compte.toString().compare(attendu)==0);
+    }
 
 	compte.addCompteDepensesCommunes(cdc3);
 
-    assert(compte.toString().compare("Pseudo : lmtb06\nPrenom : Moussa\nNom : FAYE\nEmail : moussafaye.m@gmail.com\nHash mot de passe : SHA256-HASH\n------COMPTES DEPENSES COMMUNES------\nIdentifiant : id1\nNom : Compte Depense 1\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06\n---------\nIdentifiant : id2\nNom : Compte Depense 2\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06\n---------\nIdentifiant : id3\nNom : Compte Depense 3\nDescription : \nDate de creation : Mon Dec  6 19:01:07 2021\nPseudo créateur : lmtb06"));
+    if (test) {
+        std::string attendu;
 
+        attendu = "Pseudo : lmtb06\n";
+        attendu+= "Prenom : Elhadji Moussa\n";
+        attendu+= "Nom : FAYE\n";
+        attendu+= "Email : moussafaye.m@gmail.com\n";
+        attendu+= "Hash mot de passe : SHA256-HASH\n";
+        attendu+= "------COMPTES DEPENSES COMMUNES------\n";
+        attendu+= "Identifiant : id1\n";
+        attendu+= "Nom : Compte Depense 1\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+        attendu+= "\n---------\n";
+        attendu+= "Identifiant : id2\n";
+        attendu+= "Nom : Compte Depense 2\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+        attendu+= "\n---------\n";
+        attendu+= "Identifiant : id3\n";
+        attendu+= "Nom : Compte Depense 3\n";
+        attendu+= "Description : \n";
+        attendu+= "Date de creation : ";
+        attendu.append(ctime(&dateDeCreation));
+        attendu+= "Pseudo créateur : lmtb06";
+        test = (compte.toString().compare(attendu)==0);
+    }
+
+    return test;
 }
 
-void TestCompteUtilisateur::testRecupererInfosCompteDepensesCommunes()
+bool TestCompteUtilisateur::testRecupererInfosCompteDepensesCommunes()
 {
+    bool test = true;
 
-    //CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+    std::time_t dateDeCreation = time(0);
 
-    //j'ai juste mis en commentaire la syntaxe ci-dessous
-    //assert(str1.compare(str2)=0);
+    CompteUtilisateur compte = CompteUtilisateur("lmtb06", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 
-    assert(true);
+    CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", dateDeCreation, compte);
+    CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", dateDeCreation, compte);
+    CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", dateDeCreation, compte);
 
+    compte.addCompteDepensesCommunes(cdc1);
+    compte.addCompteDepensesCommunes(cdc2);
+    compte.addCompteDepensesCommunes(cdc3);
+
+
+
+    return test;
 }
 
-void TestCompteUtilisateur::testRecupererComptesDepensesCommunes()
+bool TestCompteUtilisateur::testRecupererComptesDepensesCommunes()
 {
-
+    bool test = true;
     //CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 
-    assert(true);
-
+    return test;
 }
 
-void TestCompteUtilisateur::testSetCompteDepensesCommunes()
+bool TestCompteUtilisateur::testSetCompteDepensesCommunes()
 {
-
+    bool test = true;
     //CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 
-    assert(true);
+    return test;
 
 }

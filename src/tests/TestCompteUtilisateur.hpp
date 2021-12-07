@@ -8,12 +8,12 @@
 
 	class TestCompteUtilisateur : public Test
 	{
-
+    public :
         void tester();
-		void testRecupererInfosCompteDepensesCommunes();
-		void testRecupererComptesDepensesCommunes();
-		void testAddCompteDepensesCommunes();
-		void testSetCompteDepensesCommunes();
+        bool testRecupererInfosCompteDepensesCommunes();
+        bool testRecupererComptesDepensesCommunes();
+        bool testAddCompteDepensesCommunes();
+        bool testSetCompteDepensesCommunes();
 
 	};
 

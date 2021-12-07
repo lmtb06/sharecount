@@ -4,6 +4,7 @@
 
 class Test
 {
+public :
     virtual void tester();
 };
 
