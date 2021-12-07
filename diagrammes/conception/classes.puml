@@ -99,9 +99,10 @@ package tests {
 
 	class TestCompteUtilisateur implements Test {
 		void tester()
-		void testRecupererInfosCompteDepensesCommunes()
-		void testRecupererComptesDepensesCommunes()
-		void testAddCompteDepensesCommunes()
+		bool testAddCompteDepensesCommunes()
+		bool testRecupererInfosCompteDepensesCommunes()
+		bool testRecupererComptesDepensesCommunes()
+		bool testSetCompteDepensesCommunes()
 	}
 }
 
