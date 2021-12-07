@@ -16,6 +16,27 @@
 
 int main()
 {
+    // Penser à utiliser un pattern pour pouvoir utiliser les classes même en utilisant le polymorphisme
+    CompteUtilisateur compteU1 = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+	// Test des getters
+    std::cout << compteU1.toString() << std::endl;
+	// Test des setteurs
+    std::cout << "=======Modification infos comptes=======" << std::endl;
+	compteU1.setPseudo("lmtb06");
+	compteU1.setPrenom("Moussa");
+	compteU1.setNom("FAYE");
+	compteU1.setEmail("moussafaye.m@gmail.com");
+    std::cout << compteU1.toString() << std::endl;
+
+	CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU1);
+	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compteU1);
+	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", time(0), compteU1);
+    std::cout << std::endl;
+	compteU1.addCompteDepensesCommunes(cdc1);
+	compteU1.addCompteDepensesCommunes(cdc2);
+	compteU1.addCompteDepensesCommunes(cdc3);
+    std::cout << compteU1.toString() << std::endl;
+    
 
     // Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
     // pseudo - seulement des lettres et des chiffres.
@@ -27,7 +48,7 @@ int main()
     std::cout << "test: Création du compte personnel\n";
     gd.creerCompteUtilisateur("wehddn", "Nicolas", "Graff", "test@test.test", "testTEST1@", "testTEST1@");
     std::cout << "\n";
-/*
+
     // Test de fonction "creerCompteDepensesCommunes" dans GestionnaireDialogue
     std::cout << "test: Création du compte de depenses\n";
     gd.creerCompteDepensesCommunes("Compte1", "Description");
@@ -48,28 +69,6 @@ int main()
     std::cout << "test: se connecter\n";
     gd.seConnecter("wehddn", "12345");
     std::cout << "\n";
-*/
-    /*
-	// Penser à utiliser un pattern pour pouvoir utiliser les classes même en utilisant le polymorphisme
-    CompteUtilisateur compteU1 = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
-	// Test des getters
-    std::cout << compteU1.toString() << std::endl;
-	// Test des setteurs
-    std::cout << "=======Modification infos comptes=======" << std::endl;
-	compteU1.setPseudo("lmtb06");
-	compteU1.setPrenom("Moussa");
-	compteU1.setNom("FAYE");
-	compteU1.setEmail("moussafaye.m@gmail.com");
-    std::cout << compteU1.toString() << std::endl;
 
-	CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU1);
-	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compteU1);
-	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", time(0), compteU1);
-    std::cout << std::endl;
-	compteU1.addCompteDepensesCommunes(cdc1);
-	compteU1.addCompteDepensesCommunes(cdc2);
-	compteU1.addCompteDepensesCommunes(cdc3);
-    std::cout << compteU1.toString() << std::endl;
-    */
 	return 0;
 }
