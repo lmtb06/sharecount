@@ -3,24 +3,24 @@
 
 CompteUtilisateur::CompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &hashMDP) : ComptePersonnel(pseudo, prenom, nom, email, hashMDP)
 {
-
 }
 CompteUtilisateur::~CompteUtilisateur()
 {
 	// on ne libére pas le vector car on utilise plus de new
 }
 
-void CompteUtilisateur::sauvegarder() const
+void CompteUtilisateur::sauvegarder(const GestionnaireSauvegarde &gs) const
 {
-	return ComptePersonnel::sauvegarder();
+	// Pattern visiteur
+	gs.sauvegarderCompteUtilisateur(*this);
 }
 
-void CompteUtilisateur::addCompteDepensesCommunes(CompteDepensesCommunes &compteDC)
+void CompteUtilisateur::addCompteDepensesCommunes(const CompteDepensesCommunes &compteDC)
 {
-	this->comptesDepensesCommunes.push_back(&compteDC);
+	this->comptesDepensesCommunes.push_back(compteDC);
 }
 
-const std::string CompteUtilisateur::toString() const
+std::string CompteUtilisateur::toString() const
 {
 	std::string resultat = ComptePersonnel::toString();
 	if (0 < (int)comptesDepensesCommunes.size())
@@ -31,7 +31,7 @@ const std::string CompteUtilisateur::toString() const
 	// On appelle le toString de tous les comptes de dépenses communes
 	for (int i = 0; i < (int)comptesDepensesCommunes.size(); i++)
 	{
-		resultat += "\n" + comptesDepensesCommunes[i]->toString();
+		resultat += "\n" + comptesDepensesCommunes[i].toString();
 		if (i + 1 < (int)comptesDepensesCommunes.size())
 		{
 			resultat += "\n---------";
