@@ -115,6 +115,15 @@ package tests {
 		bool testRecupererComptesDepensesCommunes()
 		bool testSetCompteDepensesCommunes()
 	}
+
+	class TestComptePersonnel implements Test {
+		void tester()
+		bool testSetPseudo()
+		bool testSetPrenom()
+		bool testSetNom()
+		bool testSetEmail()
+		bool testSetHashMotDePasse()
+	}
 }
 
 GestionnaireDialogue --"1" CompteUtilisateur

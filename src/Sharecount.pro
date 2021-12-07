@@ -13,7 +13,10 @@ HEADERS = \
    $$PWD/exceptions/ExceptionSC.hpp \
    $$PWD/exceptions/ExceptionSauvegardeCompteUtilisateur.hpp \
    $$PWD/gestionnaires/GestionnaireSauvegarde.hpp \
-   $$PWD/gestionnaires/GestionnaireSauvegardeFichier.hpp
+   $$PWD/tests/TestCompteUtilisateur.hpp \
+   $$PWD/tests/Test.hpp \
+   $$PWD/gestionnaires/GestionnaireSauvegardeFichier.hpp \
+   tests/TestComptePersonnel.hpp
 
 SOURCES = \
    $$PWD/comptes/CompteDepensesCommunes.cpp \
@@ -23,7 +26,10 @@ SOURCES = \
    $$PWD/exceptions/ExceptionSauvegardeCompteUtilisateur.cpp \
    $$PWD/gestionnaires/GestionnaireSauvegarde.cpp \
    $$PWD/gestionnaires/GestionnaireSauvegardeFichier.cpp \
-   $$PWD/main.cpp
+   $$PWD/tests/TestCompteUtilisateur.cpp \
+   $$PWD/tests/Test.cpp \
+   $$PWD/main.cpp \
+   tests/TestComptePersonnel.cpp
 
 INCLUDEPATH =
 

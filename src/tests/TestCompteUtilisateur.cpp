@@ -25,7 +25,7 @@ void TestCompteUtilisateur::tester()
     }
 
     if (test) {
-        std::cout<<"\nTous les tests se sont bien déroulés\n"<<std::endl;
+        std::cout<<"\nTous les tests de la classe CompteUtilisateur se sont bien déroulés\n"<<std::endl;
     }
 
 }

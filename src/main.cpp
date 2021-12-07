@@ -2,6 +2,8 @@
 #include "comptes/CompteDepensesCommunes.hpp"
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
+#include "tests/TestComptePersonnel.hpp"
+#include "tests/TestCompteUtilisateur.hpp"
 #include "exceptions/ExceptionSauvegardeCompteUtilisateur.hpp"
 
 /**
@@ -35,6 +37,12 @@ int main()
 	compteU1.addCompteDepensesCommunes(cdc2);
 	compteU1.addCompteDepensesCommunes(cdc3);
 	std::cout << compteU1.toString() << std::endl;
+
+    TestCompteUtilisateur testCompteUtilisateur = TestCompteUtilisateur();
+    TestComptePersonnel testComptePersonnel = TestComptePersonnel();
+
+    testCompteUtilisateur.tester();
+    testComptePersonnel.tester();
 
 	ExceptionSC exception = ExceptionSC("Exception de test");
 	std::cout << exception.what() << std::endl;
