@@ -1,4 +1,5 @@
 #include "GestionnaireDialogue.hpp"
+#include <regex>
 
 void GestionnaireDialogue::afficherMessageInformation(std::string message){
     std::cout << message << "\n";
@@ -13,33 +14,46 @@ void GestionnaireDialogue::afficherMessageErreur(std::string message){
 /*---------------------------------------------------------*/
 
 bool GestionnaireDialogue::pseudoConforme(std::string pseudo){
-    //a verifier
-    return true;
+    std::regex rx("^[a-zA-Z0-9]+$");
+    bool match = std::regex_match(pseudo.c_str(), rx);
+    return match;
 }
 
 bool GestionnaireDialogue::prenomConforme(std::string prenom){
-    //a verifier
-    return true;
+    if (prenom.size()>0)
+        return true;
+    else
+        return false;
 }
 
 bool GestionnaireDialogue::nomConforme(std::string nom){
-    //a verifier
-    return true;
+    if (nom.size()>0)
+        return true;
+    else
+        return false;
 }
 
 bool GestionnaireDialogue::emailConforme(std::string email){
-    //a verifier
-    return true;
+    std::regex rx("^(\\S)+@(\\S)+.(\\S)+$");
+    bool match = std::regex_match(email.c_str(), rx);
+    if(match)
+        return true;
+    else
+        return false;
 }
 
 bool GestionnaireDialogue::motDePasseConforme(std::string motDePasse){
-    //a verifier
-    return true;
+    std::regex rx("(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}");
+    bool match = std::regex_match(motDePasse.c_str(), rx);
+    if(match)
+        return true;
+    else
+        return false;
 }
 
 std::string GestionnaireDialogue::hasher(std::string motDePasse){
     //a verifier
-    return "hashMDP";
+    return motDePasse;
 }
 
 void GestionnaireDialogue::afficherPageAccueil(CompteUtilisateur compteU){
@@ -136,16 +150,6 @@ void GestionnaireDialogue::afficherListeComptesDepensesCommunes(std::list<Compte
 }
 
 void GestionnaireDialogue::consulterListeCompteDepensesCommunes(const CompteUtilisateur &compteU){
-
-
-
-    std::list<CompteDepensesCommunes> listeComptesDepenses;
-    listeComptesDepenses.push_back(CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU));
-    listeComptesDepenses.push_back(CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compteU));
-    listeComptesDepenses.push_back(CompteDepensesCommunes("id3", "Compte Depense 3", "", time(0), compteU));
-    afficherListeComptesDepensesCommunes(listeComptesDepenses);
-
-    /*
     //recupererComptesDepensesCommunes()
     //if(!recupererComptesDepensesCommunes())
     //    afficherMessageErreur("Erreur de récupération pour le compte sélectionné");
@@ -161,7 +165,6 @@ void GestionnaireDialogue::consulterListeCompteDepensesCommunes(const CompteUtil
         //else
         //    afficherMessageInformation("Vous ne participez à aucun compte de dépenses communes");
     //}
-    */
 }
 
 /*---------------------------------------------------------*/

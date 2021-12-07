@@ -3,8 +3,7 @@
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
 #include "gestionnaires/GestionnaireDialogue.hpp"
-
-#include <QSqlQuery>
+#include <regex>
 
 /**
  * @brief Test de la classe CompteUtilisateur
@@ -17,31 +16,18 @@
 
 int main()
 {
-    /*
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("bigblue");
-    db.setDatabaseName("flightdb");
-    db.setUserName("acarlson");
-    db.setPassword("1uTbSbAs");
-    bool ok = db.open();
-    QSqlQuery query;
-    query.exec("CREATE OR REPLACE TABLE USERS "
-               "(Pseudo varchar(255) PRIMARY KEY NOT NULL, "
-               "Nom varchar(255) NOT NULL, "
-               "Prenom varchar(255) NOT NULL, "
-               "Email varchar(255) NOT NULL, "
-               "Hash varchar(255) NOT NULL);");
-
-    db.close();
-    db.removeDatabase("bigblue");
-*/
 
     // Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
+    // pseudo - seulement des lettres et des chiffres.
+    // prenom - contiennent au moins 1 caractère
+    // nom - contiennent au moins 1 caractère
+    // email - "symboles@symboles.symboles"
+    // motDePasse - minimum 8 caractères, au moins 1 chiffre, majuscules, minuscules et un des symboles "!@#$%^&*"
     GestionnaireDialogue gd = GestionnaireDialogue();   // TODO Vérification des entrées; Sauvegarder le compte
     std::cout << "test: Création du compte personnel\n";
-    gd.creerCompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "12345", "12345");
-    std::cout << "\n\n";
-
+    gd.creerCompteUtilisateur("wehddn", "Nicolas", "Graff", "test@test.test", "testTEST1@", "testTEST1@");
+    std::cout << "\n";
+/*
     // Test de fonction "creerCompteDepensesCommunes" dans GestionnaireDialogue
     std::cout << "test: Création du compte de depenses\n";
     gd.creerCompteDepensesCommunes("Compte1", "Description");
@@ -62,7 +48,7 @@ int main()
     std::cout << "test: se connecter\n";
     gd.seConnecter("wehddn", "12345");
     std::cout << "\n";
-
+*/
     /*
 	// Penser à utiliser un pattern pour pouvoir utiliser les classes même en utilisant le polymorphisme
     CompteUtilisateur compteU1 = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
