@@ -14,25 +14,34 @@
 class GestionnaireDialogue
 {
     public:
+        CompteUtilisateur compteU = CompteUtilisateur("test", "test", "test", "test", "test");
+
         void creerCompteUtilisateur(const std::string& pseudo, const std::string& prenom, const std::string& nom, const std::string& email, const std::string& motDePasse, const std::string& confirmationMotDePasse);
+        void creerCompteDepensesCommunes(const std::string& nom, const std::string& description);
+        void consulterCompteDepensesCommunes(const CompteDepensesCommunes& compteDC);
+        void consulterListeCompteDepensesCommunes(const CompteUtilisateur& compteU);
+        void seConnecter(const std::string& pseudo, const std::string& motDePasse);
 
     private:
-        bool pseudoExiste(std::string pseudo);
+        void afficherMessageInformation(std::string message);
+        void afficherMessageErreur(std::string message);
+
+        //creerCompteUtilisateur
         bool pseudoConforme(std::string pseudo);
         bool prenomConforme(std::string prenom);
         bool nomConforme(std::string nom);
         bool emailConforme(std::string email);
         bool motDePasseConforme(std::string motDePasse);
         std::string hasher(std::string motDePasse);
+        void afficherPageAccueil(CompteUtilisateur compteU);
 
-    void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC);
-    void consulterListeCompteDepensesCommunes(CompteUtilisateur compteU);
-    //void afficherListeDepensesCommunes(std::list<Depence> listeDepenses);
-    void afficherMessageInformation(std::string message);
-    void afficherMessageErreur(std::string message);
-    void afficherListeComptesDepensesCommunes(std::list<CompteDepensesCommunes> listeComptesDepenses);
-    void afficherPageAccueil(CompteUtilisateur compteU);
-    void creerCompteDepensesCommunes(std::string nom, std::string description);
-    void seConnecter(std::string pseudo, std::string motDePasse);
+        //creerCompteDepensesCommunes
+        bool nomCompteConforme(std::string nom);
+        void addCompteDepensesCommunes(CompteDepensesCommunes cdc);
+
+        //consulterListeCompteDepensesCommunes
+        void afficherListeComptesDepensesCommunes(std::list<CompteDepensesCommunes> listeComptesDepenses);
+
+        //void afficherListeDepensesCommunes(std::list<Depence> listeDepenses);
 };
 #endif

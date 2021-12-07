@@ -16,6 +16,7 @@ end
 gs 	--> cu 	: listeComptesDepenses
 cu 	-> 	cu 	: setComptesDepensesCommunes(listeComptesDepenses)
 cu 	--> gd 	: bool recuperés
+alt retour=true
 ' TODO Verifier que la récupération a marché avant de continuer
 gd 	-> 	cu 	: getComptesDepensesCommunes()
 cu 	--> gd 	: listeComptesDepenses
@@ -25,5 +26,9 @@ gd 	-->	us 	: listeComptesDepenses
 else listeComptesDepenses = vide
 gd 	-> 	gd  : afficherMessageInformation("Vous ne participez à aucun compte de dépenses communes")
 gd 	-->	us 	:Vous ne participez à aucun compte de dépenses communes
+end
+else retour!=true
+gd -> gd : afficherMessageErreur("Erreur de récupération pour le compte sélectionné");
+gd -> us : Erreur de récupération pour le compte sélectionné
 end
 @enduml

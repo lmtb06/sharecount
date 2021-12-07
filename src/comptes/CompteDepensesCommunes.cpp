@@ -12,7 +12,10 @@ CompteDepensesCommunes::~CompteDepensesCommunes()
 
 const std::string CompteDepensesCommunes::toString() const
 {
-	const std::string resultat = "Identifiant : " + this->identifiant + "\nNom : " + this->nom +
-															 +"\nDescription : " + this->description + "\nDate de creation : " + ctime(&dateCreation) + "Pseudo créateur : " + createur.getPseudo();
+    const std::string resultat = "Identifiant : " + this->identifiant +
+            "\nNom : " + this->nom +
+            "\nDescription : " + this->description +
+            "\nDate de creation : " + ctime(&dateCreation) +
+            "Pseudo créateur : " + createur.getPseudo() + "\n";
 	return resultat;
 }

@@ -4,6 +4,8 @@
 #include "comptes/ComptePersonnel.hpp"
 #include "gestionnaires/GestionnaireDialogue.hpp"
 
+#include <QSqlQuery>
+
 /**
  * @brief Test de la classe CompteUtilisateur
  * utiliser la commande make pour creer l'executable (il s'execute automatiquement la première fois)
@@ -15,30 +17,73 @@
 
 int main()
 {
-    // Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
-    // TODO Vérification des entrées; Sauvegarder le compte
-    GestionnaireDialogue gd = GestionnaireDialogue();
-    gd.creerCompteUtilisateur("a", "b", "c", "d", "d", "f");
+    /*
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("bigblue");
+    db.setDatabaseName("flightdb");
+    db.setUserName("acarlson");
+    db.setPassword("1uTbSbAs");
+    bool ok = db.open();
+    QSqlQuery query;
+    query.exec("CREATE OR REPLACE TABLE USERS "
+               "(Pseudo varchar(255) PRIMARY KEY NOT NULL, "
+               "Nom varchar(255) NOT NULL, "
+               "Prenom varchar(255) NOT NULL, "
+               "Email varchar(255) NOT NULL, "
+               "Hash varchar(255) NOT NULL);");
 
+    db.close();
+    db.removeDatabase("bigblue");
+*/
+
+    // Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
+    GestionnaireDialogue gd = GestionnaireDialogue();   // TODO Vérification des entrées; Sauvegarder le compte
+    std::cout << "test: Création du compte personnel\n";
+    gd.creerCompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "12345", "12345");
+    std::cout << "\n\n";
+
+    // Test de fonction "creerCompteDepensesCommunes" dans GestionnaireDialogue
+    std::cout << "test: Création du compte de depenses\n";
+    gd.creerCompteDepensesCommunes("Compte1", "Description");
+    std::cout << "\n";
+
+    // Test de fonction "consulterCompteDepensesCommunes" dans GestionnaireDialogue
+    std::cout << "test: Consulatation du compte de depenses\n";
+    CompteUtilisateur compteU = CompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "SHA256-HASH");
+    CompteDepensesCommunes cdc = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU);
+    gd.consulterCompteDepensesCommunes(cdc);
+    std::cout << "\n";
+
+    // Test de fonction "consulterListeCompteDepensesCommunes" dans GestionnaireDialogue
+    std::cout << "test: Consulatation la liste des comptes de depenses\n";
+    gd.consulterListeCompteDepensesCommunes(compteU);
+
+    // Test de fonction "seConnecter" dans GestionnaireDialogue
+    std::cout << "test: se connecter\n";
+    gd.seConnecter("wehddn", "12345");
+    std::cout << "\n";
+
+    /*
 	// Penser à utiliser un pattern pour pouvoir utiliser les classes même en utilisant le polymorphisme
     CompteUtilisateur compteU1 = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 	// Test des getters
-    //std::cout << compteU1.toString() << std::endl;
+    std::cout << compteU1.toString() << std::endl;
 	// Test des setteurs
-    //std::cout << "=======Modification infos comptes=======" << std::endl;
+    std::cout << "=======Modification infos comptes=======" << std::endl;
 	compteU1.setPseudo("lmtb06");
 	compteU1.setPrenom("Moussa");
 	compteU1.setNom("FAYE");
 	compteU1.setEmail("moussafaye.m@gmail.com");
-    //std::cout << compteU1.toString() << std::endl;
+    std::cout << compteU1.toString() << std::endl;
 
 	CompteDepensesCommunes cdc1 = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU1);
 	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compteU1);
 	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("id3", "Compte Depense 3", "", time(0), compteU1);
-    //std::cout << std::endl;
+    std::cout << std::endl;
 	compteU1.addCompteDepensesCommunes(cdc1);
 	compteU1.addCompteDepensesCommunes(cdc2);
 	compteU1.addCompteDepensesCommunes(cdc3);
-    //std::cout << compteU1.toString() << std::endl;
+    std::cout << compteU1.toString() << std::endl;
+    */
 	return 0;
 }
