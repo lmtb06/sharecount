@@ -16,6 +16,6 @@ const std::string CompteDepensesCommunes::toString() const
             "\nNom : " + this->nom +
             "\nDescription : " + this->description +
             "\nDate de creation : " + ctime(&dateCreation) +
-            "Pseudo créateur : " + createur.getPseudo() + "\n";
+            "Pseudo créateur : " + createur.getPseudo();
 	return resultat;
 }
