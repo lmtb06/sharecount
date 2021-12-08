@@ -41,7 +41,7 @@ class CompteDepensesCommunes
 	 * donc lorsqu'on crée l'objet.
 	 *
 	 */
-	const CompteUtilisateur& createur;
+	const CompteUtilisateur &createur;
 
 public:
 	/**
@@ -53,7 +53,7 @@ public:
  * @param description description du compte
  * @param dateCreation la date de création du compte
  */
-	CompteDepensesCommunes(const std::string& identifiant, const std::string& nom, const std::string& description, const std::time_t& dateCreation, const CompteUtilisateur& createur);
+	CompteDepensesCommunes(const std::string &identifiant, const std::string &nom, const std::string &description, const std::time_t &dateCreation, const CompteUtilisateur &createur);
 	/**
 	 * @brief Le destructeur ne fait rien pour l'instant
 	 *

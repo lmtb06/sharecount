@@ -1,13 +1,12 @@
 *
+!**/
 !**.cpp
 !**.hpp
-!Makefile
+!src/**Makefile
 !**.md
 !**.txt
 !**.puml
 !**.pdf
 !.gitignore
-!*.pro
-!**/
-!/src
-build*/*
+!src/**.pro
+
