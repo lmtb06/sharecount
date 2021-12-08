@@ -57,7 +57,7 @@ std::string GestionnaireDialogue::hasher(std::string motDePasse){
 }
 
 void GestionnaireDialogue::afficherPageAccueil(CompteUtilisateur compteU){
-    std::cout << "Affichage de page d'accueil";
+    std::cout << "Affichage de page d'accueil\n";
 }
 
 void GestionnaireDialogue::creerCompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &motDePasse, const std::string &confirmationMotDePasse){
@@ -122,7 +122,7 @@ void GestionnaireDialogue::creerCompteDepensesCommunes(const std::string &nom, c
 
         if(CompteCheck.size()==1){
             //addCompteDepensesCommunes(CompteCheck.front())
-            std::cout << "consulter son compte utilisateur";
+            afficherPageAccueil(compteU);
         }
         else
             afficherMessageErreur("Impossible de créer le compte de dépense");

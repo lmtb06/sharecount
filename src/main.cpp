@@ -3,7 +3,6 @@
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
 #include "gestionnaires/GestionnaireDialogue.hpp"
-#include <regex>
 
 /**
  * @brief Test de la classe CompteUtilisateur
