@@ -1,4 +1,18 @@
 @startuml Classes
+
+package exceptions {
+	abstract ExceptionSC {
+		ExceptionSC(String message)
+		String what()
+	}
+
+	class ExceptionSauvegardeCompteUtilisateur extends ExceptionSC {
+		ExceptionSauvegardeCompteUtilisateur()
+	}
+}
+
+' newpage
+
 package gestionnaires {
 	interface GestionnaireDialogue {
 		void consulterCompteDepensesCommunes(CompteDepensesCommunes compteDC)
@@ -25,16 +39,19 @@ package gestionnaires {
 		Collection<Depense> getDepenses(CompteDepensesCommunes compteDC)
 		Collection<CompteDepensesCommunes> getComptesDepensesCommunes(CompteUtilisateur compteU)
 		ComptePersonnel getCompte(String pseudo)
-		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
-		bool compteExiste(String pseudo, String hashMDP)
 		bool pseudoExiste(String pseudo)
+		bool compteExiste(String pseudo, String hashMDP)
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)  throws ExceptionSauvegardeCompteUtilisateur
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
-		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)
+		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)  throws ExceptionSauvegardeCompteUtilisateur
 	}
 
 }
+
+' newpage
+
 package comptes {
 	interface ComptePersonnel {
 		String pseudo
@@ -43,7 +60,7 @@ package comptes {
 		String email
 		String hashMotDePasse
 		ComptePersonnel(String pseudo, String prenom, String nom, String email, String hashMDP);
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs) throws ExceptionSauvegardeCompteUtilisateur
 		String getPseudo()
 		String getPrenom()
 		String getNom()
@@ -54,16 +71,15 @@ package comptes {
 		void setNom(String nom)
 		void setEmail(String email)
 		void setHashMotDePasse(String hashMDP)
-		void setGestionnaireSauvegarde(GestionnaireSauvegarde gs)
 	}
 
 	class CompteAdministrateur implements ComptePersonnel {
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs) throws ExceptionSauvegardeCompteUtilisateur
 	}
 
 
 	class CompteUtilisateur implements ComptePersonnel {
-		void sauvegarder()
+		void sauvegarder(GestionnaireSauvegarde gs)  throws ExceptionSauvegardeCompteUtilisateur
 		bool recupererInfosCompteDepensesCommunes(CompteDepensesCommunes compteDC)
 		bool recupererComptesDepensesCommunes()
 		Collection<CompteDepensesCommunes>  getComptesDepensesCommunes()
@@ -86,16 +102,24 @@ package comptes {
 
 	}
 }
-package exceptions {
-	class ErreurSauvegardeCompteUtilisateur {
 
+package tests {
+	abstract class Test {
+		void tester()
+	}
+
+	class TestCompteUtilisateur implements Test {
+		void tester()
+		bool testAddCompteDepensesCommunes()
+		bool testRecupererInfosCompteDepensesCommunes()
+		bool testRecupererComptesDepensesCommunes()
+		bool testSetCompteDepensesCommunes()
 	}
 }
 
-GestionnaireDialogue --"1" ComptePersonnel
+GestionnaireDialogue --"1" CompteUtilisateur
 GestionnaireDialogue --"1" GestionnaireSauvegarde
 CompteDepensesCommunes --"*" Depense
 CompteUtilisateur "1"--"*" CompteDepensesCommunes
-ComptePersonnel --"1" GestionnaireSauvegarde
 
 @enduml
