@@ -126,7 +126,7 @@ public:
 	 *
 	 * @param gs le gestionnaire de sauvegarde
 	 */
-	virtual void sauvegarder(const GestionnaireSauvegarde &gs) const = 0;
+	virtual void sauvegarder(GestionnaireSauvegarde &gs) const = 0;
 	/**
 	 * @brief Cette methode donne les infos essentiels du compte personnel
 	 *

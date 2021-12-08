@@ -11,7 +11,7 @@ package exceptions {
 	}
 }
 
-newpage
+' newpage
 
 package gestionnaires {
 	interface GestionnaireDialogue {
@@ -50,7 +50,7 @@ package gestionnaires {
 
 }
 
-newpage
+' newpage
 
 package comptes {
 	interface ComptePersonnel {

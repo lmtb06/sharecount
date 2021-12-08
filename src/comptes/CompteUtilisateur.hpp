@@ -42,7 +42,7 @@ public:
 	 *
 	 * @param gs le gestionnaire de sauvegarde
 	 */
-	virtual void sauvegarder(const GestionnaireSauvegarde &gs) const;
+	virtual void sauvegarder(GestionnaireSauvegarde &gs) const;
 
 	/**
 	 * @brief Ajout un compte de dépense commun au compte de l'utilisateur

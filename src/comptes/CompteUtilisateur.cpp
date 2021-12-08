@@ -9,7 +9,7 @@ CompteUtilisateur::~CompteUtilisateur()
 	// on ne libére pas le vector car on utilise plus de new
 }
 
-void CompteUtilisateur::sauvegarder(const GestionnaireSauvegarde &gs) const
+void CompteUtilisateur::sauvegarder(GestionnaireSauvegarde &gs) const
 {
 	// Pattern visiteur
 	gs.sauvegarderCompteUtilisateur(*this);

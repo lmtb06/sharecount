@@ -8,10 +8,11 @@ class ExceptionSauvegardeCompteUtilisateur : ExceptionSC
 {
 public:
 	/**
- * @brief Construit une nouvelle exception de sauvegarde de compte d'utilisateur
- *
- */
+     * @brief Construit une nouvelle exception de sauvegarde de compte d'utilisateur
+     *
+     */
 	ExceptionSauvegardeCompteUtilisateur();
+	ExceptionSauvegardeCompteUtilisateur(const std::string &precision);
 	/**
 	 * @brief
 	 * @see ExceptionSC

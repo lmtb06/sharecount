@@ -2,7 +2,7 @@
 #include "comptes/CompteDepensesCommunes.hpp"
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
-#include "exceptions/ExceptionSauvegardeCompteUtilisateur.hpp"
+#include "gestionnaires/GestionnaireSauvegardeFichier.hpp"
 
 /**
  * @brief Test de la classe CompteUtilisateur
@@ -40,5 +40,14 @@ int main()
 	std::cout << exception.what() << std::endl;
 	ExceptionSauvegardeCompteUtilisateur exceptionSv = ExceptionSauvegardeCompteUtilisateur();
 	std::cout << exceptionSv.what() << std::endl;
+	GestionnaireSauvegardeFichier gs = GestionnaireSauvegardeFichier();
+	try
+	{
+		compteU1.sauvegarder(gs);
+	}
+	catch (ExceptionSauvegardeCompteUtilisateur e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return 0;
 }
