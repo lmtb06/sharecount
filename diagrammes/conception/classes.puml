@@ -103,6 +103,20 @@ package comptes {
 	}
 }
 
+package tests {
+	abstract class Test {
+		void tester()
+	}
+
+	class TestCompteUtilisateur implements Test {
+		void tester()
+		bool testAddCompteDepensesCommunes()
+		bool testRecupererInfosCompteDepensesCommunes()
+		bool testRecupererComptesDepensesCommunes()
+		bool testSetCompteDepensesCommunes()
+	}
+}
+
 GestionnaireDialogue --"1" CompteUtilisateur
 GestionnaireDialogue --"1" GestionnaireSauvegarde
 CompteDepensesCommunes --"*" Depense
