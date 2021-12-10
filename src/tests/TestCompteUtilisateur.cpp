@@ -144,7 +144,7 @@ bool TestCompteUtilisateur::testRecupererInfosCompteDepensesCommunes()
     compte.addCompteDepensesCommunes(cdc2);
     compte.addCompteDepensesCommunes(cdc3);
 
-
+    //En attente du code de la fonction
 
     return test;
 }
@@ -152,7 +152,8 @@ bool TestCompteUtilisateur::testRecupererInfosCompteDepensesCommunes()
 bool TestCompteUtilisateur::testRecupererComptesDepensesCommunes()
 {
     bool test = true;
-    //CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+
+    //En attente du code de la fonction
 
     return test;
 }
@@ -160,7 +161,8 @@ bool TestCompteUtilisateur::testRecupererComptesDepensesCommunes()
 bool TestCompteUtilisateur::testSetCompteDepensesCommunes()
 {
     bool test = true;
-    //CompteUtilisateur compte = CompteUtilisateur("lmtb", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
+
+    ////En attente du code de la fonction
 
     return test;
 

@@ -5,7 +5,14 @@
 #include "../comptes/CompteDepensesCommunes.hpp"
 #include <iostream>
 
-    class TestComptePersonnel : public Test
+/**
+ * @brief Classe de tests de la classe ComptePersonnel
+ *
+ * @author Didier MANZI
+ * @version 0.6
+ * @since 0.6
+ */
+class TestComptePersonnel : public Test
     {
     public :
         void tester();

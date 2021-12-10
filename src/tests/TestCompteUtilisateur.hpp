@@ -6,7 +6,14 @@
 #include <iostream>
 
 
-	class TestCompteUtilisateur : public Test
+/**
+ * @brief Classe de tests de la classe CompteUtilisateur
+ *
+ * @author Didier MANZI
+ * @version 0.6
+ * @since 0.6
+ */
+class TestCompteUtilisateur : public Test
 	{
     public :
         void tester();
