@@ -125,7 +125,7 @@ package tests {
 		bool testSetHashMotDePasse()
 	}
 
-	class TestGestionnaireSauvegarde implements Test {
+	class TestGestionnaireSauvegardeFichier implements Test {
 		void tester()
 		bool testSauvegardeCompteUtilisateur()
 	}
