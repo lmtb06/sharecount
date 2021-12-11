@@ -50,6 +50,13 @@ public:
 	 * @param compteDC le compte de depenses à ajouter
 	 */
 	void addCompteDepensesCommunes(const CompteDepensesCommunes &compteDC);
+
+	/**
+     * @brief cette methode donne la liste des compte de dépenses communes de l'utilisateur
+     * @return la liste des compte de dépenses communes (dans un vector c++)
+     */
+	std::vector<CompteDepensesCommunes> getComptesDepensesCommunes() const;
+
 	/**
 	 * @brief Cette methode donne les infos essentiels du compte de l'utilisateur
 	 *
