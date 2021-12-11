@@ -27,8 +27,8 @@ public:
 	 * @param compteU le compte à sauvegarder
 	 */
 	virtual void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU) = 0;
-	// virtual bool compteExiste(const std::string& pseudo, const std::string& hashMDP) = 0;
-	// virtual bool pseudoExiste(const std::string& pseudo) = 0;
+	virtual bool compteExiste(const std::string &pseudo, const std::string &hashMDP) = 0;
+	virtual bool pseudoExiste(const std::string &pseudo) = 0;
 };
 
 #endif
