@@ -45,6 +45,11 @@ package gestionnaires {
 	}
 
 	class GestionnaireSauvegardeFichier implements GestionnaireSauvegarde {
+		-QDomDocument getDomFromFile(QFile fichier)
+		-QDomElement getCompteUtilisateurElementFromDomDoc(QDomDocument dom, CompteUtilisateur compteU)
+		-void mettreAJourElementCompteUtilisateur(QDomElement noeud, CompteUtilisateur compteU)
+		bool pseudoExiste(String pseudo)
+		bool compteExiste(String pseudo, String hashMDP)
 		void sauvegarderCompteUtilisateur(CompteUtilisateur compteU)  throws ExceptionSauvegardeCompteUtilisateur
 	}
 
@@ -60,7 +65,7 @@ package comptes {
 		String email
 		String hashMotDePasse
 		ComptePersonnel(String pseudo, String prenom, String nom, String email, String hashMDP);
-		void sauvegarder(GestionnaireSauvegarde gs) throws ExceptionSauvegardeCompteUtilisateur
+		void sauvegarder(GestionnaireSauvegarde gs) throws ExceptionSC
 		String getPseudo()
 		String getPrenom()
 		String getNom()
@@ -93,7 +98,11 @@ package comptes {
 		String description
 		Date dateCreation
 		CompteDepensesCommunes(String identifiant, String nom, String description, Date dateCreation, CompteUtilisateur createur)
-		bool recupererDepenses()
+		String toString()
+		String getIdentifiant()
+		String getNom()
+		String getDescription()
+		void recupererDepenses() throws ExceptionSC
 		Collection<Depenses> getDepenses()
 		void setDepenses(listeDepenses)
 	}
