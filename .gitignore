@@ -9,4 +9,5 @@
 !**.pdf
 !.gitignore
 !src/**.pro
-
+!**.qrc
+build*/**
