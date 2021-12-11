@@ -2,7 +2,7 @@
 #define gestionnaire_sauvegarde_fichier
 #include <string>
 #include <QtXml>
-#include "gestionnaires/GestionnaireSauvegarde.hpp"
+#include "GestionnaireSauvegarde.hpp"
 #include <iostream>
 
 /**
@@ -15,21 +15,17 @@
 class GestionnaireSauvegardeFichier : public GestionnaireSauvegarde
 {
 protected:
-	std::string chemin_comptes_utilisateur = "/home/lmtb/shares/S5/CPOA/Projet/src/res/sauvegarde/ccu.xml";
+	std::string chemin_comptes_utilisateur = "/home/lmtb/shares/S5/CPOA/Projet/src/gestionnaires/ccu.xml";
 	std::string chemin_comptes_depenses = "ccd.xml";
 
 public:
 	GestionnaireSauvegardeFichier();
 	/**
      * @brief Sauvegarde les données d'un compte utilisateur
-     * @see GestionnaireSauvegarde
+     *
      * @param compteU le compte à sauvegarder
      */
 	void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU) override;
-
-	virtual bool compteExiste(const std::string &pseudo, const std::string &hashMDP) override;
-
-	virtual bool pseudoExiste(const std::string &pseudo) override;
 };
 
 #endif
