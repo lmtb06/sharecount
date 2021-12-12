@@ -19,7 +19,11 @@ bool TestGestionnaireSauvegardeFichier::testSauvegarderCompteUtilisateur()
 {
     bool test = true;
 
-    //A faire
+    //CompteUtilisateur("Pseudotest", )
+
+            //qfile = "chemin"
+
+            //qdom
 
     return test;
 }

@@ -12,7 +12,7 @@
 class Test
 {
 public :
-    virtual void tester();
+    virtual void tester()=0;
 };
 
 #endif // Test.hpp included

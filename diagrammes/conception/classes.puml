@@ -99,7 +99,13 @@ package comptes {
 	}
 
 	class Depense {
-
+		CompteUtilisateur endette
+		CompteUtilisateur receveur
+		time_t dateCreation
+		time_t dateModification
+		int montant
+		String description
+		Depense(CompteUtilisateur endette, CompteUtilisateur receveur, time_t dateCreation, int montant, String desc)
 	}
 }
 
@@ -128,6 +134,16 @@ package tests {
 	class TestGestionnaireSauvegardeFichier implements Test {
 		void tester()
 		bool testSauvegardeCompteUtilisateur()
+	}
+
+	class TestGestionnaireDialogue implements Test {
+		void tester()
+		bool testPseudoExist()
+   		bool testPseudoConforme()
+    	bool testPrenomConforme()
+    	bool testNomConforme()
+    	bool testEmailConforme()
+    	bool testMotDePasseConforme()
 	}
 }
 

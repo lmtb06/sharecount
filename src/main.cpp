@@ -4,6 +4,8 @@
 #include "comptes/ComptePersonnel.hpp"
 #include "tests/TestComptePersonnel.hpp"
 #include "tests/TestCompteUtilisateur.hpp"
+#include "tests/TestGestionnaireSauvegardeFichier.hpp"
+#include "tests/TestGestionnaireDialogue.hpp"
 #include "exceptions/ExceptionSauvegardeCompteUtilisateur.hpp"
 
 /**
@@ -40,9 +42,13 @@ int main()
 
     TestCompteUtilisateur testCompteUtilisateur = TestCompteUtilisateur();
     TestComptePersonnel testComptePersonnel = TestComptePersonnel();
+    TestGestionnaireSauvegardeFichier testGestionnaireSauvegardeFichier = TestGestionnaireSauvegardeFichier();
+    TestGestionnaireDialogue testGestionnaireDialogue = TestGestionnaireDialogue();
 
     testCompteUtilisateur.tester();
     testComptePersonnel.tester();
+    testGestionnaireSauvegardeFichier.tester();
+    testGestionnaireDialogue.tester();
 
 	ExceptionSC exception = ExceptionSC("Exception de test");
 	std::cout << exception.what() << std::endl;

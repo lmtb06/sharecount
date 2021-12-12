@@ -16,7 +16,11 @@ HEADERS = \
    $$PWD/tests/TestCompteUtilisateur.hpp \
    $$PWD/tests/Test.hpp \
    $$PWD/gestionnaires/GestionnaireSauvegardeFichier.hpp \
-   tests/TestComptePersonnel.hpp
+   comptes/Depense.hpp \
+   gestionnaires/GestionnaireDialogue.hpp \
+   tests/TestComptePersonnel.hpp \
+   tests/TestGestionnaireDialogue.hpp \
+   tests/TestGestionnaireSauvegardeFichier.hpp
 
 SOURCES = \
    $$PWD/comptes/CompteDepensesCommunes.cpp \
@@ -29,7 +33,10 @@ SOURCES = \
    $$PWD/tests/TestCompteUtilisateur.cpp \
    $$PWD/tests/Test.cpp \
    $$PWD/main.cpp \
-   tests/TestComptePersonnel.cpp
+   comptes/Depense.cpp \
+   tests/TestComptePersonnel.cpp \
+   tests/TestGestionnaireDialogue.cpp \
+   tests/TestGestionnaireSauvegardeFichier.cpp
 
 INCLUDEPATH =
 
