@@ -19,9 +19,9 @@ int main()
 	// Penser à utiliser un pattern pour pouvoir utiliser les classes même en utilisant le polymorphisme
 	CompteUtilisateur compteU1 = CompteUtilisateur("lmtb06", "Elhadji Moussa", "FAYE", "moussafaye.m@gmail.com", "SHA256-HASH");
 
-	CompteDepensesCommunes cdc1 = CompteDepensesCommunes("1", "Compte Depense 1", "", time(0), compteU1);
-	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("200", "Compte Depense 2", "", time(0), compteU1);
-	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("50", "Compte Depense 3", "", time(0), compteU1);
+	CompteDepensesCommunes cdc1 = CompteDepensesCommunes("1", "Compte Depense test 1", "", time(0), compteU1);
+	CompteDepensesCommunes cdc2 = CompteDepensesCommunes("200", "Compte Depense test 2", "", time(0), compteU1);
+	CompteDepensesCommunes cdc3 = CompteDepensesCommunes("50", "Compte Depense test 3", "", time(0), compteU1);
 	compteU1.addCompteDepensesCommunes(cdc1);
 	compteU1.addCompteDepensesCommunes(cdc2);
 	compteU1.addCompteDepensesCommunes(cdc3);
@@ -29,12 +29,13 @@ int main()
 	GestionnaireSauvegardeFichier gs = GestionnaireSauvegardeFichier();
 	try
 	{
-		std::cout << "Sauvegarde du compte :" << std::endl
+		std::cout << "Sauvegarde du compte :\n"
+							<< std::endl
 							<< compteU1.toString() << std::endl;
 		compteU1.sauvegarder(gs);
-		std::cout << "Sauvegarde réussi." << std::endl;
+		std::cout << "\nSauvegarde réussi." << std::endl;
 	}
-	catch (ExceptionSC e)
+	catch (ExceptionSauvegardeCompteUtilisateur e)
 	{
 		std::cout << e.what() << std::endl;
 	}

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/"/>
+    <qresource prefix="/res/sauvegarde">
+        <file>res/sauvegarde/ccu.xml</file>
+    </qresource>
+</RCC>
