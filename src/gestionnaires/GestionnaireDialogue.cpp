@@ -50,13 +50,13 @@ void GestionnaireDialogue::afficherMenu(){
         break;
         }
         case 3 :{
-            std::vector<CompteDepensesCommunes> cdc = compteU.getComptesDepensesCommunes();
-            for (const auto& depense : cdc){
-                std::cout << depense.getNom() + "\n";
-            }
+            consulterListeCompteDepensesCommunes(compteU);
+            break;
         }
         case 4 :{
-            //consulterListeCompteDepensesCommunes();
+            CompteDepensesCommunes cdc = CompteDepensesCommunes("id0", "Compte1", "", time(0), compteU);
+            consulterCompteDepensesCommunes(cdc);
+            break;
         }
         case 0 :
             i=0;
@@ -129,9 +129,6 @@ void GestionnaireDialogue::creerCompteUtilisateur(const std::string &pseudo, con
 
     std::string erreurs="";
     std::string hashMDP;
-    //if(pseudoExiste("pseudo")) //a verifier dans le BDD
-    //    afficherMessageErreur("Ce pseudo est déjà utilisé");//
-    //else{
     if(!pseudoConforme(pseudo))
         afficherMessageErreur("Le pseudo n'est pas valide");
     else{
@@ -168,7 +165,6 @@ void GestionnaireDialogue::creerCompteUtilisateur(const std::string &pseudo, con
         else
             afficherMessageErreur("Le prénom n'est pas valide");
     }
-    //}
 };
 
 /*---------------------------------------------------------*/
@@ -187,7 +183,6 @@ void GestionnaireDialogue::creerCompteDepensesCommunes(const std::string &nom, c
         GestionnaireSauvegardeFichier gs = GestionnaireSauvegardeFichier();
         try
         {
-            //CompteDepensesCommunes compteDC=creerCompteDepensesCommunes(compteU, nom, description);
             CompteDepensesCommunes compteDC = CompteDepensesCommunes("id1", nom, description, time(0), compteU);
             compteU.addCompteDepensesCommunes(compteDC);
             afficherMessageInformation("Le nouveau compte a été créé avec succès");
@@ -215,11 +210,8 @@ void GestionnaireDialogue::afficherListeDepensesCommunes(std::vector<Depense> li
 }
 
 void GestionnaireDialogue::consulterCompteDepensesCommunes(const CompteDepensesCommunes &compteDC){
-    //if(recupererInfosCompteDepensesCommunes)
-    if(1==1){
         try
         {
-            //listedepenses=getDepenses();
             CompteUtilisateur compteU2 = CompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "SHA256-HASH");
             CompteUtilisateur compteU3 = CompteUtilisateur("pogonateur", "Didier", "MANZI", "test@test.com", "SHA256-HASH");
 
@@ -251,9 +243,6 @@ void GestionnaireDialogue::consulterCompteDepensesCommunes(const CompteDepensesC
         {
             afficherMessageInformation("Vous ne participez à ce compte de dépenses communes");
         }
-    }
-    else
-        afficherMessageInformation("Erreur de récupération pour le compte sélectionné");
 }
 
 /*---------------------------------------------------------*/
@@ -266,10 +255,8 @@ void GestionnaireDialogue::afficherListeComptesDepensesCommunes(std::vector<Comp
 }
 
 void GestionnaireDialogue::consulterListeCompteDepensesCommunes(const CompteUtilisateur &compteU){
-    //if(recupererComptesDepensesCommunes()){
     try
     {
-        //std::vector<CompteDepensesCommunes> listeComptesDepenses = getComptesDepensesCommunes();
         std::vector<CompteDepensesCommunes> listeComptesDepenses;
         listeComptesDepenses.push_back(CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU));
         listeComptesDepenses.push_back(CompteDepensesCommunes("id2", "Compte Depense 2", "", time(0), compteU));
@@ -280,9 +267,6 @@ void GestionnaireDialogue::consulterListeCompteDepensesCommunes(const CompteUtil
     {
         afficherMessageInformation("Vous ne participez à aucun compte de dépenses communes");
     }
-    //}
-    //elses
-    //afficherMessageErreur("Erreur de récupération pour le compte sélectionné");
 }
 
 /*---------------------------------------------------------*/
@@ -292,13 +276,8 @@ void GestionnaireDialogue::consulterListeCompteDepensesCommunes(const CompteUtil
 void GestionnaireDialogue::seConnecter(const std::string &pseudo, const std::string &motDePasse){
     std::string hashMDP = hasher(motDePasse);
 
-    //if(!compteExiste(pseudo,hashMDP))
-    //    afficherMessageErreur("Pseudo ou mot de passe incorrect, veuillez les ré entrer");
-    //else{
-    //CompteUtilisateur compteU = getCompte(pseudo);
     CompteUtilisateur compteU = CompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "SHA256-HASH");
     afficherPageAccueil(compteU);
-    //}
 }
 
 void GestionnaireDialogue::creeDepense(Depense &depense){
@@ -358,7 +337,6 @@ void GestionnaireDialogue::calculerDettes(std::vector<Depense> listeDepenses){
 
     for(unsigned i=0; i<result.size(); i++) {
         std::cout << "de " + result[i].de_qui + " a " + result[i].pour_qui + ": " + std::to_string(result[i].montant) + "\n";
-        //resultat+= "de " + result[i].de_qui + " a " + result[i].pour_qui + ": " + std::to_string(result[i].montant) + "\n";
     }
 }
 
