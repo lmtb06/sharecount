@@ -4,7 +4,7 @@
 #TARGET = Sharecount
 
 QT = core gui xml
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 HEADERS = \
    $$PWD/comptes/CompteDepensesCommunes.hpp \
@@ -12,7 +12,6 @@ HEADERS = \
    $$PWD/comptes/CompteUtilisateur.hpp \
    $$PWD/exceptions/ExceptionSC.hpp \
    $$PWD/exceptions/ExceptionSauvegardeCompteUtilisateur.hpp \
-   $$PWD/gestionnaires/GestionnaireDialogue.hpp \
    $$PWD/gestionnaires/GestionnaireSauvegarde.hpp \
    $$PWD/gestionnaires/GestionnaireSauvegardeFichier.hpp
 
@@ -23,7 +22,6 @@ SOURCES = \
    $$PWD/exceptions/ExceptionSC.cpp \
    $$PWD/exceptions/ExceptionSauvegardeCompteUtilisateur.cpp \
    $$PWD/gestionnaires/GestionnaireSauvegarde.cpp \
-   $$PWD/gestionnaires/GestionnaireDialogue.cpp \
    $$PWD/gestionnaires/GestionnaireSauvegardeFichier.cpp \
    $$PWD/main.cpp
 
@@ -32,7 +30,4 @@ INCLUDEPATH =
 #DEFINES =
 
 DISTFILES +=
-
-RESOURCES += \
-    res/resources.qrc
 

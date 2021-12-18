@@ -4,6 +4,7 @@
 #include <string>
 #include <ctime>
 #include "CompteUtilisateur.hpp"
+#include "Depense.h"
 
 /**
  * @brief Cette classe représente le compte de dépenses communes
@@ -71,5 +72,6 @@ public:
 	const std::string getNom() const;
 
 	const std::string getDescription() const;
+
 };
 #endif

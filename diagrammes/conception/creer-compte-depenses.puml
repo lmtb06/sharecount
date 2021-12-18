@@ -18,6 +18,7 @@ gs --> 	gd : cdc
 alt cdc != vide
 gd -> 	cu : addCompteDepensesCommunes(cdc)
 cu 	--> gd :
+gd -> gd : afficherMessageInformation("Le nouveau compte a été créé avec succès")
 ref over gd : consulter son compte utilisateur
 else cdc = vide
 gd 	-> 	gd 	: afficherMessageErreur("Impossible de créer le compte de dépense")

@@ -4,7 +4,6 @@
 CompteUtilisateur::CompteUtilisateur(const std::string &pseudo, const std::string &prenom, const std::string &nom, const std::string &email, const std::string &hashMDP) : ComptePersonnel(pseudo, prenom, nom, email, hashMDP)
 {
 }
-
 CompteUtilisateur::~CompteUtilisateur()
 {
 	// on ne libére pas le vector car on utilise plus de new
@@ -38,10 +37,8 @@ std::string CompteUtilisateur::toString() const
 			resultat += "\n---------";
 		}
 	}
-	return resultat;
-}
-
-std::vector<CompteDepensesCommunes> CompteUtilisateur::getComptesDepensesCommunes() const
-{
-	return this->comptesDepensesCommunes;
+    if (resultat.size()>0)
+        return resultat;
+    else
+        return "pas de comptes";
 }

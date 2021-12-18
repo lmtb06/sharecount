@@ -2,7 +2,7 @@
 #define gestionnaire_sauvegarde_fichier
 #include <string>
 #include <QtXml>
-#include "gestionnaires/GestionnaireSauvegarde.hpp"
+#include "GestionnaireSauvegarde.hpp"
 #include <iostream>
 
 /**
@@ -22,14 +22,10 @@ public:
 	GestionnaireSauvegardeFichier();
 	/**
      * @brief Sauvegarde les données d'un compte utilisateur
-     * @see GestionnaireSauvegarde
+     *
      * @param compteU le compte à sauvegarder
      */
 	void sauvegarderCompteUtilisateur(const CompteUtilisateur &compteU) override;
-
-	virtual bool compteExiste(const std::string &pseudo, const std::string &hashMDP) override;
-
-	virtual bool pseudoExiste(const std::string &pseudo) override;
 };
 
 #endif
