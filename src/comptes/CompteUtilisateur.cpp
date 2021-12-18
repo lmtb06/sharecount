@@ -37,5 +37,8 @@ std::string CompteUtilisateur::toString() const
 			resultat += "\n---------";
 		}
 	}
-	return resultat;
+    if (resultat.size()>0)
+        return resultat;
+    else
+        return "pas de comptes";
 }

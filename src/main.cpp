@@ -2,11 +2,8 @@
 #include "comptes/CompteDepensesCommunes.hpp"
 #include "comptes/CompteUtilisateur.hpp"
 #include "comptes/ComptePersonnel.hpp"
-<<<<<<< HEAD
 #include "gestionnaires/GestionnaireDialogue.hpp"
-=======
 #include "gestionnaires/GestionnaireSauvegardeFichier.hpp"
->>>>>>> main
 
 /**
  * @brief Test de la classe CompteUtilisateur
@@ -87,5 +84,37 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "=============================" << std::endl;
+
+	// Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
+    GestionnaireDialogue gd = GestionnaireDialogue(); // TODO Vérification des entrées; Sauvegarder le compte
+    //std::cout << " - test: Création du compte personnel\n";
+    //gd.creerCompteUtilisateur("wehddn", "Nicolas", "Graff", "test@test.test", "testTEST1@", "testTEST1@");
+    //std::cout << "\n\n";
+
+	// Test de fonction "creerCompteDepensesCommunes" dans GestionnaireDialogue
+    //std::cout << " - test: Création du compte de depenses\n";
+    //gd.creerCompteDepensesCommunes("Compte1", "Description");
+    //std::cout << "\n\n";
+
+	// Test de fonction "consulterCompteDepensesCommunes" dans GestionnaireDialogue
+    //std::cout << " - test: Consulatation du compte de depenses\n";
+    //CompteUtilisateur compteU = CompteUtilisateur("wehddn", "Nicolas", "GRAFF", "test@test.com", "SHA256-HASH");
+    //CompteDepensesCommunes cdc = CompteDepensesCommunes("id1", "Compte Depense 1", "", time(0), compteU);
+    //gd.consulterCompteDepensesCommunes(cdc);
+    //std::cout << "\n";
+
+	// Test de fonction "consulterListeCompteDepensesCommunes" dans GestionnaireDialogue
+    //std::cout << " - test: Consulatation la liste des comptes de depenses\n";
+    //gd.consulterListeCompteDepensesCommunes(compteU);
+    //std::cout << "\n";
+
+	// Test de fonction "seConnecter" dans GestionnaireDialogue
+    //std::cout << " - test: se connecter\n";
+    //gd.seConnecter("wehddn", "12345");
+    //std::cout << "\n\n";
+
+    gd.afficherMenu();
+
 	return 0;
 }

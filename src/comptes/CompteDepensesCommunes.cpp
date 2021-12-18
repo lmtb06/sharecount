@@ -17,3 +17,4 @@ const std::string CompteDepensesCommunes::toString() const
             "Pseudo créateur : " + createur.getPseudo();
 	return resultat;
 }
+
