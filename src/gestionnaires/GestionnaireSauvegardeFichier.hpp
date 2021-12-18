@@ -15,7 +15,7 @@
 class GestionnaireSauvegardeFichier : public GestionnaireSauvegarde
 {
 protected:
-    std::string chemin_comptes_utilisateur = "ccu.xml";
+	std::string chemin_comptes_utilisateur = "ccu.xml";
 	std::string chemin_comptes_depenses = "ccd.xml";
 
 public:

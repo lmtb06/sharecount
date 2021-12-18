@@ -36,7 +36,7 @@ int main()
 	compteU1.addCompteDepensesCommunes(cdc2);
 	compteU1.addCompteDepensesCommunes(cdc3);
     std::cout << compteU1.toString() << std::endl;
-    
+
 
     // Test de fonction "creerCompteUtilisateur" dans GestionnaireDialogue
     // pseudo - seulement des lettres et des chiffres.
